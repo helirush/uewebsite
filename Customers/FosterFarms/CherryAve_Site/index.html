@@ -1,0 +1,932 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unity Energy - Cherry Avenue Site - Foster Farms</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', sans-serif;
+            line-height: 1.6;
+            color: rgba(44, 62, 80, 1);
+            background: rgba(248, 249, 250, 1);
+        }
+
+        header {
+            background: linear-gradient(135deg, rgba(204, 0, 0, 1) 0%, rgba(139, 0, 0, 1) 100%);
+            color: white;
+            padding: 20px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 4px solid rgba(255, 215, 0, 1);
+        }
+        
+        .header-left {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+        
+        .header-logo {
+            height: 80px;
+            width: auto;
+        }
+
+        .site-title {
+            font-size: 1.8em;
+            font-weight: 900;
+            letter-spacing: 2px;
+            color: rgba(255, 215, 0, 1);
+            text-transform: uppercase;
+        }
+
+        .site-subtitle {
+            font-size: 0.9em;
+            color: white;
+            opacity: 0.9;
+        }
+
+        nav {
+            display: flex;
+            gap: 30px;
+            align-items: center;
+        }
+
+        .back-btn {
+            display: inline-block;
+            padding: 10px 20px;
+            background: rgba(255, 215, 0, 1);
+            color: rgba(0, 0, 0, 1);
+            text-decoration: none;
+            font-weight: 700;
+            border-radius: 6px;
+            border: 2px solid rgba(0, 0, 0, 1);
+            transition: all 0.3s;
+            text-transform: uppercase;
+            font-size: 0.9em;
+        }
+
+        .back-btn:hover {
+            background: white;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(255,215,0,0.4);
+        }
+
+        .hero {
+            background: url('foster-farms-hero.png') center center / cover no-repeat;
+            position: relative;
+            color: white;
+            padding: 0;
+            min-height: 500px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-bottom: 8px solid rgba(255, 215, 0, 1);
+        }
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: url('cherryave-site-hero.png');
+            background-size: 100%;
+            background-position: center 20%;
+            background-repeat: no-repeat;
+            opacity: 0.8;
+            z-index: 0;
+        }
+        
+        .hero::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(to bottom, rgba(20, 30, 0, 0.3) 40%, rgba(30, 45, 0, 0.8) 100%);
+            z-index: 0;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+            max-width: 1200px;
+            padding: 60px 40px;
+        }
+
+        .hero h1 {
+            font-size: 5em;
+            margin-bottom: 0px;
+            font-weight: 900;
+            color: rgb(255, 255, 255);
+            text-shadow: 
+                3px 3px 0px rgba(139, 0, 0, 1),
+                -1px -1px 0px rgba(139, 0, 0, 1),
+                1px -1px 0px rgba(139, 0, 0, 1),
+                -1px 1px 0px rgba(139, 0, 0, 1),
+                1px 1px 0px rgba(139, 0, 0, 1),
+                4px 4px 8px rgba(0,0,0,0.9);
+            letter-spacing: 2px;
+        }
+
+        .hero .capacity-subtitle {
+            font-size: 3.2em;
+            font-weight: 600;
+            color: rgb(255, 230, 80);
+            margin: 15px 0 0 0;
+            letter-spacing: 1px;
+            text-shadow: 
+                2px 2px 0px rgba(139, 0, 0, 1),
+                -1px -1px 0px rgba(139, 0, 0, 1),
+                1px -1px 0px rgba(139, 0, 0, 1),
+                -1px 1px 0px rgba(139, 0, 0, 1),
+                1px 1px 0px rgba(139, 0, 0, 1),
+                3px 3px 6px rgba(0,0,0,0.8);
+        }
+        .hero .capacity-subtitle1 {
+            font-size: 2.9em;
+            font-weight: 700;
+            color: rgb(253, 240, 168);
+            margin: 15px 0 0 0;
+            letter-spacing: 1px;
+            text-shadow: 
+                2px 2px 0px rgba(139, 0, 0, 1),
+                -1px -1px 0px rgba(139, 0, 0, 1),
+                1px -1px 0px rgba(139, 0, 0, 1),
+                -1px 1px 0px rgba(139, 0, 0, 1),
+                1px 1px 0px rgba(139, 0, 0, 1),
+                3px 3px 6px rgba(0,0,0,0.8);
+        }
+        .hero .capacity-subtitle2 {
+            font-size: 2.1em;
+            font-weight: 300;
+            margin-bottom: 75px;
+            font-style: italic;
+            color: rgb(255, 255, 255);
+            letter-spacing: 1px;
+            text-shadow: 
+                2px 2px 0px rgba(139, 0, 0, 1),
+                -1px -1px 0px rgba(139, 0, 0, 1),
+                1px -1px 0px rgba(139, 0, 0, 1),
+                -1px 1px 0px rgba(139, 0, 0, 1),
+                1px 1px 0px rgba(139, 0, 0, 1),
+                3px 3px 6px rgba(0,0,0,0.8);
+        }
+        .hero p {
+            font-size: 1.5em;
+            margin-bottom: 15px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
+            font-weight: 600;
+        }
+
+        .subtitle {
+            font-size: 1.2em;
+            margin-bottom: 40px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
+        }
+        
+        /* Hero Corner Chicken Videos */
+        .hero-chicken-video {
+            position: absolute;
+            bottom: 20px;
+            width: 220px;
+            z-index: 10;
+            border: 4px solid rgba(255, 215, 0, 1);
+            border-radius: 10px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5);
+        }
+        
+        .hero-chicken-left {
+            left: 30px;
+        }
+        
+        .hero-chicken-right {
+            right: 30px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 40px;
+        }
+
+        .hero-btn {
+            display: inline-block;
+            padding: 18px 45px;
+            background: rgba(255, 215, 0, 1);
+            color: rgba(0, 0, 0, 1);
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 900;
+            font-size: 1.3em;
+            text-align: center;
+            transition: all 0.3s;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+            border: 3px solid rgba(0, 0, 0, 1);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .hero-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 30px rgba(255,215,0,0.5);
+            background: rgba(255, 255, 255, 1);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 40px;
+        }
+
+        section {
+            margin: 60px 0;
+        }
+
+        .section-title {
+            font-size: 2.2em;
+            color: rgba(204, 0, 0, 1);
+            margin-bottom: 30px;
+            text-align: center;
+            font-weight: 700;
+        }
+
+        .video-container {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+            margin: 40px 0;
+        }
+
+        video {
+            width: 100%;
+            display: block;
+            background: rgba(0, 0, 0, 1);
+        }
+
+        .welcome-text {
+            font-size: 1.4em;
+            color: rgba(85, 85, 85, 1);
+            line-height: 1.8;
+            margin-bottom: 40px;
+            text-align: justify;
+            max-width: 1100px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .highlights {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin: 40px 0;
+        }
+
+        .highlight-card {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            text-align: center;
+            border-top: 20px solid rgba(255, 215, 0, 1);
+        }
+        
+        .highlight-card h3 {
+            color: rgba(204, 0, 0, 1);
+            margin-bottom: 8px;
+            font-size: 2.0em;
+            font-weight: 700;
+        }
+        
+        .highlight-card .number {
+            color: rgba(204, 0, 0, 1);
+            font-size: 2.0em;
+            font-weight: 700;
+            margin-bottom: 5px;
+            line-height: 1;
+        }
+        
+        .highlight-card .tech-detail {
+            color: rgba(51, 51, 51, 1);
+            font-size: 1.8em;
+            font-weight: 600;
+            font-style: italic;
+            margin-bottom: 15px;
+            line-height: 1.3;
+        }
+
+        .highlight-card p {
+            color: rgba(102, 102, 102, 1);
+            font-size: 0.95em;
+            line-height: 1.5;
+        }
+
+        .expert-section {
+            background: white;
+            padding: 50px;
+            border-radius: 12px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+            margin: 40px 0;
+            text-align: center;
+        }
+
+        .expert-name {
+            font-size: 1.8em;
+            color: rgba(204, 0, 0, 1);
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+
+        .expert-title {
+            color: rgba(102, 102, 102, 1);
+            font-size: 1.1em;
+            margin-bottom: 20px;
+            font-style: italic;
+        }
+
+        .expert-bio {
+            color: rgba(85, 85, 85, 1);
+            font-size: 1.05em;
+            line-height: 1.8;
+            max-width: 700px;
+            margin: 0 auto 30px;
+        }
+
+        .cta-section {
+            background: linear-gradient(135deg, rgba(204, 0, 0, 1) 0%, rgba(139, 0, 0, 1) 100%);
+            color: white;
+            padding: 60px 40px;
+            text-align: center;
+            border-radius: 12px;
+            margin: 50px 0;
+            border: 5px solid rgba(255, 215, 0, 1);
+        }
+
+        .cta-section h2 {
+            font-size: 2em;
+            margin-bottom: 20px;
+        }
+
+        .cta-section p {
+            font-size: 1.1em;
+            margin-bottom: 30px;
+            opacity: 0.95;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 16px 40px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1em;
+            transition: transform 0.3s, box-shadow 0.3s;
+            cursor: pointer;
+            border: none;
+        }
+
+        .btn-primary {
+            background: rgba(255, 215, 0, 1);
+            color: rgba(139, 0, 0, 1);
+            border: 2px solid white;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        }
+
+        .btn-secondary {
+            background: rgba(139, 0, 0, 1);
+            color: rgba(255, 215, 0, 1);
+            margin-top: 15px;
+            border: 2px solid rgba(255, 215, 0, 1);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(204, 0, 0, 1);
+            transform: translateY(-2px);
+        }
+
+        footer {
+            background: rgba(139, 0, 0, 1);
+            color: white;
+            padding: 40px;
+            margin-top: 60px;
+            border-top: 3px solid rgba(255, 215, 0, 1);
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 40px;
+            flex-wrap: wrap;
+        }
+
+        .footer-text {
+            flex: 1;
+            text-align: center;
+        }
+
+        .footer-logos {
+            display: flex;
+            gap: 30px;
+            align-items: center;
+        }
+
+        .footer-logo {
+            height: 60px;
+            width: auto;
+        }
+
+        .libraries-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin: 40px 0;
+        }
+
+        .library-section {
+            background: white;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+            border-top: 8px solid rgba(204, 0, 0, 1);
+        }
+
+        .library-title {
+            font-size: 2em;
+            color: rgba(139, 0, 0, 1);
+            margin-bottom: 30px;
+            font-weight: 700;
+            text-align: center;
+        }
+
+        .library-category {
+            margin: 20px 0;
+        }
+
+        .category-title {
+            font-size: 1.3em;
+            color: rgba(204, 0, 0, 1);
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        /* Collapsible dropdown styling (match Livingston look/feel) */
+        details {
+            margin: 18px 0;
+            padding: 6px;
+            border: 1px solid rgba(0, 0, 0, 0.06); /* very light border around the primary category */
+            border-radius: 12px;
+            background: rgba(255, 255, 255, 0.55);
+        }
+
+        details summary {
+            cursor: pointer;
+            padding: 15px 20px;
+            background: rgba(248, 249, 250, 1);
+            border-radius: 10px;
+            border-left: 5px solid rgba(255, 215, 0, 1);
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            font-size: 1.15em;
+            font-weight: 800;
+            color: rgba(75, 75, 75, 1); /* reads as a CATEGORY header */
+            transition: all 0.3s;
+            list-style: none;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            letter-spacing: 0.3px;
+        }
+
+        details summary::-webkit-details-marker {
+            display: none;
+        }
+
+        details summary::before {
+            content: '▶';
+            font-size: 0.8em;
+            transition: transform 0.3s;
+            display: inline-block;
+        }
+
+        details[open] summary::before {
+            transform: rotate(90deg);
+        }
+
+        details summary:hover {
+            background: white;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        }
+
+        details[open] .study-list {
+            margin-top: 15px;
+            padding-top: 15px;
+        }
+
+        .study-list {
+            display: grid;
+            gap: 15px;
+            padding-left: 18px; /* slight indent so MONTH rows read as children of the category */
+        }
+
+        .study-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 20px 25px;
+            background: rgba(252, 252, 252, 1);
+            border-radius: 10px;
+            border-left: 5px solid rgba(255, 215, 0, 0.75);
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            transition: all 0.3s;
+        }
+
+        .study-item:hover {
+            background: white;
+            transform: translateX(5px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .study-info {
+            flex: 1;
+        }
+
+        .study-name {
+            font-size: 1.2em;
+            font-weight: 700;
+            color: rgba(139, 0, 0, 1);
+            margin-bottom: 5px;
+        }
+
+        .study-period {
+            font-size: 1em;
+            color: rgba(102, 102, 102, 1);
+            font-style: italic;
+        }
+
+        .study-btn {
+            display: inline-block;
+            padding: 12px 25px;
+            background: rgba(204, 0, 0, 1);
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            border-radius: 6px;
+            transition: all 0.3s;
+            text-transform: uppercase;
+            font-size: 0.9em;
+        }
+
+        .study-btn:hover {
+            background: rgba(139, 0, 0, 1);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(204, 0, 0, 0.3);
+        }
+
+        .placeholder-text {
+            color: rgba(153, 153, 153, 1);
+            font-style: italic;
+            padding: 20px;
+            text-align: center;
+            background: rgba(248, 249, 250, 1);
+            border-radius: 8px;
+        }
+
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                gap: 20px;
+            }
+
+            nav {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .hero h1 {
+                font-size: 2.3em;
+            }
+
+            .hero p {
+                font-size: 1.05em;
+            }
+
+            section {
+                margin: 40px 0;
+            }
+
+            .libraries-container {
+                grid-template-columns: 1fr;
+            }
+
+            .library-section {
+                padding: 30px 20px;
+            }
+
+            .study-list {
+                padding-left: 10px;
+            }
+
+            .study-item {
+                flex-direction: column;
+                gap: 15px;
+                align-items: flex-start;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-left">
+            <img src="../foster-farms-logo.png" alt="Foster Farms" class="header-logo">
+            <div>
+                <div class="site-subtitle">Foster Farms Facility</div>
+                <div class="site-title">Cherry Avenue Site</div>
+                <div class="site-subtitle">Fresno, California 93706</div>
+            </div>
+        </div>
+        <nav>
+            <a href="../index.html" class="back-btn">← Return to Foster Farm Home</a>
+            <a href="../../../UnityEnergy/index.html" class="back-btn">Unity Home</a>
+        </nav>
+    </header>
+
+    <div class="hero">
+        <div class="hero-content">
+            <p class="capacity-subtitle">480v Industrial Electricity Data</p>
+            <h1>ENERGY BEHAVIOR WASTE</h1>
+            <p class="capacity-subtitle2">System losses caused from the Poor Transfer of Electricity into Power</p>
+            <p class="capacity-subtitle1">SITE TOTAL CAPACITY : 10,500kVA (per hour)</p>
+            <p class="capacity-subtitle1">CONSUMED POWER : 3500kW (per hour)</p>
+        </div>
+        <video class="hero-chicken-video hero-chicken-left" id="chickenLeft" muted loop autoplay playsinline>
+            <source src="../ChickenFootball.mp4" type="video/mp4">
+        </video>
+        <video class="hero-chicken-video hero-chicken-right" id="chickenRight" muted loop autoplay playsinline>
+            <source src="../ChickenFootball.mp4" type="video/mp4">
+        </video>
+    </div>
+
+    <div class="container">
+                <section id="welcome">
+            <h2 class="section-title">Your Energy Field Journey Begins</h2>
+            
+            <p class="welcome-text">
+                At Unity Energy, we specialize in analyzing the electrical systems that power your operations. 
+                We've been studying your Foster Farms site at Cherry Avenue, since May 2024, and we're excited to share what 
+                we've discovered about your industrial electricity patterns and what the value of harmonizing each 
+                of your four (4) 480v Electrical Energy Fields (T10, T12, T15 and T16)
+            </p>
+
+            <p class="welcome-text">
+                This interactive analysis platform gives you unprecedented insight into how your transformers, 
+                chillers, compressors, and other equipment are operating. You'll see energy consumption patterns, 
+                thermal behavior, and electrical characteristics in real-time, with actionable insights for optimization.
+            </p>
+
+
+            <div class="highlights">
+                <div class="highlight-card">
+                    <div class="number">Eight (8) Total</div>
+                    <h3>Electrical Energy Fields</h3>
+                    <div class="tech-detail">4x 480v : 2x 4160v : 2x 208v</div>
+                </div>
+                <div class="highlight-card">
+                    <div class="number">Four (4) Energy Fields</div>
+                    <h3> Streaming HighRes Data</h3>
+                    <div class="tech-detail">4x 480v approx.80% site</div>
+                </div>
+            </div>
+
+        <!-- Two-Column Libraries Layout -->
+        <section id="libraries">
+            <div class="libraries-container">
+                <!-- Left Column: Presentations Library -->
+                <div class="library-section">
+                    <h2 class="library-title">📑 Reference Library</h2>
+                    
+                    <!-- Collapsible Reference Documents -->
+                    <details open>
+                        <summary>Reference Documents</summary>
+                        <div class="study-list">
+                            <div class="study-item">
+                                <div class="study-info">
+                                    <div class="study-name">eBRIEF - Saturation Study</div>
+                                    <div class="study-period">April 8, 2024</div>
+                                </div>
+                                <a href="./ReferenceLibrary/eBRIEF_viewer.html" class="study-btn">View PDF →</a>
+                            </div>
+                            <div class="study-item">
+                                <div class="study-info">
+                                    <div class="study-name">eREPORT - 2023 Annual</div>
+                                    <div class="study-period">April 9, 2024</div>
+                                </div>
+                                <a href="./ReferenceLibrary/eREPORT_viewer.html" class="study-btn">View PDF →</a>
+                            </div>
+                            <div class="study-item">
+                                <div class="study-info">
+                                    <div class="study-name">eREVIEW - 30-Day Analysis</div>
+                                    <div class="study-period">April 20 - May 20, 2024</div>
+                                </div>
+                                <a href="./ReferenceLibrary/eREVIEW_viewer.html" class="study-btn">View PDF →</a>
+                            </div>
+                        </div>
+                    </details>
+                </div>
+
+                <!-- Right Column: Studies Library -->
+                <div class="library-section">
+                    <h2 class="library-title">📊 Energy Behavior Library</h2>
+                    
+                    <!-- Collapsible Full Site Studies -->
+                    <details open>
+                        <summary>Full Site Studies (All Transformers)</summary>
+                        <div class="study-list">
+                            <div class="study-item">
+                                <div class="study-info">
+                                    <div class="study-name">January 2026</div>
+                                    <div class="study-period">31-day Full Site Analysis</div>
+                                </div>
+                                <a href="./January_2026/SITE-FosterFarms-Summaryboard_FosterFarms-4_1minRES_260101-260131_31d.html" class="study-btn">View Study →</a>
+                            </div>
+                            <div class="study-item">
+                                <div class="study-info">
+                                    <div class="study-name">November 2025</div>
+                                    <div class="study-period">30-day Full Site Analysis</div>
+                                </div>
+                                <a href="./November_2025/SITE-FosterFarms-Summaryboard_FosterFarms-4_1minRES_251101-251130_30d.html" class="study-btn">View Study →</a>
+                            </div>
+                            <div class="study-item">
+                                <div class="study-info">
+                                    <div class="study-name">October 2025</div>
+                                    <div class="study-period">31-day Full Site Analysis</div>
+                                </div>
+                                <a href="./SITE-FosterFarms-Summaryboard_CherryAve-4_1minRES_251001-251031_31d.html" class="study-btn">View Study →</a>
+                            </div>
+                            <!-- Future full site studies will be added here -->
+                        </div>
+                    </details>
+
+                    <!-- Collapsible Partial Studies -->
+                    <details>
+                        <summary>Partial Studies (Individual Transformers)</summary>
+                        <div class="placeholder-text">
+                            Partial transformer studies coming soon...
+                        </div>
+                    </details>
+                </div>
+            </div>
+        </section>
+
+        </section>
+
+        <section id="analysis">
+            <h2 class="section-title">What You'll Discover</h2>
+            <div class="highlights">
+                <div class="highlight-card">
+                    <h3>⚡ Energy Consumption</h3>
+                    <p>Detailed patterns showing when and where your facility uses power</p>
+                </div>
+                <div class="highlight-card">
+                    <h3>🔥 Thermal Analysis</h3>
+                    <p>Heat burden across transformers and cooling systems</p>
+                </div>
+                <div class="highlight-card">
+                    <h3>⚙️ Voltage Stability</h3>
+                    <p>Power quality metrics and electrical stability indicators</p>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-logos">
+                <img src="../foster-farms-logo.png" alt="Foster Farms" class="footer-logo">
+            </div>
+            <div class="footer-text">
+                <p>&copy; 2026 Unity Energy. All rights reserved.</p>
+                <p>Transforming how facilities understand their electrical systems.</p>
+            </div>
+            <div class="footer-logos">
+                <img src="../unity-logo.png" alt="Unity Energy" class="footer-logo">
+            </div>
+        </div>
+    </footer>
+
+    <!-- Video Modal -->
+    <div id="videoModal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.9); z-index: 1000; justify-content: center; align-items: center;">
+        <div style="position: relative; width: 90%; max-width: 1200px;">
+            <button onclick="closeIntroVideo()" style="position: absolute; top: -50px; right: 0; background: rgba(255, 215, 0, 1); color: black; border: none; padding: 15px 30px; font-size: 1.2em; font-weight: 900; border-radius: 8px; cursor: pointer; text-transform: uppercase;">Close ✕</button>
+            <video id="introVideo" controls style="width: 100%; border-radius: 12px; box-shadow: 0 10px 50px rgba(0, 0, 0, 0.8);">
+                <source src="./graham_intro.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        </div>
+    </div>
+
+    <script>
+        function openIntroVideo() {
+            const modal = document.getElementById('videoModal');
+            const video = document.getElementById('introVideo');
+            modal.style.display = 'flex';
+            video.play();
+        }
+
+        function closeIntroVideo() {
+            const modal = document.getElementById('videoModal');
+            const video = document.getElementById('introVideo');
+            video.pause();
+            video.currentTime = 0;
+            modal.style.display = 'none';
+        }
+
+        // Close modal when clicking outside the video
+        document.getElementById('videoModal').addEventListener('click', function(e) {
+            if (e.target.id === 'videoModal') {
+                closeIntroVideo();
+            }
+        });
+
+        // Close modal with Escape key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                closeIntroVideo();
+            }
+        });
+
+        // Offset the right chicken video so they're not synchronized
+        document.addEventListener('DOMContentLoaded', function() {
+            const chickenRight = document.getElementById('chickenRight');
+            if (chickenRight) {
+                chickenRight.addEventListener('loadedmetadata', function() {
+                    // Start the right video at 10 seconds offset
+                    chickenRight.currentTime = 10;
+                });
+            }
+
+            // Persist scroll position when launching a study so returning lands back at the same frame
+            // (Energy Behavior Library view), without re-scrolling every time.
+            document.querySelectorAll('a.study-btn[href]').forEach((link) => {
+                link.addEventListener('click', () => {
+                    try {
+                        sessionStorage.setItem('cherry_index_scrollY', String(window.scrollY || 0));
+                    } catch (e) {
+                        // ignore storage failures
+                    }
+                });
+            });
+        });
+
+        // Restore scroll position when returning to this index page (works with bfcache).
+        const RETURN_OFFSET_PX = 80; // ~1 inch visual offset
+        window.addEventListener('pageshow', () => {
+            let saved;
+            try {
+                saved = sessionStorage.getItem('cherry_index_scrollY');
+            } catch (e) {
+                saved = null;
+            }
+
+            if (saved == null) return;
+            const y = Number(saved);
+            if (!Number.isFinite(y)) return;
+
+            // Clear immediately so stale values don't interfere with later browsing.
+            try { sessionStorage.removeItem('cherry_index_scrollY'); } catch (e) {}
+
+            const targetY = Math.max(0, y + RETURN_OFFSET_PX);
+
+            // Some browsers apply the native #hash anchor scroll after pageshow.
+            // Retry a few times to ensure we land back at the exact prior frame.
+            const doRestore = () => {
+                window.scrollTo({ top: targetY, left: 0, behavior: 'auto' });
+            };
+
+            requestAnimationFrame(doRestore);
+            setTimeout(doRestore, 0);
+            setTimeout(doRestore, 50);
+            setTimeout(doRestore, 250);
+        });
+    </script>
+</body>
+</html>

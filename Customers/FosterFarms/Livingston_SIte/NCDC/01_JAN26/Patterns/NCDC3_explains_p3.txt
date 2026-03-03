@@ -1,0 +1,20 @@
+Now here's what you get after Unity.
+
+Now look at the “after” field. This is the contrast I want you to focus on. The stacked shape stays — because your real production demand stays — but the field gets cleaner. That green reactive layer you saw in the baseline is largely removed, and the power factor line stabilizes up near **99.5%**. This is what a harmonized electrical field looks like: same work, less waste.
+
+Let’s anchor that to your baseline numbers. In January, you had **417.8 kVAR MAX** reactive demand, and you were operating at **87.2% PF**. With MPTS sized at **600 kVAR** capacity, the reactive burden drops toward near‑zero at the transformer, and the system stops converting that waste into heat. Remember your baseline **thermal burden was 211,153 BTU per hour**, and your **cooling and decay cost was $5.73 per hour**. When we remove the reactive-driven losses, you should expect a meaningful portion of that hourly cooling overhead to fall away.
+
+Now let’s do the business math with the numbers you already have on screen. Your dashboard is showing **total wasted cost of $148,094 per year**. If we treat that as the recoverable opportunity tied to power-quality waste, that’s about:  
+- **$148,094 ÷ 8,760 ≈ $16.91 per hour** in avoidable cost  
+
+So your savings frame is:  
+- **Hourly savings:** **~$16.91/hr**  
+- **Monthly savings:** **$16.91 × 730 ≈ $12,345 per month**  
+- **Annual savings:** **~$148,094 per year**  
+
+Against an installed MPTS cost of **$300,000**, your simple payback is:  
+- **$300,000 ÷ $148,094 ≈ 2.03 years**, or about **24 months**.
+
+And after payback, that savings doesn’t stop. It keeps compounding — month after month — because you’re no longer buying reactive waste, and you’re no longer paying to cool the heat that waste creates.  
+
+That’s electromagnetic stewardship in practice. Cleaner field. Lower heat. Lower cost. And a transformer that spends its life doing real work for your operation, instead of carrying preventable electrical burden.

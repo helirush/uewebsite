@@ -1,0 +1,42 @@
+{
+  "calibrated_at": "2026-01-28T20:45:00Z",
+  "site_directory": "/Users/mdhowell/eestream/eBehavior/Reports/Study260127r0/FosterFarms/CherryAve_Site",
+  "transformers": [
+    {
+      "transformer_code": "T10",
+      "transformer_name": "T10.AirChiller",
+      "an_code": "AN53111387",
+      "pattern_image_path": "/Users/mdhowell/eestream/eBehavior/Reports/Study260127r0/FosterFarms/CherryAve_Site/Patterns/t10bt891_nov25.png",
+      "target_kva": 1103.8,
+      "notes": "Target extracted from blue Supply indicator on BT image. Pattern shows majority of weekdays clustering at this level.",
+      "calibrated_at": "2026-01-28T20:45:00Z"
+    },
+    {
+      "transformer_code": "T12",
+      "transformer_name": "T12.Main",
+      "an_code": "AN54021613",
+      "pattern_image_path": "/Users/mdhowell/eestream/eBehavior/Reports/Study260127r0/FosterFarms/CherryAve_Site/Patterns/t12bt827_nov25.png",
+      "target_kva": 1543.5,
+      "notes": "Target extracted from blue Supply indicator on BT image. Pattern shows majority of weekdays clustering at this level.",
+      "calibrated_at": "2026-01-28T20:45:00Z"
+    },
+    {
+      "transformer_code": "T15",
+      "transformer_name": "T15.Fillet",
+      "an_code": "AN53110845",
+      "pattern_image_path": "/Users/mdhowell/eestream/eBehavior/Reports/Study260127r0/FosterFarms/CherryAve_Site/Patterns/t15bt826_nov25.png",
+      "target_kva": 1466.2,
+      "notes": "Target extracted from blue Supply indicator on BT image. Pattern shows majority of weekdays clustering at this level.",
+      "calibrated_at": "2026-01-28T20:45:00Z"
+    },
+    {
+      "transformer_code": "T16",
+      "transformer_name": "T16.Compressor",
+      "an_code": "AN54022983",
+      "pattern_image_path": "/Users/mdhowell/eestream/eBehavior/Reports/Study260127r0/FosterFarms/CherryAve_Site/Patterns/t16bt883_nov25.png",
+      "target_kva": 1462.9,
+      "notes": "Target extracted from blue Supply indicator on BT image. Pattern shows majority of weekdays clustering at this level.",
+      "calibrated_at": "2026-01-28T20:45:00Z"
+    }
+  ]
+}

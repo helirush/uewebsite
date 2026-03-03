@@ -1,0 +1,23 @@
+{
+  "set_name": "\u0001Foster Farms, Cherry Ave Site",
+  "raw_site_name": "\u0001Foster Farms: Cherry Ave Facility_Set1_Final",
+  "num_transformers": 4,
+  "transformer_names": [
+    "T15.Fillet",
+    "T10.AirChiller",
+    "T12.Main",
+    "T16.Compressor"
+  ],
+  "nominal_voltage": 468.11247585856586,
+  "voltage_avg": 468.11247585856586,
+  "voltage_min": 390.3585375,
+  "voltage_max": 502.9251167,
+  "voltage_std": 28.141644799999995,
+  "power_factor": 0.8606201955929424,
+  "thd_current": 19.87163110071549,
+  "energy_waste_kw": 574.2803550536746,
+  "voltage_deviations_under5": 0,
+  "voltage_deviations_over5": 0,
+  "total_voltage_readings": 178560,
+  "total_capacity": 10500.0
+}

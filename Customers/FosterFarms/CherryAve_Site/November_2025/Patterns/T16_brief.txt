@@ -1,0 +1,9 @@
+Now let's examine T16—your Compressor transformer. This 2500 kVA unit drives the ammonia compressors that keep your entire cold chain running.
+
+November showed 855 kilowatts per hour at 39 percent capacity. Your power factor is 88.5 percent—better than T12 and T15, but still leaving 109 kilowatts per hour on the table as waste.
+
+That's nearly 400,000 BTU of unnecessary heat every hour. For compressors that are already generating heat, that's counterproductive. Annual losses exceed 429,000 dollars.
+
+Two H490 MPTS units would push you to 99.5 percent power factor, reducing heat burden and saving roughly 36,000 dollars per month. Payback would be about 11 months.
+
+When your compressors run cooler, they run longer. That's the Unity advantage.

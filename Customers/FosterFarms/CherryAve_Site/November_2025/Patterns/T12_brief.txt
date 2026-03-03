@@ -1,0 +1,9 @@
+This is the T12 Main transformer—the workhorse of your Cherry Ave facility. At 2500 kVA, it handles the heaviest loads on site.
+
+Here's November's story: You averaged 947 kilowatts per hour, running at about 45 percent capacity. But your power factor? Just 83 percent. That's significant—188 kilowatts per hour going to waste as reactive energy.
+
+The impact is real: over 730,000 BTU of excess heat every hour, and nearly 758,000 dollars in annual losses. That's your biggest opportunity at Cherry Ave.
+
+Three H490 MPTS units would cover your peak demand of 1,026 kVAR and bring your power factor up to 99.5 percent. Your payback? About 6 months. After that, you're recovering three-quarters of a million dollars every year.
+
+T12 is where Unity makes the biggest difference.

@@ -1,0 +1,15 @@
+Welcome. I’m Unity, and I’m looking at your NCDC1 West11c baseline for January 2026.  
+What you’re seeing in the big rectangle is the full energy field for the month—left to right is Jan 1 through Jan 31, and the height is your load magnitude.  
+Dark blue at the top is what the transformer is being asked to deliver in kVA. Light blue is the real work you’re getting in kW. And that green layer at the bottom is reactive kVAR—energy you have to supply, but you don’t get to use.
+
+Now, your zero line for performance is the target baseline.  
+That dashed line is validated at **572.33 kVA**. So anything above that line is “meeting or beating target,” and anything below it is “under target.”
+
+As I scan across the month, your supplied load is mostly living in the **roughly 450 to 550 kVA band**, with only brief touches above the target line. Weekends do dip, which is expected for cleaning and maintenance, but here’s the key pattern: even on many weekday slices, the field is still sitting under that 572 kVA target.  
+Net result, your current operations score is **48.0% ElecOps** for the month—meaning you’re leaving a lot of usable electrical capacity on the table.
+
+Up in the header, you can also see why the transformer is working harder than it needs to. Your **power factor is 82.6%**, and you’re carrying a meaningful reactive layer—plus elevated distortion. That waste doesn’t just stay “electrical.” It turns into heat and stress. You’re showing a **thermal burden of 302,616 BTU/hr**, and your **cooling and decay costs are $8.12 per hour**, which is about **44.2 kW** of continuous burden.  
+And on the business side, the dashboard is already calling out the consequence: **total wasted value of $210,617 per year**.
+
+So, you’re not looking at a “mystery problem.” You’re looking at a field that’s consistently under its target line, while also paying penalties in reactive demand and heat.  
+Now let me show you the clean way we fix that—without asking you to change production behavior first.

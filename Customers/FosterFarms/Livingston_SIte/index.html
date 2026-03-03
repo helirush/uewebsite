@@ -1,0 +1,872 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unity Energy - Livingston Site - Foster Farms</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', sans-serif;
+            line-height: 1.6;
+            color: rgba(44, 62, 80, 1);
+            background: rgba(248, 249, 250, 1);
+        }
+
+        header {
+            background: linear-gradient(135deg, rgba(204, 0, 0, 1) 0%, rgba(139, 0, 0, 1) 100%);
+            color: white;
+            padding: 20px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 4px solid rgba(255, 215, 0, 1);
+        }
+
+        .header-left {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+        
+        .header-logo {
+            height: 80px;
+            width: auto;
+        }
+
+        .site-title {
+            font-size: 1.8em;
+            font-weight: 900;
+            letter-spacing: 2px;
+            color: rgba(255, 215, 0, 1);
+            text-transform: uppercase;
+        }
+
+        .site-subtitle {
+            font-size: 0.9em;
+            color: white;
+            opacity: 0.9;
+        }
+
+        nav {
+            display: flex;
+            gap: 30px;
+            align-items: center;
+        }
+
+        .back-btn {
+            display: inline-block;
+            padding: 10px 20px;
+            background: rgba(255, 215, 0, 1);
+            color: rgba(0, 0, 0, 1);
+            text-decoration: none;
+            font-weight: 700;
+            border-radius: 6px;
+            border: 2px solid rgba(0, 0, 0, 1);
+            transition: all 0.3s;
+            text-transform: uppercase;
+            font-size: 0.9em;
+        }
+
+        .back-btn:hover {
+            background: white;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(255,215,0,0.4);
+        }
+
+        .hero {
+            background: url('Livingston.PNG') center center / cover no-repeat;
+            position: relative;
+            color: white;
+            padding: 0;
+            min-height: 500px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-bottom: 8px solid rgba(255, 215, 0, 1);
+        }
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: url('Livingston.PNG');
+            background-size: 100%;
+            background-position: center 20%;
+            background-repeat: no-repeat;
+            opacity: 0.8;
+            z-index: 0;
+        }
+        
+        .hero::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(to bottom, rgba(20, 30, 0, 0.3) 40%, rgba(30, 45, 0, 0.8) 100%);
+            z-index: 0;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+            max-width: 1200px;
+            padding: 60px 40px;
+        }
+
+        .hero h1 {
+            font-size: 5em;
+            margin-bottom: 0px;
+            font-weight: 900;
+            color: rgb(255, 255, 255);
+            text-shadow: 
+                3px 3px 0px rgba(139, 0, 0, 1),
+                -1px -1px 0px rgba(139, 0, 0, 1),
+                1px -1px 0px rgba(139, 0, 0, 1),
+                -1px 1px 0px rgba(139, 0, 0, 1),
+                1px 1px 0px rgba(139, 0, 0, 1),
+                4px 4px 8px rgba(0,0,0,0.9);
+            letter-spacing: 2px;
+        }
+
+        .hero .capacity-subtitle {
+            font-size: 3.2em;
+            font-weight: 600;
+            color: rgb(255, 230, 80);
+            margin: 15px 0 0 0;
+            letter-spacing: 1px;
+            text-shadow: 
+                2px 2px 0px rgba(139, 0, 0, 1),
+                -1px -1px 0px rgba(139, 0, 0, 1),
+                1px -1px 0px rgba(139, 0, 0, 1),
+                -1px 1px 0px rgba(139, 0, 0, 1),
+                1px 1px 0px rgba(139, 0, 0, 1),
+                3px 3px 6px rgba(0,0,0,0.8);
+        }
+        .hero .capacity-subtitle1 {
+            font-size: 2.9em;
+            font-weight: 700;
+            color: rgb(253, 240, 168);
+            margin: 15px 0 0 0;
+            letter-spacing: 1px;
+            text-shadow: 
+                2px 2px 0px rgba(139, 0, 0, 1),
+                -1px -1px 0px rgba(139, 0, 0, 1),
+                1px -1px 0px rgba(139, 0, 0, 1),
+                -1px 1px 0px rgba(139, 0, 0, 1),
+                1px 1px 0px rgba(139, 0, 0, 1),
+                3px 3px 6px rgba(0,0,0,0.8);
+        }
+        .hero .capacity-subtitle2 {
+            font-size: 2.1em;
+            font-weight: 300;
+            margin-bottom: 75px;
+            font-style: italic;
+            color: rgb(255, 255, 255);
+            letter-spacing: 1px;
+            text-shadow: 
+                2px 2px 0px rgba(139, 0, 0, 1),
+                -1px -1px 0px rgba(139, 0, 0, 1),
+                1px -1px 0px rgba(139, 0, 0, 1),
+                -1px 1px 0px rgba(139, 0, 0, 1),
+                1px 1px 0px rgba(139, 0, 0, 1),
+                3px 3px 6px rgba(0,0,0,0.8);
+        }
+        .hero p {
+            font-size: 1.5em;
+            margin-bottom: 15px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
+            font-weight: 600;
+        }
+        
+        /* Hero Corner Chicken Videos */
+        .hero-chicken-video {
+            position: absolute;
+            bottom: 20px;
+            width: 220px;
+            z-index: 10;
+            border: 4px solid rgba(255, 215, 0, 1);
+            border-radius: 10px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5);
+        }
+        
+        .hero-chicken-left {
+            left: 30px;
+        }
+        
+        .hero-chicken-right {
+            right: 30px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 40px;
+        }
+
+        section {
+            margin: 60px 0;
+        }
+
+        .section-title {
+            font-size: 2.2em;
+            color: rgba(204, 0, 0, 1);
+            margin-bottom: 30px;
+            text-align: center;
+            font-weight: 700;
+        }
+
+        .welcome-text {
+            font-size: 1.1em;
+            color: rgba(85, 85, 85, 1);
+            line-height: 1.8;
+            margin-bottom: 40px;
+            text-align: center;
+            max-width: 1100px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .area-selection {
+            background: white;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+            margin: 40px 0;
+            border-top: 8px solid rgba(204, 0, 0, 1);
+        }
+
+        .area-title {
+            font-size: 2em;
+            color: rgba(139, 0, 0, 1);
+            margin-bottom: 30px;
+            font-weight: 700;
+            text-align: center;
+        }
+
+        .areas-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
+        }
+
+        .area-card {
+            background: rgba(248, 249, 250, 1);
+            padding: 30px;
+            border-radius: 12px;
+            border-left: 5px solid rgba(255, 215, 0, 1);
+            transition: all 0.3s;
+            cursor: pointer;
+            text-align: center;
+        }
+
+        .area-card:hover {
+            background: white;
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+        }
+
+        .area-name {
+            font-size: 1.5em;
+            font-weight: 700;
+            color: rgba(139, 0, 0, 1);
+            margin-bottom: 10px;
+        }
+
+        .area-info {
+            font-size: 1em;
+            color: rgba(102, 102, 102, 1);
+            margin-bottom: 20px;
+        }
+
+        .transformer-count {
+            font-size: 2em;
+            font-weight: 900;
+            color: rgba(204, 0, 0, 1);
+            margin-bottom: 5px;
+        }
+
+        .count-label {
+            font-size: 0.9em;
+            color: rgba(102, 102, 102, 1);
+            font-style: italic;
+        }
+
+        .coming-soon {
+            opacity: 0.6;
+            cursor: default;
+        }
+
+        .coming-soon:hover {
+            transform: none;
+            box-shadow: none;
+        }
+
+        .site-overview {
+            background: white;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+            margin: 40px 0;
+            text-align: center;
+        }
+
+        .overview-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+
+        .stat-box {
+            padding: 20px;
+        }
+
+        .stat-number {
+            font-size: 3em;
+            font-weight: 900;
+            color: rgba(204, 0, 0, 1);
+            margin-bottom: 10px;
+        }
+
+        .stat-label {
+            font-size: 1.1em;
+            color: rgba(102, 102, 102, 1);
+            font-weight: 600;
+        }
+
+        footer {
+            background: linear-gradient(135deg, rgba(49, 65, 0, 1) 0%, rgba(70, 95, 20, 1) 100%);
+            color: rgba(250, 240, 160, 1);
+            padding: 40px;
+            margin-top: 60px;
+            border-top: 3px solid rgba(255, 215, 0, 1);
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 40px;
+            flex-wrap: wrap;
+        }
+
+        .footer-text {
+            flex: 1;
+            text-align: center;
+        }
+
+        .footer-logos {
+            display: flex;
+            gap: 30px;
+            align-items: center;
+        }
+
+        .footer-logo {
+            height: 60px;
+            width: auto;
+        }
+
+        /* Single-Column Library Layout */
+        .libraries-container {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 30px;
+            margin: 40px 0;
+        }
+
+        .library-section {
+            background: white;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+            border-top: 8px solid rgba(204, 0, 0, 1);
+        }
+
+        .library-title {
+            font-size: 2em;
+            color: rgba(139, 0, 0, 1);
+            margin-bottom: 30px;
+            font-weight: 700;
+            text-align: center;
+        }
+
+        /* Collapsible dropdown styling */
+        details {
+            margin: 18px 0;
+            padding: 6px;
+            border: 2px solid rgba(200, 180, 100, 0.4); /* subtle gold border */
+            border-radius: 12px;
+            background: rgba(245, 243, 238, 1); /* slightly darker warm gray */
+        }
+
+        details summary {
+            cursor: pointer;
+            padding: 15px 20px;
+            background: linear-gradient(90deg, rgba(255, 230, 150, 0.5) 0%, rgba(248, 249, 250, 1) 25%, rgba(248, 249, 250, 1) 100%);
+            border-radius: 10px;
+            border-left: 5px solid rgba(204, 170, 0, 1); /* stronger gold accent */
+            border-top: 1px solid rgba(200, 180, 100, 0.3);
+            border-right: 1px solid rgba(200, 180, 100, 0.3);
+            border-bottom: 1px solid rgba(200, 180, 100, 0.3);
+            font-size: 1.15em;
+            font-weight: 800;
+            color: rgba(60, 60, 60, 1); /* darker gray for better contrast */
+            transition: all 0.3s;
+            list-style: none;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            letter-spacing: 0.3px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+        }
+
+        details summary::-webkit-details-marker {
+            display: none;
+        }
+
+        details summary::before {
+            content: '▶';
+            font-size: 0.8em;
+            transition: transform 0.3s;
+            display: inline-block;
+        }
+
+        details[open] summary::before {
+            transform: rotate(90deg);
+        }
+
+        details summary:hover {
+            background: white;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        }
+
+        details[open] .study-list {
+            margin-top: 15px;
+            padding-top: 15px;
+        }
+
+        .study-list {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 15px;
+            padding-left: 18px; /* ~1/4 inch indent so MONTH rows read as children of the category */
+        }
+
+        .study-item.placeholder {
+            background: rgba(248, 249, 250, 1);
+            border-left-color: rgba(160, 160, 160, 0.55);
+        }
+
+        .study-item.placeholder .study-name {
+            color: rgba(120, 120, 120, 1);
+        }
+
+        .study-item.placeholder .study-period {
+            color: rgba(140, 140, 140, 1);
+        }
+
+        .study-item.placeholder:hover {
+            background: rgba(248, 249, 250, 1);
+            transform: none;
+            box-shadow: none;
+        }
+
+        .study-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 20px 25px;
+            background: rgba(252, 252, 252, 1);
+            border-radius: 10px;
+            border-left: 5px solid rgba(255, 215, 0, 0.75);
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            transition: all 0.3s;
+        }
+
+        .study-item:hover {
+            background: white;
+            transform: translateX(5px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .study-info {
+            flex: 1;
+        }
+
+        .study-name {
+            font-size: 1.2em;
+            font-weight: 700;
+            color: rgba(139, 0, 0, 1);
+            margin-bottom: 5px;
+        }
+
+        .study-period {
+            font-size: 1em;
+            color: rgba(102, 102, 102, 1);
+            font-style: italic;
+        }
+
+        .study-btn {
+            display: inline-block;
+            padding: 12px 25px;
+            background: rgba(204, 0, 0, 1);
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            border-radius: 6px;
+            transition: all 0.3s;
+            text-transform: uppercase;
+            font-size: 0.9em;
+        }
+
+        .study-btn.disabled {
+            background: rgba(153, 153, 153, 1);
+            border: 2px solid rgba(120, 120, 120, 1);
+            cursor: default;
+            pointer-events: none;
+            box-shadow: none;
+            transform: none;
+        }
+
+        .study-btn:hover {
+            background: rgba(139, 0, 0, 1);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(204, 0, 0, 0.3);
+        }
+
+        .study-btn.disabled:hover {
+            background: rgba(153, 153, 153, 1);
+            transform: none;
+            box-shadow: none;
+        }
+
+        .placeholder-text {
+            color: rgba(153, 153, 153, 1);
+            font-style: italic;
+            padding: 20px;
+            text-align: center;
+            background: rgba(248, 249, 250, 1);
+            border-radius: 8px;
+        }
+
+        .highlight-card {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            text-align: center;
+            border-top: 20px solid rgba(255, 215, 0, 1);
+        }
+        
+        .highlight-card h3 {
+            color: rgba(204, 0, 0, 1);
+            margin-bottom: 8px;
+            font-size: 2.0em;
+            font-weight: 700;
+        }
+        
+        .highlight-card .number {
+            color: rgba(204, 0, 0, 1);
+            font-size: 2.0em;
+            font-weight: 700;
+            margin-bottom: 5px;
+            line-height: 1;
+        }
+        
+        .highlight-card .tech-detail {
+            color: rgba(51, 51, 51, 1);
+            font-size: 1.8em;
+            font-weight: 600;
+            font-style: italic;
+            margin-bottom: 15px;
+            line-height: 1.3;
+        }
+
+        .highlight-card p {
+            color: rgba(102, 102, 102, 1);
+            font-size: 0.95em;
+            line-height: 1.5;
+        }
+
+        .highlights {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin: 40px 0;
+        }
+
+        @media (max-width: 768px) {
+            .libraries-container {
+                grid-template-columns: 1fr;
+            }
+            .library-section {
+                padding: 30px 20px;
+            }
+            .study-list {
+                grid-template-columns: 1fr;
+                padding-left: 10px;
+            }
+            .study-item {
+                flex-direction: column;
+                gap: 15px;
+                align-items: flex-start;
+            }
+            header {
+                flex-direction: column;
+                gap: 20px;
+            }
+
+            nav {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .hero h1 {
+                font-size: 2.5em;
+            }
+
+            .areas-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-left">
+            <img src="../foster-farms-logo.png" alt="Foster Farms" class="header-logo">
+            <div>
+                <div class="site-subtitle">Foster Farms Facility</div>
+                <div class="site-title">Livingston Site</div>
+                <div class="site-subtitle">Livingston, California</div>
+            </div>
+        </div>
+        <nav>
+            <a href="../index.html" class="back-btn">← Return to Foster Farm Home</a>
+            <a href="../../../UnityEnergy/index.html" class="back-btn">Unity Home</a>
+        </nav>
+    </header>
+
+    <div class="hero">
+        <div class="hero-content">
+            <p class="capacity-subtitle">480v Industrial Electricity Data</p>
+            <h1>ENERGY BEHAVIOR WASTE</h1>
+            <p class="capacity-subtitle2">System losses caused from the Poor Transfer of Electricity into Power</p>
+            <p class="capacity-subtitle1">SITE TOTAL CAPACITY : 56,975kVA (per hour)</p>
+            <p class="capacity-subtitle1">CONSUMED POWER : 8,000kW (per hour)</p>
+        </div>
+        <video class="hero-chicken-video hero-chicken-left" id="chickenLeft" muted loop autoplay playsinline>
+            <source src="../ChickenFootball.mp4" type="video/mp4">
+        </video>
+        <video class="hero-chicken-video hero-chicken-right" id="chickenRight" muted loop autoplay playsinline>
+            <source src="../ChickenFootball.mp4" type="video/mp4">
+        </video>
+    </div>
+
+    <div class="container">
+        <!-- Site Overview -->
+        <section id="overview">
+            <h2 class="section-title">Livingston HQ Facility Overview</h2>
+            
+            <p class="welcome-text">
+                Foster Farms' Livingston headquarters represents one of California's established food production campuses, 
+                supporting decades of agricultural processing and regional distribution throughout the Central Valley. 
+                Unity Energy is analyzing the electrical energy fields across this complex industrial environment where 
+                automated processing systems, refrigeration loads, and motor-driven equipment require stable and efficient 
+                electrical delivery.
+            </p>
+
+            <div class="highlights">
+                <div class="highlight-card">
+                    <div class="number">Thirty-Four (34) Total</div>
+                    <h3>Electrical Energy Fields</h3>
+                    <div class="tech-detail">34x 480v Industrial</div>
+                </div>
+                <div class="highlight-card">
+                    <div class="number">Eight (8) Energy Fields</div>
+                    <h3>Streaming HighRes Data</h3>
+                    <div class="tech-detail">8 of 34 Fields (24% of Site)</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Single-Column Library Layout -->
+        <section id="libraries">
+            <div class="libraries-container">
+                <div class="library-section">
+                    <h2 class="library-title">📊 Energy Behavior Library</h2>
+                    
+                    <!-- DELI Plant Area -->
+                    <details>
+                        <summary>DELI (2x 2500kVA)</summary>
+                        <div class="study-list">
+                            <div class="study-item">
+                                <div class="study-info">
+                                    <div class="study-name">January 2026</div>
+                                    <div class="study-period">31-day Full Analysis • 1minRES</div>
+                                </div>
+<a class="study-btn" href="Deli/01_JAN26/SITE-FosterFarms-Summaryboard_FosterFarms-2_1minRES_260101-260131_31d.html">Study Ready</a>
+                            </div>
+
+                            <div class="study-item placeholder">
+                                <div class="study-info">
+                                    <div class="study-name">February 2026</div>
+                                    <div class="study-period">Monthly Full Analysis • 1minRES</div>
+                                </div>
+                                <span class="study-btn disabled">Study Pending</span>
+                            </div>
+                        </div>
+                    </details>
+
+                    <!-- RENDERING Plant Area -->
+                    <details>
+                        <summary>RENDERING (3x 2500kVA)</summary>
+                        <div class="study-list">
+                            <div class="study-item">
+                                <div class="study-info">
+                                    <div class="study-name">January 2026</div>
+                                    <div class="study-period">31-day Full Analysis • 1minRES</div>
+                                </div>
+<a class="study-btn" href="Rendering/01_JAN26/SITE-FosterFarms-Summaryboard_FosterFarms-3_1minRES_260101-260131_31d.html">Study Ready</a>
+                            </div>
+
+                            <div class="study-item placeholder">
+                                <div class="study-info">
+                                    <div class="study-name">February 2026</div>
+                                    <div class="study-period">Monthly Full Analysis • 1minRES</div>
+                                </div>
+                                <span class="study-btn disabled">Study Pending</span>
+                            </div>
+                        </div>
+                    </details>
+
+                    <!-- NCDC Plant Area -->
+                    <details>
+                        <summary>NCDC (1x 2500kVA + 2x 3000kVA)</summary>
+                        <div class="study-list">
+                            <div class="study-item">
+                                <div class="study-info">
+                                    <div class="study-name">January 2026</div>
+                                    <div class="study-period">31-day Full Analysis • 1minRES</div>
+                                </div>
+<a class="study-btn" href="NCDC/01_JAN26/SITE-FosterFarms-Summaryboard_FosterFarms-3_1minRES_260101-260131_31d.html">Study Ready</a>
+                            </div>
+
+                            <div class="study-item placeholder">
+                                <div class="study-info">
+                                    <div class="study-name">February 2026</div>
+                                    <div class="study-period">Monthly Full Analysis • 1minRES</div>
+                                </div>
+                                <span class="study-btn disabled">Study Pending</span>
+                            </div>
+                        </div>
+                    </details>
+                </div>
+            </div>
+        </section>
+
+        <!-- What You'll Discover -->
+        <section id="analysis">
+            <h2 class="section-title">What You'll Discover</h2>
+            <div class="highlights">
+                <div class="highlight-card">
+                    <h3>⚡ Energy Consumption</h3>
+                    <p>Detailed patterns showing when and where your facility uses power</p>
+                </div>
+                <div class="highlight-card">
+                    <h3>🔥 Thermal Analysis</h3>
+                    <p>Heat burden across transformers and cooling systems</p>
+                </div>
+                <div class="highlight-card">
+                    <h3>⚙️ Voltage Stability</h3>
+                    <p>Power quality metrics and electrical stability indicators</p>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-logos">
+                <img src="../foster-farms-logo.png" alt="Foster Farms" class="footer-logo">
+            </div>
+            <div class="footer-text">
+                <p>&copy; 2026 Unity Energy. All rights reserved.</p>
+                <p>Transforming how facilities understand their electrical systems.</p>
+            </div>
+            <div class="footer-logos">
+                <img src="../unity-logo.png" alt="Unity Energy" class="footer-logo">
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Offset the right chicken video so they're not synchronized
+        document.addEventListener('DOMContentLoaded', function() {
+            const chickenRight = document.getElementById('chickenRight');
+            if (chickenRight) {
+                chickenRight.currentTime = 2; // offset by 2 seconds
+            }
+
+            // Persist scroll position when launching a study, so "Return" lands back at the same frame.
+            // (This avoids having to scroll back down to the Energy Behavior Library each time.)
+            document.querySelectorAll('a.study-btn[href]').forEach((link) => {
+                link.addEventListener('click', () => {
+                    try {
+                        sessionStorage.setItem('livingston_index_scrollY', String(window.scrollY || 0));
+                    } catch (e) {
+                        // ignore storage failures
+                    }
+                });
+            });
+        });
+
+        // Restore scroll position when returning back to the index page.
+        // Use 'pageshow' instead of 'load' so it fires even from bfcache on repeated navigations.
+        const RETURN_OFFSET_PX = 80; // ~1 inch visual offset so the user isn't jammed to the top of the section
+        window.addEventListener('pageshow', () => {
+            let saved;
+            try {
+                saved = sessionStorage.getItem('livingston_index_scrollY');
+            } catch (e) {
+                saved = null;
+            }
+
+            if (saved == null) return;
+            const y = Number(saved);
+            if (!Number.isFinite(y)) return;
+
+            // Clear the stored value immediately so stale reads can't accumulate drift.
+            try { sessionStorage.removeItem('livingston_index_scrollY'); } catch (e) {}
+
+            const targetY = Math.max(0, y + RETURN_OFFSET_PX);
+
+            // Some browsers apply the native #hash anchor scroll *after* pageshow.
+            // That would always land the user at the TOP of the library (making DELI appear "right").
+            // To keep Rendering/NCDC returning to the exact prior frame, retry a few times.
+            const doRestore = () => {
+                window.scrollTo({ top: targetY, left: 0, behavior: 'auto' });
+            };
+
+            requestAnimationFrame(doRestore);
+            setTimeout(doRestore, 0);
+            setTimeout(doRestore, 50);
+            setTimeout(doRestore, 250);
+        });
+    </script>
+</body>
+</html>

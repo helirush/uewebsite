@@ -1,0 +1,648 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Foster Farms - Energy Field Analysis Portal</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', sans-serif;
+            line-height: 1.6;
+            color: rgba(44, 62, 80, 1);
+            background: rgba(248, 249, 250, 1);
+        }
+
+        header {
+            background: linear-gradient(135deg, rgba(204, 0, 0, 1) 0%, rgba(139, 0, 0, 1) 100%);
+            color: white;
+            padding: 20px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 4px solid rgba(255, 215, 0, 1);
+        }
+
+        .logo {
+            font-size: 1.8em;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+
+        .logo span {
+            color: rgba(255, 215, 0, 1);
+        }
+
+        nav {
+            display: flex;
+            gap: 30px;
+            align-items: center;
+        }
+
+        .back-btn {
+            display: inline-block;
+            padding: 10px 20px;
+            background: rgba(255, 215, 0, 1);
+            color: rgba(0, 0, 0, 1);
+            text-decoration: none;
+            font-weight: 700;
+            border-radius: 6px;
+            border: 2px solid rgba(0, 0, 0, 1);
+            transition: all 0.3s;
+            text-transform: uppercase;
+            font-size: 0.9em;
+        }
+
+        .back-btn:hover {
+            background: white;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(255,215,0,0.4);
+        }
+
+        .hero {
+            background: url('foster-farms-hero.png') center top / cover no-repeat;
+            position: relative;
+            background-position: 0% 0%;
+            color: white;
+            padding: 0;
+            min-height: 400px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-bottom: 8px solid rgba(255, 215, 0, 1);
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(to bottom, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.5) 100%);
+        }
+
+        .hero-logo {
+            position: absolute;
+            top: 30px;
+            left: 40px;
+            z-index: 2;
+            max-width: 250px;
+            height: auto;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+            font-family: 'Times New Roman', Times, serif;
+            max-width: 900px;
+            padding: 60px 40px;
+        }
+        .hero-content1 {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+            font-family: 'Times New Roman', Times, serif;
+            max-width: 900px;
+            padding: 60px 40px;
+        }
+
+        .hero h1 {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            font-weight: 700;
+            text-shadow: 3px 3px 6px rgba(0,0,0,0.8);
+            color: rgba(255, 215, 0, 1);
+            letter-spacing: 2px;
+        }
+        .hero h2 {
+            font-size: 4em;
+            margin-bottom: 20px;
+            font-weight: 900;
+            text-shadow: 3px 3px 6px rgba(0,0,0,0.8);
+            color: rgba(255, 215, 0, 1);
+            letter-spacing: 2px;
+            white-space: nowrap;
+        }
+        
+        .hero p {
+            font-size: 1.8em;
+            margin-bottom: 15px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
+            font-weight: 400;
+        }
+
+        .subtitle {
+            font-size: 1.2em;
+            margin-bottom: 40px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 40px;
+        }
+
+        section {
+            margin: 60px 0;
+        }
+
+        .section-title {
+            font-size: 2.2em;
+            color: rgba(204, 0, 0, 1);
+            margin-bottom: 0px;
+            text-align: center;
+            font-weight: 700;
+        }
+        .section-subtitle {
+            font-size: 1.7em;
+            color: rgba(204, 0, 0, 1);
+            letter-spacing: 2px;
+            margin-bottom: 0px;
+            text-align: center;
+            font-weight: 500;
+        }
+        .sites-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 40px;
+            margin: 50px 0;
+        }
+
+        .site-card {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+            overflow: hidden;
+            transition: transform 0.3s, box-shadow 0.3s;
+            display: flex;
+            flex-direction: column;
+            text-decoration: none;
+            color: inherit;
+            border-top: 5px solid rgba(255, 215, 0, 1);
+        }
+
+        .site-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 50px rgba(204,0,0,0.2);
+        }
+
+        .site-header {
+            background: linear-gradient(135deg, rgba(139, 0, 0, 1) 0%, rgba(102, 0, 0, 1) 100%);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+
+        .site-name {
+            font-size: 1.9em;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .site-location {
+            font-size: 1.4em;
+            color: rgba(255, 215, 0, 1);
+            opacity: 0.95;
+        }
+
+        .site-pf {
+            margin-top: 10px;
+            font-size: 1.05em;
+            font-weight: 800;
+            color: rgba(255, 255, 255, 0.92);
+        }
+
+        .site-pf .pf-value {
+            color: rgba(255, 215, 0, 1);
+            font-weight: 900;
+            font-size: 1.35em;
+        }
+
+        .site-pf .pf-label {
+            font-style: italic;
+            font-weight: 800;
+            color: rgba(255, 255, 255, 0.92);
+        }
+
+        .site-content {
+            padding: 30px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            background: linear-gradient(135deg, rgba(248, 249, 250, 1) 0%, rgba(233, 236, 239, 1) 50%, rgba(222, 226, 230, 1) 100%);
+        }
+
+        .site-description {
+            color: rgba(102, 102, 102, 1);
+            font-size: 1.05em;
+            line-height: 1.8;
+            margin-bottom: 25px;
+            flex: 1;
+        }
+
+        .site-stats {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            margin-bottom: 25px;
+            padding: 20px 0;
+            border-top: 1px solid rgba(238, 238, 238, 1);
+            border-bottom: 1px solid rgba(238, 238, 238, 1);
+        }
+
+        .stat {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 1.5em;
+            font-weight: 700;
+            color: rgba(204, 0, 0, 1);
+        }
+
+        .stat-label {
+            font-size: 0.9em;
+            color: rgba(153, 153, 153, 1);
+        }
+
+        .site-btn {
+            display: inline-block;
+            padding: 14px 28px;
+            background: linear-gradient(135deg, rgba(204, 0, 0, 1) 0%, rgba(139, 0, 0, 1) 100%);
+            color: white;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.2em;
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+            border: 2px solid rgba(255, 215, 0, 1);
+        }
+
+        /* Disable navigation for not-yet-live sites */
+        .site-card.coming-soon {
+            opacity: 0.6;
+            cursor: default;
+            pointer-events: none;
+        }
+
+        .site-card.coming-soon:hover {
+            transform: none;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+        }
+
+        .site-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(204, 0, 0, 0.4);
+        }
+
+        /* Latest Report Section */
+        .fields-measured {
+            padding: 14px 30px 0 30px; /* reduce top gap */
+            text-align: center;
+            color: rgba(139, 0, 0, 1);
+            letter-spacing: 0.5px;
+            line-height: 1.15;
+        }
+
+        .fields-measured .count {
+            font-size: 1.55em;
+            font-weight: 700; /* not as bold */
+            font-style: normal; /* count should NOT be italic */
+            margin-bottom: 6px;
+        }
+
+        .fields-measured .label,
+        .fields-measured .status {
+            font-size: 1.25em;
+            font-weight: 600; /* not as bold */
+            font-style: italic;
+        }
+
+        .latest-report {
+            padding: 12px 30px 30px 30px;
+            text-align: center;
+        }
+
+        
+        .latest-report h3 {
+            font-size: 1.5em;
+            color: rgba(204, 0, 0, 1);
+            font-weight: 700;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .latest-report .report-name {
+            font-size: 1.3em;
+            color: rgba(139, 0, 0, 1);
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        
+        .latest-report .report-desc {
+            font-size: 1em;
+            color: rgba(102, 102, 102, 1);
+            margin-bottom: 20px;
+        }
+
+        .info-section {
+            background: white;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            margin: 40px 0;
+            border-left: 5px solid rgba(255, 215, 0, 1);
+        }
+
+        .info-section h3 {
+            color: rgba(204, 0, 0, 1);
+            font-size: 1.5em;
+            margin-bottom: 15px;
+        }
+
+        .info-section p {
+            color: rgba(102, 102, 102, 1);
+            font-size: 1.05em;
+            line-height: 1.8;
+        }
+
+        footer {
+            background: rgba(139, 0, 0, 1);
+            color: white;
+            text-align: center;
+            padding: 30px;
+            margin-top: 60px;
+            border-top: 3px solid rgba(255, 215, 0, 1);
+        }
+
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                gap: 20px;
+            }
+
+            nav {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .hero h1 {
+                font-size: 2em;
+            }
+
+            .hero p {
+                font-size: 1.1em;
+            }
+
+            section {
+                margin: 40px 0;
+            }
+
+            .sites-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">⚡ <span>FOSTER</span> FARMS</div>
+        <nav>
+            <a href="../../UnityEnergy/index.html" class="back-btn">← Return to Unity Home</a>
+        </nav>
+    </header>
+
+    <div class="hero">
+        <img src="foster-farms-logo.png" alt="Foster Farms Logo" class="hero-logo">
+        <div class="hero-content">
+            <p>Enterprise Processing Facilities</p>
+            <h1>Electrical Energy Field Behavior</h1>
+            <h2>SITE ENERGY DATA LIBRARIES</h2>
+        </div>
+    </div>
+
+    <div class="container">
+        <section>
+            <h2 class="section-title">Understanding True Electrical Energy Ownership</h2>
+            <h2 class="section-subtitle">select the site to enter</h2>
+
+            <div class="sites-grid">
+
+                <!-- Livingston Site -->
+                <a href="./Livingston_SIte/index.html" class="site-card">
+                    <div class="site-header">
+                        <div class="site-name">Livingston HQ</div>
+                        <div class="site-location">Livingston, California</div>
+                        <div class="site-pf"><span class="pf-value">82.4%</span> <span class="pf-label">Power Efficiency</span></div>
+                    </div>
+                    <div class="site-content">
+                        <div class="fields-measured">
+                            <div class="count">Eight (8)</div>
+                            <div class="label">Transformer Fields</div>
+                            <div class="status">streaming</div>
+                        </div>
+                        <div class="latest-report">
+                            <h3>Latest Reports</h3>
+                            <div class="report-name">January 2026</div>
+                            <div class="report-desc">31-day Full Site Analysis</div>
+                        </div>
+                        <div class="site-btn">Explore →</div>
+                    </div>
+                </a>
+
+                <!-- Cherry Avenue Site -->
+                <a href="./CherryAve_Site/index.html" class="site-card">
+                    <div class="site-header">
+                        <div class="site-name">Cherry Avenue</div>
+                        <div class="site-location">Fresno, California</div>
+                        <div class="site-pf"><span class="pf-value" id="cherry-card-pf">86.3%</span> <span class="pf-label">Power Efficiency</span></div>
+                    </div>
+                    <div class="site-content">
+                        <div class="fields-measured">
+                            <div class="count">Four (4)</div>
+                            <div class="label">Transformer Fields</div>
+                            <div class="status">streaming</div>
+                        </div>
+                        <div class="latest-report">
+                            <h3>Latest Reports</h3>
+                            <div class="report-name" id="cherry-card-report-name">January 2026</div>
+                            <div class="report-desc" id="cherry-card-report-desc">31-day Full Site Analysis</div>
+                        </div>
+                        <div class="site-btn">Explore →</div>
+                    </div>
+                </a>
+
+                <!-- Belgravia Site -->
+                <a href="./belgravia/" class="site-card coming-soon">
+                    <div class="site-header">
+                        <div class="site-name">Belgravia</div>
+                        <div class="site-location">Fresno, California</div>
+                        <div class="site-pf"><span class="pf-value">N/A</span> <span class="pf-label">Power Efficiency</span></div>
+                    </div>
+                    <div class="site-content">
+                        <div class="fields-measured">
+                            <div class="count">Zero (0)</div>
+                            <div class="label">Transformer Fields</div>
+                            <div class="status">un-measured</div>
+                        </div>
+                        <div class="latest-report">
+                            <h3>Latest Reports</h3>
+                            <div class="report-name">Un-Measured</div>
+                            <div class="report-desc"></div>
+                        </div>
+                        <button class="site-btn" disabled style="opacity: 0.5; cursor: not-allowed;">Coming Soon</button>
+                    </div>
+                </a>
+            </div>
+        </section>
+
+        <section>
+            <div class="info-section">
+                <h3>About Foster Farms Energy Analysis</h3>
+                <p>
+                    Unity Energy provides comprehensive electrical field analysis across Foster Farms' operations. 
+                    Each site is monitored with dedicated study teams analyzing energy consumption, thermal patterns, 
+                    and voltage stability. Our multi-site approach enables facility managers to understand their electrical 
+                    systems and identify optimization opportunities across all locations.
+                </p>
+            </div>
+        </section>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 Unity Energy. All rights reserved.</p>
+        <p>Transforming how facilities understand their electrical systems.</p>
+    </footer>
+
+    <script>
+        // When returning back to Foster Farms from a site page, lock the view to the cards frame.
+        // First entry shows the top of the page; subsequent returns land here until the user scrolls up.
+        const FF_LOCK_KEY = 'fosterfarms_lock_cards_view';
+        const FF_LOCK_OFFSET_PX = 90;
+
+        function getCardsLockTargetY() {
+            const grid = document.querySelector('.sites-grid');
+            if (!grid) return null;
+            const y = grid.getBoundingClientRect().top + (window.scrollY || 0) - FF_LOCK_OFFSET_PX;
+            return Math.max(0, Math.round(y));
+        }
+
+        async function updateCherryAveCard() {
+            // Keep the Foster Farms portal card in-sync with the Cherry Ave site index.
+            // Source of truth: `Customers/FosterFarms/CherryAve_Site/index.html`
+            // - Latest month = first entry in "Full Site Studies"
+            // - PF = average of transformer PFs pulled from that month’s Summaryboard
+            const pfEl = document.getElementById('cherry-card-pf');
+            const reportNameEl = document.getElementById('cherry-card-report-name');
+            const reportDescEl = document.getElementById('cherry-card-report-desc');
+            if (!pfEl || !reportNameEl || !reportDescEl) return;
+
+            try {
+                const cb = Date.now();
+                const indexRes = await fetch(`./CherryAve_Site/index.html?cb=${cb}`);
+                if (!indexRes.ok) return;
+
+                const indexHtml = await indexRes.text();
+                const indexDoc = new DOMParser().parseFromString(indexHtml, 'text/html');
+
+                // Find the "Full Site Studies" block
+                const fullSiteDetails = Array.from(indexDoc.querySelectorAll('details')).find((d) => {
+                    const s = (d.querySelector('summary')?.textContent || '').toLowerCase();
+                    return s.includes('full site studies');
+                });
+
+                const firstItem = fullSiteDetails?.querySelector('.study-item');
+                const monthText = firstItem?.querySelector('.study-name')?.textContent?.trim();
+                const periodTextRaw = firstItem?.querySelector('.study-period')?.textContent?.trim();
+                const hrefRaw = firstItem?.querySelector('a.study-btn[href]')?.getAttribute('href') || '';
+
+                if (monthText) reportNameEl.textContent = monthText;
+
+                if (periodTextRaw) {
+                    // Drop internal study name in parentheses, keep customer-facing description
+                    reportDescEl.textContent = periodTextRaw.replace(/\s*\(.*\)\s*$/, '');
+                }
+
+                // Attempt to compute the card PF from the linked Summaryboard
+                const href = hrefRaw.replace(/^\.[\/]/, '');
+                if (!href) return;
+
+                const summaryRes = await fetch(`./CherryAve_Site/${href}?cb=${cb}`);
+                if (!summaryRes.ok) return;
+
+                const summaryHtml = await summaryRes.text();
+                const summaryDoc = new DOMParser().parseFromString(summaryHtml, 'text/html');
+
+                let sum = 0;
+                let n = 0;
+
+                for (let i = 1; i <= 4; i++) {
+                    const el = summaryDoc.getElementById(`xfmr${i}-metric-pf`);
+                    if (!el) continue;
+                    const pf = parseFloat(String(el.textContent || '').replace('%', '').trim());
+                    if (!Number.isFinite(pf)) continue;
+                    sum += pf;
+                    n += 1;
+                }
+
+                if (n > 0) {
+                    const avg = sum / n;
+                    pfEl.textContent = `${avg.toFixed(1)}%`;
+                }
+            } catch (e) {
+                // Keep fallback values if fetch/parse fails
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            // If the user leaves via a facility card, lock the return view.
+            document.querySelectorAll('a.site-card[href]').forEach((link) => {
+                link.addEventListener('click', () => {
+                    try { sessionStorage.setItem(FF_LOCK_KEY, '1'); } catch (e) {}
+                });
+            });
+
+            // If the user exits back to Unity Home, treat next entry as a "first" view.
+            const backBtn = document.querySelector('a.back-btn[href]');
+            if (backBtn) {
+                backBtn.addEventListener('click', () => {
+                    try { sessionStorage.removeItem(FF_LOCK_KEY); } catch (e) {}
+                });
+            }
+
+            // Keep Cherry Ave card fresh automatically
+            updateCherryAveCard();
+        });
+
+        // Restore on pageshow so it works even when the browser uses bfcache.
+        window.addEventListener('pageshow', () => {
+            let locked = false;
+            try { locked = sessionStorage.getItem(FF_LOCK_KEY) === '1'; } catch (e) {}
+            if (!locked) return;
+
+            const targetY = getCardsLockTargetY();
+            if (targetY == null) return;
+
+            const doRestore = () => {
+                window.scrollTo({ top: targetY, left: 0, behavior: 'auto' });
+            };
+
+            // Retry a few times in case the browser applies scroll/anchor adjustments after pageshow.
+            requestAnimationFrame(doRestore);
+            setTimeout(doRestore, 0);
+            setTimeout(doRestore, 50);
+            setTimeout(doRestore, 250);
+        });
+    </script>
+</body>
+</html>

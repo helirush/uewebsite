@@ -1,0 +1,61 @@
+UNITY EXPLAINS (3-PART)
+
+
+
+PART 1 — WHAT I'M SEEING
+
+Welcome. I’m Unity, and I’m looking at NCDC2 South D with you.  
+What you’re seeing on screen is your complete January energy field — the full rectangle is the whole month, left to right from Jan 1 to Jan 31. The height is load magnitude in kVA. So taller days mean heavier electrical demand, not “longer” days.
+
+Up in the header, your delivered apparent power is averaging **652.9 kVA**, with **active power at 588.8 kW**, and your reactive layer is averaging **282.2 kVAR**. Your **power factor is 90.3%**, and harmonics are **5.5% iTHD**. Financially, the right side is putting a hard number on the waste: about **$162,511 per year** total wasted, and a thermal burden of **231,806 BTU per hour**. Cooling and decay is running about **$6.26 per hour**, which equals **33.9 kW** of cooling demand.
+
+Now, the key visual anchor in the chart body is your dashed target line — the “zero line” for performance. Your validated baseline target for this transformer is **828.58 kVA**. So when your dark-blue supplied layer rises above that line, you’re meeting or beating the target. When it sits below, you’re under.
+
+Let’s read the month like an operator. In the **left third of the chart — roughly Jan 1 through Jan 10 —** you’ve got several strong weekdays where supply peaks sit **above** that 828 kVA line, with a couple days pushing up near the **1,000 to 1,100 kVA** range. Then as you move toward the **middle of the month**, you can see the whole field “steps down” — the daily peaks flatten and spend a lot more time **under** the target line. And toward the **right half**, that lower plateau holds pretty consistently.
+
+Weekends do what we expect — they drop to a lower, cleaning-and-maintenance profile. That part looks normal. What’s not normal is how many weekday production days are no longer reaching your baseline. Visually, I’m seeing **about 9 weekdays** that clearly peak **above** target, and **about 14 weekdays** that peak **below** target — with the under-target days commonly short by roughly **150 to 250 kVA** at the peak.
+
+That pattern aligns with your operational score: your current **ElecOps is 53.4%** for the month. In plain terms, you’re running this transformer well below its validated electrical operating potential, and you’re paying for it in two places at once — first in avoidable waste layers, and second in heat you then have to remove. In a minute, when you scroll, I’ll show you the direct corrective move that tightens this field and removes the reactive drag that’s weighing down your baseline performance.
+
+
+
+PART 2 — HOW WE FIX IT
+
+Now let me show you the fix.
+
+Alright — now let me show you how we fix what you’re seeing in that green layer.  
+For MPTS sizing, we do not size off the average reactive number. We size off your peak. In the REACTIVE tile, the smaller line is the one that matters: your **kVAR MAX is 955.9 kVAR**.
+
+That peak tells us the reactive “headroom” we have to cover so your transformer stops carrying waste current. And because **955.9 kVAR** is above 800, the correct answer here is a **custom Unity MPTS configuration** — it’s beyond the standard “two H490” ceiling. The standard products top out at **800 kVAR** with **2× H490**. So for this field, we design for at least **1,000 kVAR** of compensation capacity, so you’re covered at peak with margin.
+
+Here’s what that means in plain language. MPTS injects the right reactive power, at the right timing, to cancel the lagging reactive draw created by motors, compressors, and inductive loads. When that reactive component is neutralized, your system stops wasting current. Your **power factor moves from 90.3% up to the 99.5% target**, the green layer collapses, and the transformer runs cooler and cleaner — with less electrical stress and less heat you have to pay to remove.
+
+Now, as you scroll into the solution view, I’m going to compare what your field looks like before and after — and we’ll translate that into hourly, monthly, and annual dollars.
+
+
+
+PART 3 — WHAT HAPPENS NEXT
+
+Now here's what you get after Unity.
+
+Now look at the “after” state — this is what a harmonized field looks like when MPTS is correctly sized to your real peak reactive demand. The first thing you notice is visual: that **green reactive waste band shrinks dramatically**, and the orange power factor line stabilizes right up near the top — because you’re no longer dragging the system with reactive current.
+
+Let’s tie that to the numbers you just saw in the baseline. Baseline performance was **90.3% power factor** with **955.9 kVAR MAX**. With MPTS tuned to bring you to **99.5% PF**, you’re stripping out most of that reactive burden — and that directly reduces I²R losses, transformer heating, and the cooling load that follows.
+
+Here’s the business side using your on-screen cost anchors. You’re currently showing **cooling and decay costs of $6.26 per hour**, and the dashboard is estimating **total wasted at $162,511 per year**. If we conservatively assume MPTS eliminates about **80%** of that waste component that’s attributable to reactive carry and related losses, your savings stack like this:  
+- Estimated savings from waste: **0.80 × $162,511 ≈ $130,009 per year**  
+- That’s about **$14.84 per hour** when spread across 8,760 hours.  
+- Monthly equivalent: **$14.84 × 730 ≈ $10,833 per month**  
+- Annual equivalent: **≈ $130,009 per year**
+
+And you also get cooling relief. If even **half** of the **$6.26 per hour** cooling-and-decay load is driven by electrical waste heat that we can avoid, that’s an additional:  
+- Cooling savings: **0.50 × $6.26 ≈ $3.13 per hour**  
+So combined, you’re looking at roughly:  
+- **Hourly savings:** **$14.84 + $3.13 ≈ $17.97 per hour**  
+- **Monthly savings:** **$17.97 × 730 ≈ $13,118 per month**  
+- **Annual savings:** **$17.97 × 8,760 ≈ $157,417 per year**
+
+ROI depends on final custom configuration pricing, because your peak **955.9 kVAR** is above the standard catalog range. But to give you a practical planning number, if the installed solution lands around **$500,000** for a properly sized ~1,000 kVAR system, then your payback is:  
+- **ROI period:** **$500,000 ÷ ($157,417 / 12) ≈ 38 months**
+
+And here’s the key point: after payback, those savings keep compounding — and your baseline stability improves because you’re no longer operating the transformer as a reactive “heater.” That’s electromagnetic stewardship in practice: cleaner power, lower waste, lower heat, and a field that stays closer to your **828.58 kVA** performance target instead of sagging under it.

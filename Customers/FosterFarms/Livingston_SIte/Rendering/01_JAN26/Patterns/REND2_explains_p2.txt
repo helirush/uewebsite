@@ -1,0 +1,16 @@
+Now let me show you the fix.
+
+Alright—now you scroll, and this is where the fix becomes very concrete.  
+To size MPTS correctly, I’m not interested in the average reactive number. I’m looking for your peak reactive demand—the one labeled **kVAR MAX** in the REACTIVE tile.
+
+In your baseline header, I see **966.4 kVAR** as the main reactive figure, and underneath it the number we size to: **1,372.4 kVAR MAX**. That peak is the moment your field was most out of phase—your worst case.
+
+So here’s the sizing math, plain and simple.  
+Your peak is **1,372.4 kVAR**. An H490 unit provides **400 kVAR**. We never undersize, so we round up.  
+1,372.4 divided by 400 is 3.43, which means you need **4 × H490** units to fully cover the peak. That gives you **1,600 kVAR** of capacity—enough headroom to stay stable during spikes. Installed cost is **$200,000 per unit**, so **4 units is $800,000 installed**.
+
+What does MPTS actually do for you? It injects compensating reactive power—right phase, right time—so your motors still do the same work, but the transformer stops hauling that extra reactive baggage. In the chart language you’re already looking at, it collapses that green kVAR layer, lifts your power factor from **70.8%** to the **99.5%** target, and it reduces heat generation across the system—because you’re no longer turning reactive circulation into thermal stress.
+
+Now let’s look at what that means in results—visually first, and then financially.
+
+---

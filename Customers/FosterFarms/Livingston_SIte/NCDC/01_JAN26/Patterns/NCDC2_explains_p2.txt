@@ -1,0 +1,10 @@
+Now let me show you the fix.
+
+Alright — now let me show you how we fix what you’re seeing in that green layer.  
+For MPTS sizing, we do not size off the average reactive number. We size off your peak. In the REACTIVE tile, the smaller line is the one that matters: your **kVAR MAX is 955.9 kVAR**.
+
+That peak tells us the reactive “headroom” we have to cover so your transformer stops carrying waste current. And because **955.9 kVAR** is above 800, the correct answer here is a **custom Unity MPTS configuration** — it’s beyond the standard “two H490” ceiling. The standard products top out at **800 kVAR** with **2× H490**. So for this field, we design for at least **1,000 kVAR** of compensation capacity, so you’re covered at peak with margin.
+
+Here’s what that means in plain language. MPTS injects the right reactive power, at the right timing, to cancel the lagging reactive draw created by motors, compressors, and inductive loads. When that reactive component is neutralized, your system stops wasting current. Your **power factor moves from 90.3% up to the 99.5% target**, the green layer collapses, and the transformer runs cooler and cleaner — with less electrical stress and less heat you have to pay to remove.
+
+Now, as you scroll into the solution view, I’m going to compare what your field looks like before and after — and we’ll translate that into hourly, monthly, and annual dollars.

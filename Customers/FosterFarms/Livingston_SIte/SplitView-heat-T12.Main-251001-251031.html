@@ -1,0 +1,645 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>T12.Main - HEAT Analysis</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: #0a0e27;
+            color: #e0e0e0;
+            height: 100vh;
+            overflow: hidden;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #1a1f3a 0%, #0d1128 100%);
+            padding: 12px 20px;
+            border-bottom: 2px solid #c27803;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .header h1 {
+            font-size: 18px;
+            color: #d9894a;
+            font-weight: 500;
+        }
+        
+        .back-btn {
+            background: linear-gradient(135deg, #c85a28 0%, #a84532 100%);
+            color: white;
+            border: none;
+            padding: 8px 20px;
+            border-radius: 6px;
+            font-size: 14px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 8px rgba(200, 90, 40, 0.3);
+        }
+        
+        .back-btn:hover {
+            background: linear-gradient(135deg, #d96b38 0%, #b85542 100%);
+            box-shadow: 0 4px 12px rgba(200, 90, 40, 0.5);
+            transform: translateY(-1px);
+        }
+        
+        .split-container {
+            display: flex;
+            height: calc(100vh - 50px);
+            position: relative;
+        }
+        
+        .markdown-pane {
+            width: 725px;
+            background: #0f1629;
+            overflow-y: auto;
+            border-right: 4px solid #c27803;
+            padding: 30px;
+            flex-shrink: 0;
+            min-width: 300px;
+            position: relative;
+        }
+        
+        .markdown-fullsize-btn {
+            position: sticky;
+            top: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: linear-gradient(135deg, #c85a28 0%, #a84532 100%);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 6px;
+            font-size: 14px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 8px rgba(200, 90, 40, 0.3);
+            z-index: 100;
+            margin-bottom: 20px;
+        }
+        
+        .markdown-fullsize-btn:hover {
+            background: linear-gradient(135deg, #d96b38 0%, #b85542 100%);
+            box-shadow: 0 4px 12px rgba(200, 90, 40, 0.5);
+            transform: translateX(-50%) translateY(-1px);
+        }
+        
+        .resize-handle {
+            width: 8px;
+            background: #2a3f5f;
+            cursor: col-resize;
+            flex-shrink: 0;
+            position: relative;
+            transition: background 0.2s;
+        }
+        
+        .resize-handle:hover {
+            background: #c85a28;
+        }
+        
+        .resize-handle::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 3px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 2px;
+        }
+        
+        .dashboard-pane {
+            flex: 1;
+            background: #0a0e27;
+            overflow-y: auto;
+            min-width: 400px;
+            position: relative;
+        }
+        
+        .dashboard-fullsize-btn {
+            position: absolute;
+            top: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: linear-gradient(135deg, #c85a28 0%, #a84532 100%);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 6px;
+            font-size: 14px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 8px rgba(200, 90, 40, 0.3);
+            z-index: 100;
+        }
+        
+        .dashboard-fullsize-btn:hover {
+            background: linear-gradient(135deg, #d96b38 0%, #b85542 100%);
+            box-shadow: 0 4px 12px rgba(200, 90, 40, 0.5);
+            transform: translateX(-50%) translateY(-1px);
+        }
+        
+        .dashboard-iframe-container {
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+        }
+        
+        .dashboard-iframe-container iframe {
+            width: 100%;
+            height: 1200px;
+            border: none;
+            display: block;
+        }
+        
+        /* Markdown Styling - Heat Orange/Red Theme */
+        .markdown-content h1 {
+            color: rgb(249,215,11);
+            font-size: 28px;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #2a3f5f;
+        }
+        
+        .markdown-content h2 {
+            color: #d9894a;
+            font-size: 22px;
+            margin-top: 30px;
+            margin-bottom: 15px;
+        }
+        
+        .markdown-content h3 {
+            color: rgb(255, 180, 100);
+            font-size: 18px;
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
+        
+        .markdown-content p {
+            line-height: 1.7;
+            margin-bottom: 15px;
+            color: #b0b0b0;
+        }
+        
+        .markdown-content ul, .markdown-content ol {
+            margin-left: 25px;
+            margin-bottom: 15px;
+        }
+        
+        .markdown-content li {
+            margin-bottom: 8px;
+            line-height: 1.6;
+            color: #b0b0b0;
+        }
+        
+        .markdown-content code {
+            background: #1a1f3a;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
+            color: rgb(255, 100, 0);
+        }
+        
+        .markdown-content pre {
+            background: #1a1f3a;
+            padding: 15px;
+            border-radius: 6px;
+            overflow-x: auto;
+            margin-bottom: 15px;
+        }
+        
+        .markdown-content pre code {
+            background: none;
+            padding: 0;
+        }
+        
+        .markdown-content details {
+            margin-bottom: 20px;
+            border: 1px solid #2a3f5f;
+            border-radius: 6px;
+            background: #1a1f3a;
+        }
+        
+        .markdown-content summary {
+            padding: 12px 15px;
+            cursor: pointer;
+            font-weight: 600;
+            color: #d9894a;
+            user-select: none;
+            border-radius: 6px;
+            transition: background 0.2s;
+        }
+        
+        .markdown-content summary:hover {
+            background: #2a3f5f;
+        }
+        
+        .markdown-content details[open] summary {
+            border-bottom: 1px solid #2a3f5f;
+            border-radius: 6px 6px 0 0;
+            margin-bottom: 15px;
+        }
+        
+        .markdown-content details > *:not(summary) {
+            padding: 0 15px 15px 15px;
+        }
+        
+        .markdown-content table {
+            width: max-content;
+            min-width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+            font-size: 11px;
+            display: table;
+            table-layout: auto;
+        }
+        
+        .markdown-content details table {
+            overflow-x: auto;
+            display: block;
+            max-width: 100%;
+        }
+        
+        .markdown-content th, .markdown-content td {
+            border: 1px solid #2a3f5f;
+            padding: 6px 8px;
+            text-align: left;
+            white-space: nowrap;
+            max-width: 200px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        
+        .markdown-content th {
+            font-size: 10px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        .markdown-content th {
+            background: #2d3748;
+            color: #d9894a;
+            font-weight: 600;
+            position: sticky;
+            top: 0;
+        }
+        
+        .markdown-content td {
+            color: #b0b0b0;
+        }
+        
+        .markdown-content td:first-child,
+        .markdown-content th:first-child {
+            position: sticky;
+            left: 0;
+            background: #1a1f3a;
+            z-index: 1;
+        }
+        
+        .markdown-content th:first-child {
+            background: #2d3748;
+            z-index: 2;
+        }
+        
+        .markdown-content blockquote {
+            border-left: 4px solid #64b5f6;
+            padding-left: 15px;
+            margin: 20px 0;
+            color: #90a4ae;
+            font-style: italic;
+        }
+        
+        .markdown-content strong {
+            color: #d9894a;
+            font-weight: 600;
+        }
+        
+        .markdown-content em {
+            color: rgb(255, 180, 100);
+        }
+        
+        /* Style for Group Annotation Points lists */
+        .markdown-content ul.group-annotations {
+            list-style: none;
+            padding-left: 0;
+            margin-left: 0;
+        }
+        
+        .markdown-content ul.group-annotations li {
+            padding: 8px 12px;
+            margin-bottom: 6px;
+            background: #2d3748;
+            border-left: 3px solid #5D701A;
+            border-radius: 4px;
+            font-family: 'Courier New', monospace;
+            font-size: 13px;
+        }
+        
+        .markdown-content ul.group-annotations li strong {
+            color: #d9894a;
+        }
+        
+        /* Scrollbar styling */
+        .markdown-pane::-webkit-scrollbar {
+            width: 10px;
+        }
+        
+        .markdown-pane::-webkit-scrollbar-track {
+            background: #0a0e27;
+        }
+        
+        .markdown-pane::-webkit-scrollbar-thumb {
+            background: #2a3f5f;
+            border-radius: 5px;
+        }
+        
+        .markdown-pane::-webkit-scrollbar-thumb:hover {
+            background: #3a5f8f;
+        }
+        
+        /* Markdown Fullscreen Overlay */
+        .markdown-fullscreen-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: #0f1629;
+            z-index: 9999;
+            overflow: auto;
+        }
+        
+        .markdown-fullscreen-overlay.active {
+            display: block;
+        }
+        
+        .markdown-fullscreen-content {
+            padding: 60px 80px 40px 80px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        /* Dashboard Fullscreen Overlay */
+        .dashboard-fullscreen-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: #0a0e27;
+            z-index: 9999;
+            overflow: hidden;
+        }
+        
+        .dashboard-fullscreen-overlay.active {
+            display: block;
+        }
+        
+        .dashboard-fullscreen-content {
+            width: 100%;
+            height: 100%;
+            padding-top: 60px;
+        }
+        
+        .dashboard-fullscreen-content iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+        
+        .close-fullscreen-btn {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: linear-gradient(135deg, #dc2626, #b91c1c);
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 6px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+            z-index: 10000;
+        }
+        
+        .close-fullscreen-btn:hover {
+            background: linear-gradient(135deg, #ef4444, #dc2626);
+            box-shadow: 0 6px 16px rgba(220, 38, 38, 0.4);
+            transform: translateY(-1px);
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>T12.Main - HEAT Analysis</h1>
+        <button class="back-btn" onclick="goBack()">← Back to Summary</button>
+    </div>
+    
+    <div class="split-container">
+        <div class="markdown-pane">
+            <button class="markdown-fullsize-btn" onclick="showMarkdownFullscreen()" title="View markdown full size">🔍 Full Size</button>
+            <div class="markdown-content">
+                <h1>HEAT HEALTH ANALYSIS</h1>
+<p><em>Thermal Burden Assessment: Heat Generation, Cooling Requirements, and Energy Recovery</em></p>
+<p><strong>Transformer:</strong> T12.Main<br />
+<strong>Generated:</strong> 2026-01-06 13:47:41<br />
+<strong>Data Source:</strong> AN54021613-V-1minRES_44640CLP_251001-251031zth.csv  </p>
+<h2>📊 Analysis Period</h2>
+<ul>
+<li><strong>Period:</strong> October 01, 2025 thru October 31, 2025</li>
+<li><strong>Number of Days:</strong> 31 Days</li>
+<li><strong>Data Resolution:</strong> 1-minute</li>
+<li><strong>Total Data Points:</strong> 44,640</li>
+</ul>
+<h2>🔋 Facility Information</h2>
+<ul>
+<li><strong>Transformer Capacity:</strong> 2,500 kVA</li>
+<li><strong>Nominal Voltage:</strong> 480V (3-Phase)</li>
+<li><strong>Analysis Type:</strong> Thermal Burden &amp; Heat Health Assessment</li>
+<li><strong>Technology Focus:</strong> Unity Energy Management Solutions</li>
+</ul>
+<hr />
+<h2>🔥 Heat Forensics</h2>
+<p><em>Detailed thermal analysis showing heat generation zones, cooling requirements, and energy recovery.</em>
+<em>This section quantifies waste heat produced by electrical inefficiencies and calculates</em>
+<em>the corresponding cooling load that must be removed from conditioned spaces.</em></p>
+<h3>Heat Generation Analysis</h3>
+<ul>
+<li><strong>Device Zone BTU/hr:</strong> 289,877.35</li>
+<li><em>Heat generated within transformer enclosure and immediately adjacent area</em></li>
+<li><strong>Field Zone BTU/hr:</strong> 59,634.35</li>
+<li><em>Heat radiated into surrounding field area and electrical room</em></li>
+</ul>
+<h3>Conditioned Space Impact</h3>
+<ul>
+<li><strong>Total Heat Generated:</strong> 349,511.70 BTU/hr</li>
+<li><em>Combined device and field zone thermal output requiring removal</em></li>
+<li><strong>Air-Conditioned Percentage:</strong> 40.00%</li>
+<li><em>Portion of facility space requiring active cooling and temperature control</em></li>
+</ul>
+<h3>Cooling Load Analysis</h3>
+<ul>
+<li><strong>Baseline Cooling Load:</strong> 220.33 kW</li>
+<li><em>Standard cooling requirement without climate burden factors</em></li>
+<li><strong>Climate Adjusted Cooling:</strong> 101.94 kW</li>
+<li><em>Cooling load adjusted for temperature (70.0°F) and humidity (50.0%)</em></li>
+<li><strong>Climate Burden Multiplier:</strong> 1.000</li>
+<li><em>Thermal load increase factor due to environmental conditions</em></li>
+<li><strong>Total Cooling Load Avoided:</strong> 101.94 kW</li>
+<li><em>Net cooling capacity that would be required without Unity energy management</em></li>
+</ul>
+<h3>Economic Impact</h3>
+<ul>
+<li><strong>Electrical-Energy Waste Cost (Monthly Equivalent):</strong> $47,640.91</li>
+<li><em>Normalized monthly cost of wasted energy consumption</em></li>
+<li><strong>Cooling Cost Avoided (Annual):</strong> $284,137.12/year</li>
+<li><em>Annual savings from eliminated cooling equipment operation</em>
+  (Includes $-23,168.82/year climate/impedance bonus)</li>
+</ul>
+<hr />
+<h2>💡 Heat Health Recommendations</h2>
+<p>• Unity MPTS technology eliminates reactive energy waste at source, reducing heat generation
+• Cooling load reduction directly lowers HVAC operating costs and maintenance requirements
+• Thermal burden improvements extend transformer life and reduce thermal stress</p>
+<hr />
+<h1>END OF REPORT</h1>
+            </div>
+        </div>
+        <div class="resize-handle" id="resizeHandle"></div>
+        <div class="dashboard-pane">
+            <button class="dashboard-fullsize-btn" onclick="showDashboardFullscreen()" title="View dashboard full size">🔍 Full Size</button>
+            <div class="dashboard-iframe-container">
+                <iframe src="../T12.Main_AN54021613/FIELD-Heatboard_T12.Main_AN54021613_251001-251031.html" id="dashboardIframe"></iframe>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Markdown Fullscreen Overlay -->
+    <div class="markdown-fullscreen-overlay" id="markdownFullscreenOverlay">
+        <button class="close-fullscreen-btn" onclick="closeMarkdownFullscreen()">✕ Return to Split View</button>
+        <div class="markdown-fullscreen-content">
+            <div class="markdown-content" id="markdownFullscreenContent">
+                <!-- Content will be cloned here -->
+            </div>
+        </div>
+    </div>
+    
+    <!-- Dashboard Fullscreen Overlay -->
+    <div class="dashboard-fullscreen-overlay" id="dashboardFullscreenOverlay">
+        <button class="close-fullscreen-btn" onclick="closeDashboardFullscreen()">✕ Return to Split View</button>
+        <div class="dashboard-fullscreen-content">
+            <iframe id="dashboardFullscreenIframe"></iframe>
+        </div>
+    </div>
+    
+    <script>
+        // Markdown fullscreen functions
+        function showMarkdownFullscreen() {
+            const overlay = document.getElementById('markdownFullscreenOverlay');
+            const content = document.querySelector('.markdown-pane .markdown-content');
+            const fullscreenContent = document.getElementById('markdownFullscreenContent');
+            
+            fullscreenContent.innerHTML = content.innerHTML;
+            overlay.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+        
+        function closeMarkdownFullscreen() {
+            document.getElementById('markdownFullscreenOverlay').classList.remove('active');
+            document.body.style.overflow = '';
+        }
+        
+        // Dashboard fullscreen functions
+        function showDashboardFullscreen() {
+            const overlay = document.getElementById('dashboardFullscreenOverlay');
+            const iframe = document.getElementById('dashboardIframe');
+            const fullscreenIframe = document.getElementById('dashboardFullscreenIframe');
+            
+            fullscreenIframe.src = iframe.src;
+            overlay.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+        
+        function closeDashboardFullscreen() {
+            document.getElementById('dashboardFullscreenOverlay').classList.remove('active');
+            document.body.style.overflow = '';
+        }
+        
+        // Close fullscreen on Escape key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                closeMarkdownFullscreen();
+                closeDashboardFullscreen();
+            }
+        });
+        
+        function goBack() {
+            // Navigate back to Summary Board
+            const summaryPath = 'SITE-FosterFarms-Summaryboard_CherryAve-4_1minRES_251001-251031_31d.html';
+            if (summaryPath) {
+                window.location.href = summaryPath;
+            } else {
+                // Fallback: go back in history
+                window.history.back();
+            }
+        }
+        
+        // Resizable splitter functionality
+        (function() {
+            const resizeHandle = document.getElementById('resizeHandle');
+            const markdownPane = document.querySelector('.markdown-pane');
+            const splitContainer = document.querySelector('.split-container');
+            
+            let isResizing = false;
+            
+            resizeHandle.addEventListener('mousedown', function(e) {
+                isResizing = true;
+                document.body.style.cursor = 'col-resize';
+                document.body.style.userSelect = 'none';
+                e.preventDefault();
+            });
+            
+            document.addEventListener('mousemove', function(e) {
+                if (!isResizing) return;
+                
+                const containerRect = splitContainer.getBoundingClientRect();
+                const newWidth = e.clientX - containerRect.left;
+                const containerWidth = containerRect.width;
+                
+                // Set min/max constraints in pixels
+                const minWidth = 300;  // Minimum 300px
+                const maxWidth = containerWidth - 500;  // Leave at least 500px for dashboard
+                
+                if (newWidth >= minWidth && newWidth <= maxWidth) {
+                    markdownPane.style.width = newWidth + 'px';
+                }
+            });
+            
+            document.addEventListener('mouseup', function() {
+                if (isResizing) {
+                    isResizing = false;
+                    document.body.style.cursor = '';
+                    document.body.style.userSelect = '';
+                }
+            });
+        })();
+    </script>
+</body>
+</html>

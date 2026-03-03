@@ -1,0 +1,807 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="passwords.js?v=20260302"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UnityEnergy - Welcome to the Future of Electricity</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', sans-serif;
+            line-height: 1.6;
+            color: rgba(44, 62, 80, 1);
+            background: rgba(248, 249, 250, 1);
+        }
+
+        /* Static Centered Banner */
+        .banner-wrapper {
+            width: 100%;
+            background: linear-gradient(135deg, rgba(49, 65, 0, 1) 0%, rgba(70, 95, 20, 1) 100%);
+            padding: 20px 40px;
+            text-align: center;
+        }
+
+        .banner-content {
+            color: rgba(250, 240, 160, 1);
+            font-size: 1.3em;
+            font-weight: 600;
+            letter-spacing: 2px;
+        }
+
+        .banner-content .detail {
+            font-size: 0.85em;
+            font-weight: 400;
+            font-style: italic;
+            letter-spacing: 0.5px;
+            margin-left: 8px;
+        }
+
+        header {
+            background: linear-gradient(135deg, rgba(49, 65, 0, 1) 0%, rgba(90, 122, 42, 1) 100%);
+            color: white;
+            padding: 20px 40px;
+            text-align: center;
+        }
+
+        .logo {
+            font-size: 2em;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+
+        .logo span {
+            color: rgba(129, 163, 43, 1);
+        }
+
+        .hero {
+            position: relative;
+            background: linear-gradient(0deg, rgba(49, 65, 0, 1) 0%, rgba(90, 122, 42, 1) 100%);
+            color: rgba(250, 240, 160, 1);
+            padding: 0px 40px 70px 40px;
+            text-align: center;
+            overflow: hidden;
+            min-height: 970px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 75%;
+            height: 100%;
+            background-image: url('cove-clerk-cover.png');
+            background-size: cover;
+            background-position: 80px -60px;
+            background-repeat: no-repeat;
+            opacity: 1.0;
+            z-index: 0;
+            transform: scale(1.15);
+            transform-origin: center center;
+        }
+
+        /* Gradient overlay to fade hero image on right side for text readability */
+        .hero::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(
+                to right,
+                transparent 0%,
+                transparent 60%,
+                rgba(49, 65, 0, 0.6) 70%,
+                rgba(49, 65, 0, 0.9) 90%,
+                rgba(49, 65, 0, 1) 100%
+            );
+            z-index: 0;
+            pointer-events: none;
+        }
+        .hero-content {
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            justify-content: center;
+            text-align: right;
+        }
+        .hero-content h2 {
+            font-size: 2.0em;
+            padding: 0%;
+            font-weight: 700;
+            margin-right: 30px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.9);
+            color: rgb(255, 255, 255);
+        }
+        .hero-content .subtitle-text {
+            font-size: 1.5em;
+            margin-bottom: 15px;
+            font-weight: 600;
+            line-height: 1.3;
+        }
+        .hero-content .logo-description {
+            font-family: 'Times New Roman', Times, serif;
+            font-size: 1.4em;
+            font-weight: 400;
+            font-style: italic;
+            margin-bottom: 10px;
+            line-height: 1.1;
+            text-align: left;
+            position: relative;
+            z-index: 10;
+            margin-top: 20px; 
+            margin-left: auto;
+            margin-right: 50px;
+            width: 500px;
+        }
+
+        .unity-logo-hero {
+            position: absolute;
+            top: 20px;
+            right: 50px;
+            width: 500px;
+            transform: scale(1.1);
+            height: auto;
+            z-index: 2;
+            opacity: 1;
+            filter: drop-shadow(0 8px 16px rgba(0, 0, 0, 0.4));
+        }
+
+        .clerk-button {
+            background: rgb(255, 255, 255);
+            color: rgba(49, 65, 0, 1);
+            padding: 15px 35px;
+            border-radius: 50px;
+            font-size: 1em;
+            font-weight: 600;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+            margin-top: 30px;
+            margin-right: 50px;
+        }
+
+        .clerk-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 30px rgba(0,0,0,0.4);
+        }
+
+        .video-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.95);
+            z-index: 9999;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .video-modal.active {
+            display: flex;
+        }
+
+        .video-modal-content {
+            width: 90%;
+            max-width: 1200px;
+            position: relative;
+        }
+
+        .video-modal video {
+            width: 100%;
+            border-radius: 12px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+        }
+
+        .close-modal {
+            position: absolute;
+            top: -50px;
+            right: 0;
+            background: rgba(129, 163, 43, 1);
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 8px;
+            font-size: 1.1em;
+            cursor: pointer;
+            font-weight: 600;
+        }
+
+        .close-modal:hover {
+            background: rgba(178, 210, 53, 1);
+            color: rgba(49, 65, 0, 1);
+        }
+
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 40px;
+        }
+
+        section {
+            margin: 10px 0;
+        }
+
+        .section-title {
+            font-size: 2.8em;
+            color: rgba(49, 65, 0, 1);
+            margin-top: 50px;
+            margin-bottom: 20px;
+            text-align: center;
+            font-weight: 700;
+        }
+
+        .welcome-text {
+            font-size: 1.4em;
+            color: rgba(85, 85, 85, 1);
+            line-height: 1.8;
+            margin-bottom: 24px;
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+            text-align: center;
+        }
+
+        .portal-container {
+            position: relative;
+            width: 100vw;
+            margin-left: calc(-50vw + 50%);
+            margin-top: -120px; /* slide image up under nav tabs */
+            margin-bottom: -70px;
+            cursor: pointer;
+        }
+
+        /* top blend from tabs platform down into the hero */
+        .portal-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 140px;
+            background: linear-gradient(
+                to bottom,
+                rgba(240, 240, 240, 1) 0%,
+                rgba(240, 240, 240, 0.9) 20%,
+                rgba(240, 240, 240, 0.6) 40%,
+                transparent 100%
+            );
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        .portal-image {
+            width: 100%;
+            height: 760px; /* fill the area; distortion acceptable */
+            object-fit: cover;
+            border-radius: 0;
+            box-shadow: none;
+            filter: brightness(1) saturate(1);
+        }
+
+        .portal-container:hover .portal-image {
+            filter: brightness(1.08) saturate(1.05);
+        }
+        .portal-container:active .portal-image {
+            filter: brightness(0.7) saturate(0.9);
+        }
+
+        .portal-overlay {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            pointer-events: none;
+            z-index: 2;
+        }
+
+        .portal-button {
+            background: radial-gradient(circle, rgba(178, 210, 53, 0.20) 0%, rgba(129, 163, 43, 0.35) 55%, rgba(49, 65, 0, 0.65) 95%);
+            color: rgba(250, 240, 160, 1);
+            padding: 0;
+            border-radius: 50%;
+            border: 3px solid rgba(178, 210, 53, 0.95);
+            box-shadow: 0 0 36px rgba(178, 210, 53, 0.55), inset 0 0 24px rgba(0,0,0,0.35);
+            font-size: 2.1em;
+            font-weight: 700;
+            line-height: 1.2;
+            width: 340px; /* 50% smaller */
+            height: 340px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s ease;
+        }
+
+        .portal-container:hover .portal-button {
+            box-shadow: 0 0 60px rgba(178, 210, 53, 0.9), inset 0 0 20px rgba(178,210,53,0.35);
+            transform: scale(1.04);
+        }
+
+        .portal-container:active .portal-button {
+            box-shadow: 0 0 18px rgba(178, 210, 53, 0.4), inset 0 0 42px rgba(0,0,0,0.6);
+            transform: scale(0.98);
+        }
+
+        .portal-button .title { font-size: 0.75em; margin: 0; line-height: 0.9; }
+        .portal-button .subtitle { font-size: 0.55em; margin: 0; }
+        .portal-button .subtitle1 { font-size: 0.65em; margin: 0; }
+
+        /* Navigation Tabs */
+        .nav-tabs-container {
+            background: rgba(240, 240, 240, 1);
+            padding: 30px 0 0px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+            margin-top: -65px;
+            position: relative;
+            z-index: 10;
+        }
+
+        .nav-tabs {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            flex-wrap: wrap;
+            max-width: 1800px;
+            margin: 0 auto;
+            padding: 0 10px;
+        }
+
+        .nav-tab {
+            background: white;
+            color: rgba(44, 62, 80, 1);
+            padding: 15px 35px;
+            border-radius: 50px;
+            font-size: 1em;
+            font-weight: 600;
+            text-decoration: none;
+            border: 2px solid rgba(200, 200, 200, 1);
+            transition: all 0.3s;
+            cursor: pointer;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        .nav-tab:hover {
+            background: linear-gradient(135deg, rgba(178, 210, 53, 1) 0%, rgba(129, 163, 43, 1) 100%);
+            color: white;
+            border-color: rgba(129, 163, 43, 1);
+            box-shadow: 0 4px 16px rgba(129, 163, 43, 0.4);
+            transform: translateY(-2px);
+        }
+
+        .nav-tab:active {
+            background: linear-gradient(135deg, rgba(49, 65, 0, 1) 0%, rgba(35, 45, 0, 1) 100%);
+            transform: translateY(1px);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+        }
+
+        .nav-tab-portal {
+            background: rgba(90, 110, 35, 1);
+            color: white;
+            padding: 15px 35px;
+            border-radius: 50px;
+            font-size: 1em;
+            font-weight: 600;
+            text-decoration: none;
+            border: 3px solid rgba(129, 163, 43, 1);
+            transition: all 0.3s;
+            cursor: pointer;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .nav-tab-portal:hover {
+            background: rgba(49, 65, 0, 1);
+            border-color: rgba(129, 163, 43, 1);
+        }
+
+        .nav-tab-portal:active {
+            background: rgba(35, 45, 0, 1);
+        }
+
+        .nav-slogan {
+            text-align: center;
+            font-family: 'Times New Roman', Times, serif;
+            font-size: 2.2em;
+            font-weight: 600;
+            font-style: italic;
+            color: rgba(49, 65, 0, 1);
+            padding: 35px 0px 70px;
+            letter-spacing: 1px;
+        }
+
+        .portal-button .title {
+            font-size: 1.2em;
+            margin: 0;
+            line-height: 1.1;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .portal-button .subtitle {
+            font-size: 0.75em;
+            opacity: 0.95;
+            font-weight: 500;
+            padding: 15px 35px;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+        }
+
+        .coming-soon {
+            opacity: 0.6;
+            cursor: default;
+        }
+
+        .coming-soon:hover {
+            transform: none;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+        }
+
+        /* Login Modal Styles */
+        .login-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.85);
+            z-index: 9999;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .login-modal.active {
+            display: flex;
+        }
+
+        .login-modal-content {
+            background: linear-gradient(135deg, rgba(49, 65, 0, 1) 0%, rgba(70, 95, 20, 1) 100%);
+            border-radius: 16px;
+            padding: 50px;
+            width: 90%;
+            max-width: 450px;
+            position: relative;
+            box-shadow: 0 25px 80px rgba(0,0,0,0.5), 0 0 60px rgba(129, 163, 43, 0.3);
+            border: 3px solid rgba(129, 163, 43, 0.6);
+        }
+
+        .close-login {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            background: none;
+            border: none;
+            color: rgba(250, 240, 160, 0.7);
+            font-size: 1.5em;
+            cursor: pointer;
+        }
+
+        .close-login:hover {
+            color: rgba(250, 240, 160, 1);
+        }
+
+        .login-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .login-header h2 {
+            color: rgba(250, 240, 160, 1);
+            font-size: 1.8em;
+            margin-bottom: 10px;
+        }
+
+        .login-header p {
+            color: rgba(250, 240, 160, 0.8);
+            font-size: 1em;
+        }
+
+        .login-form input {
+            width: 100%;
+            padding: 15px 20px;
+            margin-bottom: 15px;
+            border: 2px solid rgba(129, 163, 43, 0.5);
+            border-radius: 8px;
+            font-size: 1.1em;
+            background: rgba(255,255,255,0.95);
+            color: rgba(49, 65, 0, 1);
+        }
+
+        .login-form input:focus {
+            outline: none;
+            border-color: rgba(178, 210, 53, 1);
+            box-shadow: 0 0 10px rgba(178, 210, 53, 0.3);
+        }
+
+        .login-form input::placeholder {
+            color: rgba(100, 100, 100, 0.7);
+        }
+
+        .login-error {
+            display: none;
+            background: rgba(180, 60, 60, 0.9);
+            color: white;
+            padding: 12px;
+            border-radius: 6px;
+            margin-bottom: 15px;
+            text-align: center;
+            font-size: 0.95em;
+        }
+
+        .login-btn {
+            width: 100%;
+            padding: 18px;
+            background: linear-gradient(135deg, rgba(178, 210, 53, 1) 0%, rgba(129, 163, 43, 1) 100%);
+            color: rgba(49, 65, 0, 1);
+            border: none;
+            border-radius: 8px;
+            font-size: 1.2em;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .login-btn:hover {
+            background: linear-gradient(135deg, rgba(200, 230, 80, 1) 0%, rgba(178, 210, 53, 1) 100%);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(129, 163, 43, 0.4);
+        }
+
+        .dev-mode-notice {
+            text-align: center;
+            color: rgba(178, 210, 53, 0.8);
+            font-size: 0.85em;
+            margin-top: 15px;
+            font-style: italic;
+        }
+
+        footer {
+            background: linear-gradient(135deg, rgba(49, 65, 0, 1) 0%, rgba(70, 95, 20, 1) 100%);
+            color: rgba(250, 240, 160, 1);
+            text-align: center;
+            padding: 30px;
+            margin-top: 60px;
+        }
+
+    </style>
+</head>
+<body>
+    <!-- Static Centered Banner -->
+    <div class="banner-wrapper">
+        <div class="banner-content">
+            INDUSTRIAL 480V • MEASURE <span class="detail">(Advanced Monitoring and Reporting)</span> • MANAGE <span class="detail">(MPTS Field Harmonization)</span> • EXCHANGE <span class="detail">(Dynamic Demand Control)</span>
+        </div>
+    </div>
+
+    <div class="hero">
+        
+        <div class="hero-content">
+            <img src="UnityWebLogo.png" alt="Unity Energy - Intelligent Sustainability" class="unity-logo-hero">
+            <p class="logo-description"
+            >Since the first AC reactive energy field was created with that early Telsa motor on June 19, 1891, at
+                the King Gold Mine in Teluride, Colorado 
+                humankind has spent more than a century managing — but never truly controlling — electrical energy.</p>
+            <p class="logo-description"
+            >In 2001, a quiet discovery revealed a different path.
+                After nearly 25 years of continuous field study and verification, our team can now repeatedly achieve 
+                complete industrial energy field harmonization, without using any auxiliary power, and while actively removing 
+                destructive harmonics away from the end-loads.</p>
+            <p class="logo-description"
+            >For the first time, customers gain direct control of reactive energy.
+                The same usable power is delivered with less electrical input, less heat, and extended equipment 
+                life — while utilities recover capacity and improve overall grid stability.</p>
+            <p class="logo-description"
+            >Since that first reactive energy field, companies have learned that reactive energy is a liability
+                and must be managed. Unity converts that 135 year liability into a new reoccuring Asset. </p>
+            <p class="logo-description"
+            ></p>
+
+            <h2>Welcome to the Future of Electricity</h2>
+           
+
+            <button class="clerk-button" onclick="openVideoModal()">🎬 Intro from our Chief Scientist</button>
+        </div>
+    </div>
+    <div class="video-modal" id="videoModal" onclick="closeVideoModal()">
+        <div class="video-modal-content" onclick="event.stopPropagation()">
+            <button class="close-modal" onclick="closeVideoModal()">✕ Close</button>
+            <video id="clerkVideo" controls>
+                <source src="Clerk2026.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        </div>
+    </div>
+
+    <!-- Navigation Tabs -->
+    <div class="nav-tabs-container">
+        <div class="nav-tabs">
+            <a href="about-unity.html" class="nav-tab-portal">About Unity</a>
+            <a href="our-systems.html" class="nav-tab-portal">Our Systems</a>
+            <a href="products-services.html" class="nav-tab-portal">Products and Services</a>
+            <a href="electrical-energy-story.html" class="nav-tab-portal">Electrical Energy Field Story</a>
+            <a href="contact-us.html" class="nav-tab-portal">Contact Us</a>
+            <a href="#portals" class="nav-tab-portal">Customer Portals</a>
+        </div>
+        <div class="nav-slogan">
+            After 135 years — Humans are unlocking Century Old Capacity with Harmony. Literally.
+        </div>
+
+    </div>
+
+    <script>
+        function openVideoModal() {
+            const modal = document.getElementById('videoModal');
+            const video = document.getElementById('clerkVideo');
+            modal.classList.add('active');
+            video.play();
+        }
+
+        function closeVideoModal() {
+            const modal = document.getElementById('videoModal');
+            const video = document.getElementById('clerkVideo');
+            modal.classList.remove('active');
+            video.pause();
+            video.currentTime = 0;
+        }
+        
+        function getPortalConfigSafe() {
+            // Prefer the global lexical binding from passwords.js, but fall back to window.portalConfig.
+            // If neither is present, default to dev behavior so eWebmaster is never blocked.
+            try {
+                if (typeof portalConfig !== 'undefined' && portalConfig) return portalConfig;
+            } catch (e) {}
+            if (window.portalConfig) return window.portalConfig;
+            return { customers: {} };
+        }
+
+        function openLoginModal() {
+            const modal = document.getElementById('loginModal');
+            const devNotice = document.getElementById('devModeNotice');
+
+            modal.classList.add('active');
+            document.getElementById('customerName')?.focus();
+
+            // eWebmaster: no password gate.
+            if (devNotice) devNotice.style.display = 'block';
+        }
+
+        function closeLoginModal() {
+            const modal = document.getElementById('loginModal');
+            modal.classList.remove('active');
+            const nameEl = document.getElementById('customerName');
+            if (nameEl) nameEl.value = '';
+            const pwEl = document.getElementById('customerPassword');
+            if (pwEl) pwEl.value = '';
+            const errEl = document.getElementById('loginError');
+            if (errEl) errEl.style.display = 'none';
+        }
+
+        function attemptLogin() {
+            const cfg = getPortalConfigSafe();
+
+            // Normalize user input so entries like "Norfolk Iron & Metal" and "Foster Farms" work.
+            // Rule: lowercase + strip all non-alphanumeric characters.
+            const customerNameRaw = document.getElementById('customerName')?.value || '';
+            const customerName = customerNameRaw.toLowerCase().replace(/[^a-z0-9]/g, '');
+            const errorEl = document.getElementById('loginError');
+
+            if (!cfg.customers) {
+                if (errorEl) {
+                    errorEl.textContent = 'Portal configuration not loaded. Please refresh the page.';
+                    errorEl.style.display = 'block';
+                }
+                return;
+            }
+            
+            // Check if customer exists
+            let customer = cfg.customers[customerName];
+
+            // Fallback: allow matching by the human display name too (e.g. "Norfolk Iron & Metal").
+            if (!customer && cfg.customers) {
+                for (const [, c] of Object.entries(cfg.customers)) {
+                    const n = String(c?.name || '').toLowerCase().replace(/[^a-z0-9]/g, '');
+                    if (n === customerName) {
+                        customer = c;
+                        break;
+                    }
+                }
+            }
+            
+            if (!customer) {
+                if (errorEl) {
+                    errorEl.textContent = 'Company not found. Please check your company name.';
+                    errorEl.style.display = 'block';
+                }
+                return;
+            }
+
+            // eWebmaster: no password gate.
+            window.location.href = customer.path;
+        }
+
+        // Handle Enter key in login form
+        document.addEventListener('keydown', function(e) {
+            const modal = document.getElementById('loginModal');
+            if (modal && modal.classList.contains('active')) {
+                if (e.key === 'Enter') {
+                    attemptLogin();
+                } else if (e.key === 'Escape') {
+                    closeLoginModal();
+                }
+            }
+        });
+    </script>
+
+    <div class="container" style="max-width: 100%; padding: 0;">
+        <section id="portals">
+            <h2 class="section-title">Customer Portals</h2>
+            
+            <p class="welcome-text">
+                At Unity Energy, we transform how facilities understand their electrical systems. 
+                This customer portal provides access to detailed energy field analysis, 
+                interactive dashboards, and actionable insights for optimization.
+            </p>
+
+            <div class="portal-container" onclick="openLoginModal()">
+                <img src="UnityPortalButton.png" alt="Unity Energy Portal" class="portal-image">
+                <div class="portal-overlay">
+                    <div class="portal-button">
+                        <div class="subtitle1">industrial</div>
+                        <div class="title">480 volt</div>
+                        <div class="title">ENERGY FIELD</div>
+                        <div class="title">BEHAVIOR</div>
+                        <div class="subtitle">select to enter</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Customer Portal Login Modal -->
+    <div class="login-modal" id="loginModal" onclick="closeLoginModal()">
+        <div class="login-modal-content" onclick="event.stopPropagation()">
+            <button class="close-login" onclick="closeLoginModal()">✕</button>
+            <div class="login-header">
+                <h2>Customer Portal Access</h2>
+                <p>Enter your company name to continue</p>
+            </div>
+            <div class="login-form">
+                <input type="text" id="customerName" name="ue_company" placeholder="Company Name" autocomplete="off" autocapitalize="off" spellcheck="false">
+                <div class="login-error" id="loginError"></div>
+                <button class="login-btn" onclick="attemptLogin()">Enter Portal →</button>
+                <div class="dev-mode-notice" id="devModeNotice">No password required</div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 Unity Energy. All rights reserved.</p>
+        <p>Transforming how facilities understand their electrical systems.</p>
+    </footer>
+</body>
+</html>

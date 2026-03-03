@@ -1,0 +1,12 @@
+Welcome. I’m Unity, and I’m looking at NCDC2 South D with you.  
+What you’re seeing on screen is your complete January energy field — the full rectangle is the whole month, left to right from Jan 1 to Jan 31. The height is load magnitude in kVA. So taller days mean heavier electrical demand, not “longer” days.
+
+Up in the header, your delivered apparent power is averaging **652.9 kVA**, with **active power at 588.8 kW**, and your reactive layer is averaging **282.2 kVAR**. Your **power factor is 90.3%**, and harmonics are **5.5% iTHD**. Financially, the right side is putting a hard number on the waste: about **$162,511 per year** total wasted, and a thermal burden of **231,806 BTU per hour**. Cooling and decay is running about **$6.26 per hour**, which equals **33.9 kW** of cooling demand.
+
+Now, the key visual anchor in the chart body is your dashed target line — the “zero line” for performance. Your validated baseline target for this transformer is **828.58 kVA**. So when your dark-blue supplied layer rises above that line, you’re meeting or beating the target. When it sits below, you’re under.
+
+Let’s read the month like an operator. In the **left third of the chart — roughly Jan 1 through Jan 10 —** you’ve got several strong weekdays where supply peaks sit **above** that 828 kVA line, with a couple days pushing up near the **1,000 to 1,100 kVA** range. Then as you move toward the **middle of the month**, you can see the whole field “steps down” — the daily peaks flatten and spend a lot more time **under** the target line. And toward the **right half**, that lower plateau holds pretty consistently.
+
+Weekends do what we expect — they drop to a lower, cleaning-and-maintenance profile. That part looks normal. What’s not normal is how many weekday production days are no longer reaching your baseline. Visually, I’m seeing **about 9 weekdays** that clearly peak **above** target, and **about 14 weekdays** that peak **below** target — with the under-target days commonly short by roughly **150 to 250 kVA** at the peak.
+
+That pattern aligns with your operational score: your current **ElecOps is 53.4%** for the month. In plain terms, you’re running this transformer well below its validated electrical operating potential, and you’re paying for it in two places at once — first in avoidable waste layers, and second in heat you then have to remove. In a minute, when you scroll, I’ll show you the direct corrective move that tightens this field and removes the reactive drag that’s weighing down your baseline performance.

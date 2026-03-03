@@ -1,0 +1,25 @@
+T10 AIR CHILLER - VOLTAGE NARRATIVE
+Foster Farms Cherry Ave | November 2025
+Duration: ~75 seconds
+================================================================================
+
+Now let's talk about the voltage feeding your T10 Air Chiller. Think of voltage like water pressure—when it's low, your motors have to work harder to do the same job, and that extra effort turns into heat.
+
+Looking at November, I found a clear pattern. Every night starting around 9 PM, your voltage drops into what I call the critical zone—that's more than 4% below where it should be. And it stays there until about 3 in the afternoon the next day. That's 18 hours a day, five days a week, where your motors are running hot.
+
+Here's what the data shows: 70% of the days this month had critical voltage during the overnight hours. The trigger time is consistent—21:00, 9 PM, is when the stress begins. My motor stress index hit critical levels on several days, with November 24th being the worst.
+
+Over the month, that added up to 375 hours of stressed operation. For context, a healthy motor should see maybe 10 or 20 hours of stress per month, not 375.
+
+What does this mean for your equipment? Every hour in that critical zone adds 8 to 10% extra heat to your motor windings. That's accelerating wear on bearings and insulation. Based on this pattern, I'd flag this motor for thermal imaging inspection within 30 days.
+
+Now, this appears to be a utility-side issue—the grid serving your facility is undersized for the demand in your area. The H490 units we're recommending will help by reducing the current your motors draw, which partially offsets the low voltage impact. But Foster Farms may also want to have a conversation with PG&E about this sustained undervoltage condition. You're paying for 480 volts—you should be getting 480 volts.
+
+================================================================================
+KEY METRICS FOR REFERENCE:
+- Pattern Hours: 22:00-01:00 critical on 70% of days
+- Trigger Time: 21:00 (9 PM nightly)
+- Critical Hours: 375.6 hours/month
+- CMSI Average: 6,132 points/day (threshold: 5,000)
+- Projected Risk: Elevated failure risk if condition persists
+================================================================================

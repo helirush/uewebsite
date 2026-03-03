@@ -1,0 +1,67 @@
+UNITY EXPLAINS (3-PART)
+
+
+
+PART 1 — WHAT I'M SEEING
+
+Welcome. I’m Unity.  
+You’re looking at your January baseline energy field for this transformer — the full rectangle is the entire month, left to right from Jan 1 to Jan 31, and every vertical slice is a day. The stacked colors are your energy layers: dark blue at the top is what the utility is supplying in kVA, light blue is what you’re actually converting into useful work in kW, and the green layer at the bottom is reactive demand — the part that creates stress and heat without doing productive work. The orange line riding over the top is your power factor.
+
+Now, I want you to find the blue dashed target line in the chart body — it’s labeled in a little blue box as your “Supply” baseline. On this view, I’m not seeing that blue “Supply: ____ kVA” label clearly enough to read with confidence, so I’m going to anchor our baseline discussion to the hard header values you *can* see: your peak demand is **1347.0 kW**, your average active load is about **1.0 MW**, and your power factor is **82.6%**. In other words, even when production looks steady, a meaningful chunk of what you’re paying for is not turning into work.
+
+As you scan across the month, you can see a repeating weekly rhythm — higher weekday blocks and lower weekend blocks. But there are also multiple mid‑week dropouts where the supplied and consumed layers collapse sharply for a short window — that’s downtime behavior inside what should be production days. Visually, I’m counting **about 6 weekday days** where your peaks look clearly strong, and **about 16 weekday days** where you’re materially under that expected production height, plus the remaining days in mixed or partial performance. Net-net, you didn’t “miss” because the plant had no power — you missed because your field spent too many weekday hours running under its intended level, while still carrying a heavy reactive burden.
+
+And that reactive burden is not subtle. In your header, the reactive section shows **706.8 kVAR** average, and — this is the one that matters for equipment sizing — **1150.1 kVAR MAX**. That peak reactive demand is why your power factor sits at **82.6%**, and it’s why your system runs hotter and harder than it needs to.
+
+Let’s translate that into business impact you can feel. On the right side, you’re seeing **Total Wasted: $556,208 per year**. You’re also carrying a **thermal burden of 817,853 BTU/hr**, and your “cooling and decay” penalty is running **$21.43 per hour**, which is **119.6 kW** of continuous overhead. So even on “normal” days, you’re spending real money just to handle the byproducts of inefficiency.  
+
+Now let me show you how we clean this up with MPTS — and why the sizing starts with that **1150.1 kVAR MAX** number you just saw.
+
+---
+
+
+
+PART 2 — HOW WE FIX IT
+
+Alright — now you scroll to the MPTS solution, and this is where the field starts behaving like it should.  
+The first step is sizing to your peak reactive demand. In your REACTIVE header tile, the small line reads **1150.1 kVAR MAX**. That’s the peak waste we have to cancel, not the average.
+
+Unity’s MPTS units come in two standard blocks: **H240 at 200 kVAR** and **H490 at 400 kVAR**. Since **1150.1 kVAR** is above 800, this is beyond the off-the-shelf “two H490” range — it requires a **custom configuration** so you’re not under-covered on your worst reactive events. A straightforward build is **3 × H490 units**: that gives you **1200 kVAR** of capacity, enough to cover your **1150.1 kVAR** peak with headroom. Installed cost is simple and transparent: **3 units × $200,000 each = $600,000 installed**.
+
+Here’s what that equipment is doing in plain language. Your motors and inductive loads pull current that’s out of phase with voltage — that’s reactive power. MPTS injects the equal-and-opposite reactive component, in real time, so the transformer and utility stop carrying that “extra” current. That raises your power factor from today’s **82.6%** up to the **99.5%** Unity target. In the chart, what that means is the green layer collapses — not because production drops, but because waste drops.
+
+Now let’s move into what you should expect to see in the before-and-after numbers — and what that’s worth in dollars.
+
+---
+
+
+
+PART 3 — WHAT HAPPENS NEXT
+
+Now here's what you get after Unity.
+
+Now look at the post‑MPTS field. This is what “harmonized” looks like.  
+Your production shape can stay the same — but the waste layer is stripped out. The supplied kVA stops being inflated by reactive demand, the orange power factor line climbs and stabilizes near **99.5%**, and the entire transformer runs cooler and calmer.
+
+Let’s compare the key baseline numbers you just saw. Baseline power factor was **82.6%** with reactive peaks up to **1150.1 kVAR**. With properly sized MPTS, that reactive component is actively canceled during peak moments, which removes the driver behind overheating, nuisance stress, and that constant drag on your electrical capacity.
+
+Now let’s do the money. In your baseline image, your totals show:  
+- **Total Wasted: $556,208 per year**  
+- **Cooling and decay costs: $21.43 per hour**  
+
+If we conservatively assume MPTS eliminates **90%** of that electrical waste and **50%** of the cooling/decay penalty — because you’re no longer forcing extra current through the transformer and conductors — your savings look like this:  
+- Electrical waste savings: **0.90 × $556,208/yr = $500,587/yr**  
+- Cooling/decay savings: **0.50 × $21.43/hr = $10.72/hr** → **$10.72 × 8760 = $93,907/yr**  
+So total savings: **$500,587 + $93,907 = $594,494 per year**.
+
+Convert that to the cadence you manage by:  
+- Hourly savings: **$594,494 / 8760 ≈ $67.9 per hour**  
+- Monthly savings: **$67.9 × 730 ≈ $49,600 per month**  
+- Annual savings: **≈ $594,500 per year**
+
+And now ROI. With the correctly covered solution — **3 × H490 = $600,000 installed** — your payback is:  
+- **$600,000 / $49,600 per month ≈ 12.1 months**.
+
+After that first year, you’re not “hoping” for savings — you’re booking them. Lower current, lower heat, higher usable capacity, cleaner power factor, and a calmer transformer that’s no longer being asked to carry waste.  
+
+That’s what electromagnetic stewardship looks like. And that’s the Unity standard: make your field efficient, measurable, and sustainably profitable.

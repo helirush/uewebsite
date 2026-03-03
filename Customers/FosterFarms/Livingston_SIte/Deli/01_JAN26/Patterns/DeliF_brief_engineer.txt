@@ -1,0 +1,15 @@
+Let me give you a one-minute picture of what's happening in this transformer.
+
+Unity analyzes how electricity actually behaves inside your facility—not just consumption, but how efficiently your infrastructure delivers power to production.
+
+In Deli F, I'm seeing elevated reactive circulation and harmonic instability. These conditions force extra current through your system, generate unnecessary heat, and consume transformer capacity without adding a single unit of output.
+
+Using your measured operating data, I've determined where this system truly operates during production—and designed a correction matched to that real demand, not to isolated spikes.
+
+For this transformer, I recommend two MPTS systems to stabilize the electrical environment and reduce that circulating reactive energy.
+
+After installation, power factor rises to near unity. Thermal stress across your equipment declines. And previously wasted electrical capacity becomes available for productive load.
+
+The projected result: approximately $160,000 in annual operational savings with payback in about two and a half years.
+
+If you'd like the full technical walkthrough showing exactly how we achieve these results, select 'Unity Explains.'

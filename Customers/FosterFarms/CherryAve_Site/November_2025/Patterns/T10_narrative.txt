@@ -1,0 +1,18 @@
+T10 AIR CHILLER - UNITY ENERGY FULL ANALYSIS
+Foster Farms, Cherry Ave Facility - November 2025
+================================================================================
+
+PART 1 — CURRENT STATE
+
+The T10 Air Chiller energy field at Foster Farms Cherry Ave is currently operating at 89.1% power factor efficiency with a validated target of 1076 kVA. During November 2025, the transformer consumed 591.3 kW of active power while generating 343.1 kVAR of reactive waste—energy that does no useful work but still flows through your electrical system. This reactive burden creates a thermal load of 439,979 BTU per hour, accelerating wear on transformer windings, cables, and connected equipment. The energy field is wasting the equivalent of 106 homes worth of power continuously, with total annual waste costs reaching $555,619. Harmonic distortion measured at 13.9% iTHD further stresses the system, causing additional heat buildup and premature component degradation.
+
+PART 2 — MPTS SOLUTION
+
+Unity Energy recommends deploying two H490 Modular Power Transfer System units along with one High Resolution Industrial Measurement System to optimize this energy field. The MPTS technology actively manages reactive power in real-time, dynamically injecting or absorbing VARs as the air chiller load cycles throughout the day. The measurement system provides continuous monitoring of voltage, current, and power quality parameters, enabling precise control and early detection of any anomalies. This solution addresses the root cause of the waste rather than simply compensating for it.
+
+PART 3 — EXPECTED RESULTS
+
+After MPTS optimization, the T10 energy field will achieve 99.5% power factor efficiency—up from the current 89.1%. Reactive power drops dramatically from 343.1 kVAR to just 49.5 kVAR, a 86% reduction. Thermal burden decreases from 439,979 to 367,873 BTU per hour, significantly reducing heat stress on all electrical components. Harmonic distortion improves from 13.9% to 5.0% iTHD. The projected annual savings total $438,683 through eliminated waste and reduced cooling costs. Beyond the direct financial benefits, expect extended equipment lifespan, fewer unplanned outages, reduced maintenance costs, and lower carbon emissions—recovering approximately 308 carbon credits annually worth $11,820.
+
+================================================================================
+Generated: 2026-02-19 | Unity Energy Management Solutions

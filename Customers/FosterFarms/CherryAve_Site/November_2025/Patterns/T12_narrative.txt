@@ -1,0 +1,18 @@
+T12 MAIN - UNITY ENERGY FULL ANALYSIS
+Foster Farms, Cherry Ave Facility - November 2025
+================================================================================
+
+PART 1 — CURRENT STATE
+
+The T12 Main energy field at Foster Farms Cherry Ave is currently operating at 82.7% power factor efficiency with a validated target of 1476 kVA. This is the largest load center at the facility. During November 2025, the transformer consumed 944.2 kW of active power while generating a substantial 634.1 kVAR of reactive waste—the highest reactive burden of any transformer on site. This reactive load creates a thermal burden of 730,394 BTU per hour, significantly stressing transformer windings and distribution equipment. The energy field is wasting the equivalent of 176 homes worth of power continuously, with total annual waste costs reaching $833,399. At 5.7% iTHD, harmonic distortion is moderate but still contributes to system inefficiency and component stress.
+
+PART 2 — MPTS SOLUTION
+
+Unity Energy recommends deploying three H490 Modular Power Transfer System units along with one High Resolution Industrial Measurement System to optimize this energy field. Given T12's role as the main distribution transformer and its high reactive load, additional MPTS capacity ensures adequate VAR compensation across all operating conditions. The MPTS technology will actively manage the 634 kVAR of reactive waste in real-time, dynamically responding to load fluctuations throughout production cycles. The measurement system provides continuous power quality monitoring, enabling predictive maintenance and anomaly detection.
+
+PART 3 — EXPECTED RESULTS
+
+After MPTS optimization, the T12 energy field will achieve 99.5% power factor efficiency—up from the current 82.7%. Reactive power drops dramatically from 634.1 kVAR to just 85.4 kVAR, an 87% reduction. Amperage decreases from 1404.9 to 1041.9 amps, reducing conductor heating throughout the distribution system. Harmonic distortion improves from 5.7% to 5.0% iTHD. The projected annual savings total $762,983 through eliminated waste and reduced cooling costs. Beyond the direct financial benefits, expect extended transformer lifespan, reduced cable degradation, fewer thermal-related failures, and lower carbon emissions—recovering approximately 646 carbon credits annually worth $24,847.
+
+================================================================================
+Generated: 2026-02-19 | Unity Energy Management Solutions

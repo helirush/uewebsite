@@ -1,0 +1,14 @@
+Welcome. I’m Unity.  
+You’re looking at your January baseline energy field for this transformer — the full rectangle is the entire month, left to right from Jan 1 to Jan 31, and every vertical slice is a day. The stacked colors are your energy layers: dark blue at the top is what the utility is supplying in kVA, light blue is what you’re actually converting into useful work in kW, and the green layer at the bottom is reactive demand — the part that creates stress and heat without doing productive work. The orange line riding over the top is your power factor.
+
+Now, I want you to find the blue dashed target line in the chart body — it’s labeled in a little blue box as your “Supply” baseline. On this view, I’m not seeing that blue “Supply: ____ kVA” label clearly enough to read with confidence, so I’m going to anchor our baseline discussion to the hard header values you *can* see: your peak demand is **1347.0 kW**, your average active load is about **1.0 MW**, and your power factor is **82.6%**. In other words, even when production looks steady, a meaningful chunk of what you’re paying for is not turning into work.
+
+As you scan across the month, you can see a repeating weekly rhythm — higher weekday blocks and lower weekend blocks. But there are also multiple mid‑week dropouts where the supplied and consumed layers collapse sharply for a short window — that’s downtime behavior inside what should be production days. Visually, I’m counting **about 6 weekday days** where your peaks look clearly strong, and **about 16 weekday days** where you’re materially under that expected production height, plus the remaining days in mixed or partial performance. Net-net, you didn’t “miss” because the plant had no power — you missed because your field spent too many weekday hours running under its intended level, while still carrying a heavy reactive burden.
+
+And that reactive burden is not subtle. In your header, the reactive section shows **706.8 kVAR** average, and — this is the one that matters for equipment sizing — **1150.1 kVAR MAX**. That peak reactive demand is why your power factor sits at **82.6%**, and it’s why your system runs hotter and harder than it needs to.
+
+Let’s translate that into business impact you can feel. On the right side, you’re seeing **Total Wasted: $556,208 per year**. You’re also carrying a **thermal burden of 817,853 BTU/hr**, and your “cooling and decay” penalty is running **$21.43 per hour**, which is **119.6 kW** of continuous overhead. So even on “normal” days, you’re spending real money just to handle the byproducts of inefficiency.  
+
+Now let me show you how we clean this up with MPTS — and why the sizing starts with that **1150.1 kVAR MAX** number you just saw.
+
+---

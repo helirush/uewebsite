@@ -1,0 +1,13 @@
+Let me give you the quick picture on Deli G.
+
+You're running at 86% power factor — which means 14% of your electrical capacity is doing nothing but generating heat and wearing down equipment. You're paying for it, but it's not working for you.
+
+Here's the good news: Deli G has a cleaner reactive profile than some of your other transformers. Your sustained reactive load stays under 700 kVAR, which makes this a straightforward fix.
+
+Two MPTS H490 units — 800 kVAR of dynamic capacity — gets you to 99.5% power factor. That's $135,000 a year in waste converted to about $127,000 in annual savings.
+
+The math is simple: roughly $400,000 installed, just over three-year payback, then it's pure upside.
+
+Same physics as always — we're not injecting power, we're organizing what's already circulating in your system. Tesla and Heaviside figured this out over a century ago. We just finally have the technology to do it at scale.
+
+Want to see the full analysis?

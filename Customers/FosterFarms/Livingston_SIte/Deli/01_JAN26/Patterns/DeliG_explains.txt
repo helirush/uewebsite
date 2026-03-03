@@ -1,0 +1,63 @@
+PART ONE — WHAT I'M SEEING
+
+Welcome. I'm Unity, and I've been analyzing your Deli G transformer here at Livingston.
+
+This is your complete electrical picture for January 2026 — 744 hours of continuous data showing exactly how this system behaves under real operating conditions.
+
+Let me tell you what stands out.
+
+Your peak demand reaches about 1.9 megawatts, and you're running at 82% transformer capacity. That's a healthy operating range — you've got headroom, which is good for reliability and future growth.
+
+Now let's talk efficiency.
+
+Your power factor averages 86%. That's slightly better than Deli F, but you're still losing 14% of your electrical capacity to reactive circulation. That's energy bouncing around inside your system, generating heat, stressing insulation, and not doing any useful work.
+
+When I look at your pattern, I see a consistent production envelope Monday through Friday with weekend reductions. The signature is clean — your loads are predictable. But that reactive waste is constant. Every hour you're running, you're losing efficiency.
+
+Here's what it costs: about $135,000 a year in wasted electrical capacity, plus you're generating over 229,000 BTUs of excess heat every hour. That's thermal load your cooling system has to handle.
+
+Your system is reliable. But it's not operating at its potential.
+
+PART TWO — HOW WE FIX IT
+
+Let's talk about the solution for Deli G.
+
+Here's some good news — your reactive profile is cleaner than Deli F. Your sustained reactive demand stays below 700 kVAR during production. No major spikes, no hidden surprises. This makes the fix straightforward.
+
+My recommendation: one MPTS H490 unit. That's 400 kVAR of dynamic capacity, which covers your operating demand with appropriate margin. Installed cost is approximately $200,000.
+
+Now, why MPTS instead of traditional capacitor banks?
+
+Capacitor banks inject reactive power to offset what you're consuming. They're adding more electricity to fix an electricity problem. It works, but it's not elegant — and it doesn't address the root cause.
+
+MPTS operates on a different principle entirely.
+
+Once energized, our system becomes the lowest impedance point in your electrical environment. All that reactive energy bouncing around your facility? It naturally migrates toward the MPTS where it gets absorbed and organized.
+
+We're not adding power. We're harmonizing the energy that's already there — energy you've paid for that was just disorganized.
+
+This is physics that goes back to Heaviside, Maxwell, Tesla. They understood that coherent, organized energy performs better. We finally have the technology to make it practical at industrial scale.
+
+The result is a stable electrical field, not just better meter readings.
+
+PART THREE — WHAT HAPPENS NEXT
+
+Let me show you what Deli G looks like after installation.
+
+Power factor rises from 86% to 99.5%. But that's just the number — here's what's actually happening.
+
+Your electrical field becomes stable. Predictable. The reactive currents that were circulating through your conductors and transformer, generating heat and stress — they're now absorbed and organized. The chaos is gone.
+
+Less circulating current means less heat. Your thermal burden drops, which means your cooling system works less. That's real energy savings on top of the electrical efficiency gains.
+
+Here's the bottom line for Deli G:
+
+You recover about $127,000 a year — that's waste converted to savings. With the $200,000 installation cost, payback is approximately three years.
+
+After payback, those savings continue year after year. It's permanent operational improvement.
+
+But I want you to think bigger than just the dollars.
+
+Your electrical infrastructure is now operating the way it was designed to. Every kilowatt-hour coming into this facility does productive work. Your equipment runs cooler, lasts longer, and you've got more usable capacity for future needs.
+
+That's what Unity is designed to deliver. And that's exactly what I'm projecting for Deli G.

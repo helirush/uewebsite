@@ -1,0 +1,25 @@
+Now here's what you get after Unity.
+
+Now look at the “after” field—this is what your month looks like once MPTS is in place.  
+The most important visual change is that the chart tightens up. The green waste layer that used to sit under everything gets dramatically reduced, because we’re cancelling reactive flow instead of feeding it through the transformer. And the orange power factor line stabilizes near the top—because the field is finally aligned.
+
+Let’s anchor this in your baseline numbers. You started with **70.8% power factor**, and a peak reactive demand of **1,372.4 kVAR MAX**. That’s why your system showed **$1,010,922 per year** in total wasted value, plus **$38.86 per hour** in cooling and decay cost. You were paying twice—once in electrical inefficiency, and again to remove the heat that inefficiency creates.
+
+Now the savings math. I’m going to be conservative and use only the values you can already see on your baseline screen as the “savings pool,” because those are directly tied to reactive waste and heat.  
+If we eliminate the bulk of that waste, your recoverable value is approximately:
+
+- **Energy waste value:** $1,010,922 per year ÷ 8,760 hours ≈ **$115.40 per hour**  
+- **Cooling and decay costs:** **$38.86 per hour**  
+
+Add those together and you’re at about **$154.26 per hour** in combined savings potential.
+
+Now let’s extend it:  
+- Monthly savings: $154.26 × 730 hours ≈ **$112,610 per month**  
+- Annual savings: $154.26 × 8,760 hours ≈ **$1,351,318 per year**
+
+Your installed MPTS cost from the sizing we just did is **$800,000**.  
+Payback time is $800,000 ÷ $1,351,318 per year ≈ **0.59 years**, or about **7.1 months**.
+
+And after payback, this isn’t a one-time win. It’s an ongoing correction to how your transformer carries load—lower kVA strain, lower heat, cleaner power factor, and a calmer, more stable electrical field day after day.
+
+That’s electromagnetic stewardship. You keep the same operation—but you stop paying for waste.

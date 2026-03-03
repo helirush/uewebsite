@@ -1,0 +1,12 @@
+Now let me show you the fix.
+
+Alright—now we move from observation to correction.  
+In the header, in the REACTIVE box, you’ll see two numbers. The big number is your average reactive—454.8 kVAR. That’s not what we size to. The number that matters is the smaller line underneath: 874.7 kVAR MAX. That’s your peak reactive demand—the worst moment your system had to carry.
+
+Now, here’s how we size MPTS. Our units come in two standard blocks: the H240 at 200 kVAR, and the H490 at 400 kVAR. With a peak of 874.7 kVAR, we don’t undersize. We round up and cover the peak with headroom. Two H490 units gives you 800 kVAR—not enough. So the correct standard configuration is three H490 units: 1,200 kVAR of capacity. That fully covers your 874.7 kVAR peak, and it gives you margin for production variability and future load.
+
+Installed cost is straightforward: each H490 is $200,000 installed. Three units is $600,000.
+
+What MPTS actually does—plain language—is it supplies the reactive power locally, at the right phase angle, so your utility feed no longer has to haul that non-productive current through your transformer and conductors. In the chart terms: the green reactive layer collapses, and your power factor rises from today’s 77% up to the 99.5% target. When that happens, your field stops “fighting itself,” and the electrical system runs cooler, cleaner, and more efficiently.
+
+Now let’s look at what that means in the after-image—what your field looks like when it’s harmonized, and what that translates to in savings and payback.

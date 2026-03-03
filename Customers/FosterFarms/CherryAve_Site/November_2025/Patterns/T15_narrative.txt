@@ -1,0 +1,18 @@
+T15 FILLET - UNITY ENERGY FULL ANALYSIS
+Foster Farms, Cherry Ave Facility - November 2025
+================================================================================
+
+PART 1 — CURRENT STATE
+
+The T15 Fillet energy field at Foster Farms Cherry Ave is currently operating at 82.6% power factor efficiency with a validated target of 1321 kVA. During November 2025, the transformer consumed 739.5 kW of active power while generating 465.7 kVAR of reactive waste. This reactive burden creates a thermal load of 493,914 BTU per hour, accelerating wear on transformer windings, cables, and fillet line equipment. The energy field is wasting the equivalent of 119 homes worth of power continuously, with total annual waste costs reaching $666,182. Harmonic distortion measured at 6.8% iTHD indicates moderate power quality issues that compound the thermal stress on electrical components.
+
+PART 2 — MPTS SOLUTION
+
+Unity Energy recommends deploying two H490 Modular Power Transfer System units along with one High Resolution Industrial Measurement System to optimize this energy field. The MPTS technology actively manages reactive power in real-time, dynamically injecting or absorbing VARs as the fillet processing load cycles throughout production shifts. The measurement system provides continuous monitoring of voltage, current, and power quality parameters, enabling precise control and early detection of any anomalies in the fillet line electrical system.
+
+PART 3 — EXPECTED RESULTS
+
+After MPTS optimization, the T15 energy field will achieve 99.5% power factor efficiency—up from the current 82.6%. Reactive power drops dramatically from 465.7 kVAR to just 64.7 kVAR, an 86% reduction. Amperage decreases from 1051.7 to 779.7 amps, significantly reducing I-squared-R losses in conductors. Harmonic distortion improves from 6.8% to 5.0% iTHD. The projected annual savings total $603,372 through eliminated waste and reduced cooling costs. Beyond the direct financial benefits, expect extended equipment lifespan on fillet processing motors, fewer unplanned line stoppages, reduced maintenance costs, and lower carbon emissions—recovering approximately 449 carbon credits annually worth $17,257.
+
+================================================================================
+Generated: 2026-02-19 | Unity Energy Management Solutions

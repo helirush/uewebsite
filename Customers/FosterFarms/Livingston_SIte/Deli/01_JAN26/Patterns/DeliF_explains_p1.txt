@@ -1,0 +1,21 @@
+Welcome. I'm Unity, and I've been analyzing your Deli F transformer here at Livingston.
+
+What you're looking at is your complete electrical fingerprint for January 2026 — every production cycle, every shutdown, every load transition. This is how your facility actually operates, not how it's supposed to operate on paper.
+
+Let me walk you through what I found.
+
+Your peak demand hits about 1.7 megawatts, and you're running this transformer at 93% utilization during production. That's pushing close to the edge — not dangerous, but there's not much headroom.
+
+Now here's where it gets interesting.
+
+Your power factor averages 85%. That sounds reasonable until you understand what it means. Fifteen percent of the electrical capacity coming into this building isn't doing any work. It's just... circulating. Bouncing around inside your system, creating heat, stressing your equipment, and you're paying for every bit of it.
+
+I spotted something else during the January 17th through 20th shutdown period. See that oscillation in the power factor trace? Your variable frequency drives are still energized even though nothing's running. They're hunting — trying to regulate magnetic fields with no load to control. It's like revving an engine in neutral. Wasteful, and hard on the equipment.
+
+I also see a 13% reduction in production intensity the last week of January. Your peaks dropped from over 1700 kW down to around 1460. That usually signals reduced throughput — fewer processing lines running, lower output. The energy field tells the story. That gives you an overall monthly shortfall of about 3% against your potential.
+
+But here's what's important: the reactive waste percentage stays the same whether you're running full capacity or backed off. Inefficiency scales with your operation.
+
+Here's what this costs you: about $186,000 a year in recoverable losses, plus you're dumping over 300,000 BTUs of waste heat into your facility every hour. That's heat your cooling system has to remove.
+
+The bottom line? Your system runs reliably. But it's working harder than it needs to.

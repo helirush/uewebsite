@@ -1,0 +1,18 @@
+T16 COMPRESSOR - UNITY ENERGY FULL ANALYSIS
+Foster Farms, Cherry Ave Facility - November 2025
+================================================================================
+
+PART 1 — CURRENT STATE
+
+The T16 Compressor energy field at Foster Farms Cherry Ave is currently operating at 88.3% power factor efficiency with a validated target of 1377 kVA. During November 2025, the transformer consumed 852.7 kW of active power while generating 456.1 kVAR of reactive waste. This reactive burden creates a thermal load of 416,140 BTU per hour, placing continuous stress on transformer components and the refrigeration compressor systems. The energy field is wasting the equivalent of 101 homes worth of power continuously, with total annual waste costs reaching $412,025. At 5.1% iTHD, harmonic distortion is relatively controlled, though the reactive waste remains a significant efficiency drain.
+
+PART 2 — MPTS SOLUTION
+
+Unity Energy recommends deploying two H490 Modular Power Transfer System units along with one High Resolution Industrial Measurement System to optimize this energy field. Compressor loads present unique challenges with their cyclic on-off patterns and high inrush currents during startup. The MPTS technology will actively manage reactive power in real-time, responding dynamically to compressor cycling while maintaining stable power factor throughout each operational state. The measurement system provides continuous monitoring to detect any compressor electrical anomalies before they become failures.
+
+PART 3 — EXPECTED RESULTS
+
+After MPTS optimization, the T16 energy field will achieve 99.5% power factor efficiency—up from the current 88.3%. Reactive power drops dramatically from 456.1 kVAR to just 82.9 kVAR, an 82% reduction. Amperage decreases from 1172.4 to 1002.9 amps, reducing thermal stress on motor windings and supply cables. Harmonic distortion improves to 5.0% iTHD. The projected annual savings total $384,178 through eliminated waste and reduced cooling costs. Beyond the direct financial benefits, expect extended compressor motor lifespan, reduced bearing wear from cleaner power, fewer refrigeration system failures, lower maintenance costs, and reduced carbon emissions—recovering approximately 377 carbon credits annually worth $14,496.
+
+================================================================================
+Generated: 2026-02-19 | Unity Energy Management Solutions
