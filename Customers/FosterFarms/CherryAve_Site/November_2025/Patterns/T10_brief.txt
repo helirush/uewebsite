@@ -1,9 +1,0 @@
-Welcome to the T10 Air Chiller energy field. This 2500 kVA transformer runs your refrigeration systems at Cherry Ave.
-
-Here's what we measured in November: You're pulling 593 kilowatts per hour on average, but your power factor is sitting at 89 percent. That means 83 kilowatts every hour is pure waste—reactive energy that does no useful work.
-
-That waste adds up fast. You're looking at over 400,000 BTU of unnecessary heat every hour, and about 360,000 dollars in annual losses.
-
-The good news? We can fix this. Two H490 MPTS units would push your power factor to 99.5 percent, virtually eliminating that waste. Payback would be under 14 months, and after that—it's straight savings, year after year.
-
-This is what electromagnetic stewardship looks like.

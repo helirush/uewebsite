@@ -1202,6 +1202,20 @@
       transform: translateY(0);
     }
 
+    /* Unity Audio button pulse */
+    .header-info-btn.unity-audio-btn {
+      animation: unityAudioPulse 2.5s ease-in-out infinite;
+    }
+
+    .header-info-btn.unity-audio-btn:hover {
+      animation: none;
+    }
+
+    @keyframes unityAudioPulse {
+      0%, 100% { box-shadow: 0 4px 12px rgba(0,0,0,0.3); border-color: rgb(161, 188, 26); }
+      50% { box-shadow: 0 4px 18px rgba(178, 210, 53, 0.5); border-color: #B2D235; }
+    }
+
     /* Info Modal Styles */
     .info-modal {
       display: none;
@@ -1399,6 +1413,9 @@
 
 <!-- Header Info Buttons -->
 <div class="header-buttons">
+  <button class="header-info-btn unity-audio-btn" onclick="playSiteOverview()" title="Listen to Unity's site-wide energy overview">
+    🔊 LISTEN: SITE OVERVIEW
+  </button>
   <button class="header-info-btn" onclick="showSiteSummaryModal()" title="View baseline site-level aggregated metrics">
     📊 SITE SUMMARY - BASELINE
   </button>
@@ -2116,7 +2133,10 @@
         "Reactive demand: 760.2 kVAR max (avg 361.2 kVAR/hr)",
         "Unity value potential: ~$494,180/year"
       ],
-      "last_analyzed": "2026-03-02 01:40:51"
+      "pattern_part1": "Welcome. I'm Unity.\nYou're looking at your January baseline energy field for the T10 Air Chiller at the Cherry Avenue facility \u2014 that's Foster Farms, Fresno, California. This is 31 days of data, left to right, January 1 through January 31, captured every minute \u2014 44,640 data points in this one rectangle.\n\nThe stacked colors tell the story. Dark blue at the top is what PG&E and Shell Energy Solutions are supplying in kVA \u2014 total apparent power delivered to the transformer. Light blue is what you're actually converting into useful work in kW. And that green layer riding underneath is reactive demand \u2014 the part that creates stress, generates heat, but doesn't process a single pound of chicken.\n\nThe orange line across the top is your power factor.\n\nNow, find the blue dashed target line in the chart body \u2014 it's labeled around 1,080 kVA. That's your Supply baseline. On production days, you're consistently running well above it \u2014 your peaks are reaching into the 2,700 to 2,900 kVA range. That tells me your air chiller system is working hard, which is expected for a refrigeration load running compressors around the clock during processing hours.\n\nLet's walk the month. You can see a very clear weekly rhythm \u2014 heavy weekday blocks where production is running, and weekend drops where the plant comes down for cleaning and maintenance. But I also see several mid-week interruptions. There's a clear slow start around January 1 \u2014 New Year's. I count at least three or four other weekday events where the field collapses sharply \u2014 around January 11, again near January 14 through 15, and there's a notable event around January 23 where the reactive layer spikes particularly hard. Those mid-week disruptions break your rhythm and force the system to ramp back up, which creates additional reactive stress during startup and recovery periods.\n\nNow look at your header numbers. Your peak demand is 1,382.1 kW. Your average active load is 661.5 kW, and your average apparent power is 763.1 kVA \u2014 that's about 25 percent of this transformer's capacity. But your power factor is sitting at 89.0 percent, with a minimum dipping down to 77.2 percent. That means on your worst moments, nearly a quarter of the current flowing through this transformer is non-productive.\n\nAnd the reactive numbers confirm it. Your average reactive draw is 380.5 kVAR, and your peak hits 759.6 kVAR MAX. That reactive demand is why the green layer stays so visible across the month \u2014 it's riding along with every hour of production, loading the transformer, heating the conductors, and inflating the kVA you're paying to deliver.\n\nLet's translate that to money. On the right side of your chart, you're seeing Total Wasted: $522,550 per year. Your thermal burden is 391,996 BTU per hour, and your cooling and decay penalty runs $25.79 per hour \u2014 that's 80.2 kW of continuous overhead just to manage the heat this inefficiency creates. Your energy waste alone is $283,267 per year.\n\nSo even on normal production days, you're spending real money to handle the byproducts of a field that's out of alignment. Now let me show you how we clean this up with MPTS \u2014 and why the sizing starts with that 759.6 kVAR MAX number.",
+      "pattern_part2": "Alright \u2014 now we move from observation to correction.\nThe first step is sizing to your peak reactive demand. In your REACTIVE header tile, you'll see two numbers: the average at 380.5 kVAR, and the peak at 759.6 kVAR MAX. We don't size to the average \u2014 we size to the peak, because that's the moment your system is most out of phase, and it's the moment that does the most damage.\n\nUnity's MPTS units come in two standard blocks: the H240 at 200 kVAR and the H490 at 400 kVAR. Your peak is 759.6 kVAR. Two H490 units gives you 800 kVAR of capacity \u2014 that covers your 759.6 peak with about 40 kVAR of headroom. That's a clean fit. Installed cost is straightforward: each H490 is $200,000 installed, so two units is $400,000 total.\n\nHere's what that equipment does in plain language. Your compressor motors and inductive loads pull current that's out of phase with voltage \u2014 that's the reactive power you see in the green layer. MPTS injects the equal-and-opposite reactive component, in real time, right at the transformer. So the utility and the transformer stop carrying that extra current. Your power factor rises from today's 89 percent up to the 99.5 percent Unity target. In the chart, what that means is the green layer collapses \u2014 not because production changes, but because waste is eliminated at the source.\n\nAnd this isn't just about a cleaner chart. When you strip the reactive current out of the transformer, the conductors run cooler, the transformer runs calmer, and you free up capacity you didn't know you had. Your air chiller system keeps doing the exact same work \u2014 but the electrical path to deliver that work gets dramatically more efficient.\n\nNow let's move into what you should expect to see in the results \u2014 visually first, then financially.",
+      "pattern_part3": "Now look at the post-MPTS field. This is what \"harmonized\" looks like.\nYour production shape stays the same \u2014 the weekly rhythm, the startup ramps, the weekend shutdowns \u2014 because your operation schedule is your operation schedule. But the waste layer is stripped out. The green reactive band that used to ride underneath every hour of production is now a thin sliver. The supplied kVA collapses down closer to the consumed kW, because the transformer is no longer carrying that extra reactive current. And the orange power factor line climbs and stabilizes near 99.5 percent \u2014 that's the signature of a corrected electrical posture.\n\nLet's compare the key numbers. Your baseline power factor was 89.0 percent with reactive peaks up to 759.6 kVAR. Your baseline amperage was averaging 959 amps with a peak of 2,004 amps. In the MPTS state, your average amperage drops to 721 amps \u2014 a 25 percent reduction in current flow through the transformer \u2014 while delivering the same productive output.\n\nNow let's do the money. From your MPTS simulation, the results are printed right on the screen:\n- Total Savings: $481,701 per year\n- Energy Recovery value: $275,055 per year\n- Cooling and decay improvement: from $25.79 per hour down to $22.11 per hour\n\nConvert that to the cadence you manage by:\n- Hourly savings: approximately $55 per hour\n- Monthly savings: approximately $40,150 per month\n- Annual savings: $481,701 per year\n\nAnd now ROI. With the correctly sized solution \u2014 two H490 units at $400,000 installed \u2014 your payback is:\n$400,000 divided by approximately $40,150 per month equals about 10 months.\n\nAfter that first year, you're not hoping for savings \u2014 you're booking them. Lower current, lower heat, higher usable capacity on a 3,000 kVA transformer that's now running the way it was designed to. And your emission recovery adds 338 carbon credits per year \u2014 that's real environmental value on the books.\n\nThat's what electromagnetic stewardship looks like. Same air chiller, same refrigeration demand, same poultry processing schedule \u2014 cleaner field, lower cost, and a system that runs in harmony with the work you're asking it to do. That's the Unity standard.",
+      "last_analyzed": "2026-03-04 00:28:00"
     },
     "T12": {
       "pattern_interpretation": "January 2026 energy-field review for T12 Main. Power factor averaged 0.837 (meter-measured).\n\nTotal consumption was 778,982 kWh with modeled electrical waste of 151,101 kWh (~16.2% of delivered energy).\n\nAverage apparent power was 1,250 kVA (50.0% of capacity), and peak demand reached 1,766 kVA (70.6% of capacity) on the 2,500 kVA transformer.\n\nReactive power demand peaked at 1,088.7 kVAR (avg 683.0 kVAR/hr), indicating meaningful power-factor correction opportunity.\n\nUnity value potential (energy + cooling + CO2e) is approximately $865,285/year for this field.",
@@ -2373,6 +2393,36 @@
       console.warn('Unity Brief playback failed, using TTS.');
       isSpeaking = false;
       startBriefTTS();
+    });
+  }
+
+  // Play site-wide overview audio (top-level button)
+  function playSiteOverview() {
+    // If currently speaking/playing, stop
+    if (isSpeaking) {
+      window.speechSynthesis.cancel();
+      if (currentAudioElement) {
+        currentAudioElement.pause();
+        currentAudioElement.currentTime = 0;
+      }
+      isSpeaking = false;
+      return;
+    }
+
+    const mp3File = getSiteAssetPath('Audio/site_overview.mp3');
+
+    currentAudioElement = new Audio(mp3File);
+    currentAudioElement.onended = function() { isSpeaking = false; };
+    currentAudioElement.onerror = function() {
+      console.warn('Site overview MP3 not available.');
+      isSpeaking = false;
+      alert('Site overview audio is not available.');
+    };
+
+    isSpeaking = true;
+    currentAudioElement.play().catch(() => {
+      console.warn('Site overview playback failed.');
+      isSpeaking = false;
     });
   }
 

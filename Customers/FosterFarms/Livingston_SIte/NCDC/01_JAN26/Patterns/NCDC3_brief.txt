@@ -1,9 +1,0 @@
-Welcome. I'm Unity.
-
-Here's your Unity Brief for NCDC3.
-
-Peak reactive demand: 418 kVAR.
-Annual savings potential: $148,094.
-Significant cost savings projected.
-
-Tap Unity Explains for the full three-part walkthrough.

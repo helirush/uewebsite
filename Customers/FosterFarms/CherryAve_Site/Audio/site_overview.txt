@@ -1,0 +1,19 @@
+Welcome. I'm Unity.
+
+This is your January 2026 energy summary for the Foster Farms Cherry Avenue facility in Fresno, California. I'm monitoring four transformers here — ten thousand five hundred kVA of total installed capacity — captured at one-minute resolution across thirty-one days.
+
+Here's your field-by-field snapshot.
+
+T10, your Air Chiller, is running at eighty-nine percent power factor on a three-thousand kVA transformer. It's the cleanest field on site, but still carrying three hundred and eighty kVAR of average reactive demand.
+
+T12, your Main transformer, is at eighty-three point seven percent — the lowest on site. That two-thousand-five-hundred kVA unit is carrying the heaviest reactive load at six hundred and eighty-three kVAR average, with a Unity value potential of eight hundred sixty-five thousand dollars per year.
+
+T15, your Fillet line, is at eighty-five point one percent — mid-range — with over seven hundred fifteen thousand dollars in annual value potential.
+
+T16, the Compressor bank, is at eighty-eight point two percent. Solid, but still contributing over four hundred fifty thousand dollars in recoverable value.
+
+Across the full site, your average power factor is eighty-six point five percent. You're processing over four point two million birds per month on this campus, with total electrical waste running five hundred seventy-two kilowatts continuously — that's over one hundred eighty-two dollars every hour, around the clock.
+
+The aggregate Unity value potential for Cherry Avenue is approximately two point five million dollars per year.
+
+You can drill into each transformer's full analysis from the cards below. That's your site at a glance — let's get to work.
