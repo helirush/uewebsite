@@ -120,7 +120,7 @@
             position: relative;
             z-index: 1;
             text-align: center;
-            max-width: 1200px;
+            max-width: 1500px;
             padding: 60px 40px;
         }
 
@@ -589,7 +589,7 @@
         
         .highlight-card .tech-detail {
             color: rgba(51, 51, 51, 1);
-            font-size: 1.8em;
+            font-size: 1.4em;
             font-weight: 600;
             font-style: italic;
             margin-bottom: 15px;
@@ -664,10 +664,11 @@
     <div class="hero">
         <div class="hero-content">
             <p class="capacity-subtitle">480v Industrial Electricity Data</p>
-            <h1>ENERGY BEHAVIOR WASTE</h1>
-            <p class="capacity-subtitle2">System losses caused from the Poor Transfer of Electricity into Power</p>
-            <p class="capacity-subtitle1">SITE TOTAL CAPACITY : 56,975kVA (per hour)</p>
-            <p class="capacity-subtitle1">CONSUMED POWER : 8,000kW (per hour)</p>
+            <h1>ELECTRICAL FIELD PERFOMANCE</h1>
+            <p class="capacity-subtitle2">Observed inefficiencies across Livingston’s 480V industrial field</p>
+            <p class="capacity-subtitle1">SITE CONNECTED CAPACITY : 56,975 kVA</p>
+            <p class="capacity-subtitle1">AVERAGE SITE CONSUMPTION
+                 : 8,000 kW</p>
         </div>
         <video class="hero-chicken-video hero-chicken-left" id="chickenLeft" muted loop autoplay playsinline>
             <source src="../ChickenFootball.mp4" type="video/mp4">
@@ -683,22 +684,21 @@
             <h2 class="section-title">Livingston HQ Facility Overview</h2>
             
             <p class="welcome-text">
-                Foster Farms' Livingston headquarters represents one of California's established food production campuses, 
-                supporting decades of agricultural processing and regional distribution throughout the Central Valley. 
-                Unity Energy is analyzing the electrical energy fields across this complex industrial environment where 
-                automated processing systems, refrigeration loads, and motor-driven equipment require stable and efficient 
-                electrical delivery.
+                The Livingston facility is one of Foster Farms’ major processing campuses in California’s Central Valley. 
+                Unity Energy monitors this site at the transformer-field level to observe electrical loading, 
+                field efficiency, thermal burden, and voltage behavior across critical industrial systems. This page 
+                serves as the entry point to Livingston’s measured energy architecture.
             </p>
 
             <div class="highlights">
                 <div class="highlight-card">
-                    <div class="number">Thirty-Four (34) Total</div>
+                    <div class="number">34 Total</div>
                     <h3>Electrical Energy Fields</h3>
-                    <div class="tech-detail">34x 480v Industrial</div>
+                    <div class="tech-detail">34x 480v3ph industrial transfomers</div>
                 </div>
                 <div class="highlight-card">
-                    <div class="number">Eight (8) Energy Fields</div>
-                    <h3>Streaming HighRes Data</h3>
+                    <div class="number">8 Energy Fields</div>
+                    <h3>High-Resolution Monitoring</h3>
                     <div class="tech-detail">8 of 34 Fields (24% of Site)</div>
                 </div>
             </div>
@@ -708,13 +708,13 @@
         <section id="libraries">
             <div class="libraries-container">
                 <div class="library-section">
-                    <h2 class="library-title">📊 Energy Behavior Library</h2>
+                    <h2 class="library-title">📊 Livingston Site Transformer Groups</h2>
                     
                     <!-- DELI Plant Area -->
                     <details>
                         <summary>DELI (2x 2500kVA)</summary>
                         <div class="study-list">
-                            <div class="study-item">
+                            <div class="study-item placeholder">
                                 <div class="study-info">
                                     <div class="study-name">January 2026</div>
                                     <div class="study-period">31-day Full Analysis • 1minRES</div>
@@ -722,7 +722,7 @@
 <a class="study-btn" href="Deli/01_JAN26/SITE-FosterFarms-Summaryboard_FosterFarms-2_1minRES_260101-260131_31d.html">Study Ready</a>
                             </div>
 
-                            <div class="study-item placeholder">
+                            <div class="study-item">
                                 <div class="study-info">
                                     <div class="study-name">February 2026</div>
                                     <div class="study-period">Monthly Full Analysis • 1minRES</div>
@@ -744,12 +744,12 @@
 <a class="study-btn" href="Rendering/01_JAN26/SITE-FosterFarms-Summaryboard_FosterFarms-3_1minRES_260101-260131_31d.html">Study Ready</a>
                             </div>
 
-                            <div class="study-item placeholder">
+                            <div class="study-item">
                                 <div class="study-info">
                                     <div class="study-name">February 2026</div>
-                                    <div class="study-period">Monthly Full Analysis • 1minRES</div>
+                                    <div class="study-period">28-day Full Analysis • 1minRES</div>
                                 </div>
-                                <span class="study-btn disabled">Study Pending</span>
+<a class="study-btn" href="Rendering/02_FEB26/SITE-FosterFarms-Summaryboard_FosterFarms-3_1minRES_260201-260228_28d.html">Study Ready</a>
                             </div>
                         </div>
                     </details>
@@ -781,18 +781,18 @@
 
         <!-- What You'll Discover -->
         <section id="analysis">
-            <h2 class="section-title">What You'll Discover</h2>
+            <h2 class="section-title">What You'll Learn and Discover</h2>
             <div class="highlights">
                 <div class="highlight-card">
-                    <h3>⚡ Energy Consumption</h3>
+                    <h3>⚡ Energy Transfer</h3>
                     <p>Detailed patterns showing when and where your facility uses power</p>
                 </div>
                 <div class="highlight-card">
-                    <h3>🔥 Thermal Analysis</h3>
+                    <h3>🔥 Thermal Burden</h3>
                     <p>Heat burden across transformers and cooling systems</p>
                 </div>
                 <div class="highlight-card">
-                    <h3>⚙️ Voltage Stability</h3>
+                    <h3>⚙️ Reactive Burden</h3>
                     <p>Power quality metrics and electrical stability indicators</p>
                 </div>
             </div>
@@ -819,7 +819,7 @@
         document.addEventListener('DOMContentLoaded', function() {
             const chickenRight = document.getElementById('chickenRight');
             if (chickenRight) {
-                chickenRight.currentTime = 2; // offset by 2 seconds
+                chickenRight.currentTime = 5; // offset by 5 seconds
             }
 
             // Persist scroll position when launching a study, so "Return" lands back at the same frame.

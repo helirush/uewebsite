@@ -1,0 +1,28 @@
+{
+  "site": "Foster Farms Livingston HQ Facility",
+  "study": "Study260305r0",
+  "month": "February 2026",
+  "transformers": [
+    {
+      "transformer_code": "REND1",
+      "display_name": "Rendering-1",
+      "target_kva": 1418,
+      "pattern_image_path": "Patterns/Rend1bt_feb26.png",
+      "notes": "BT center supply indicator"
+    },
+    {
+      "transformer_code": "REND2",
+      "display_name": "Rendering-2",
+      "target_kva": 1364,
+      "pattern_image_path": "Patterns/Rend2bt_feb26.png",
+      "notes": "BT center supply indicator"
+    },
+    {
+      "transformer_code": "REND3",
+      "display_name": "Rendering-3",
+      "target_kva": 744,
+      "pattern_image_path": "Patterns/Rend3bt_feb26.png",
+      "notes": "BT center supply indicator"
+    }
+  ]
+}
