@@ -316,8 +316,20 @@
         .efficiency-label {
             color: rgba(255, 255, 255, 0.96);
             font-size: 1.02em;
+            font-style: normal;
+            font-weight: 400;
+            letter-spacing: 0.2px;
+        }
+
+        .efficiency-range {
+            display: flex;
+            justify-content: space-between;
+            gap: 18px;
+            width: 175px;
+            color: rgba(255, 255, 255, 0.80);
+            font-size: 0.88em;
             font-style: italic;
-            font-weight: 700;
+            font-weight: 400;
             letter-spacing: 0.2px;
         }
 
@@ -553,7 +565,11 @@
                         <div class="site-location">Livingston, California</div>
                         <div class="site-efficiency-badge">
                             <div class="efficiency-circle">83.1%</div>
-                            <div class="efficiency-label">Electrical Field Efficiency</div>
+                            <div class="efficiency-label">combined efficiency</div>
+                            <div class="efficiency-range">
+                                <span>high = 90.3%</span>
+                                <span>low = 73.9%</span>
+                            </div>
                         </div>
                     </div>
                     <div class="site-content">
@@ -578,7 +594,11 @@
                         <div class="site-location">Fresno, California</div>
                         <div class="site-efficiency-badge">
                             <div class="efficiency-circle" id="cherry-card-pf">86.3%</div>
-                            <div class="efficiency-label">Electrical Field Efficiency</div>
+                            <div class="efficiency-label">combined efficiency</div>
+                            <div class="efficiency-range">
+                                <span id="cherry-card-high">high = —</span>
+                                <span id="cherry-card-low">low = —</span>
+                            </div>
                         </div>
                     </div>
                     <div class="site-content">
@@ -603,7 +623,7 @@
                         <div class="site-location">Fresno, California</div>
                         <div class="site-efficiency-badge">
                             <div class="efficiency-circle">N/A</div>
-                            <div class="efficiency-label">Electrical Field Efficiency</div>
+                            <div class="efficiency-label">combined efficiency</div>
                         </div>
                     </div>
                     <div class="site-content">
@@ -703,6 +723,8 @@
 
                 let sum = 0;
                 let n = 0;
+                let minPf = Infinity;
+                let maxPf = -Infinity;
 
                 for (let i = 1; i <= 4; i++) {
                     const el = summaryDoc.getElementById(`xfmr${i}-metric-pf`);
@@ -711,11 +733,17 @@
                     if (!Number.isFinite(pf)) continue;
                     sum += pf;
                     n += 1;
+                    if (pf > maxPf) maxPf = pf;
+                    if (pf < minPf) minPf = pf;
                 }
 
                 if (n > 0) {
                     const avg = sum / n;
                     pfEl.textContent = `${avg.toFixed(1)}%`;
+                    const highEl = document.getElementById('cherry-card-high');
+                    const lowEl  = document.getElementById('cherry-card-low');
+                    if (highEl) highEl.textContent = `high = ${maxPf.toFixed(1)}%`;
+                    if (lowEl)  lowEl.textContent  = `low = ${minPf.toFixed(1)}%`;
                 }
             } catch (e) {
                 // Keep fallback values if fetch/parse fails
