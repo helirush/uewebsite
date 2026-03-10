@@ -125,6 +125,29 @@
         "Generate and wire Unity MP3 assets (site overview + transformer brief/explains/howto) where missing."
       ],
       "next_terminal_start": "Continue from Livingston 3-group Jan/Feb standardization and webmaster prep, then complete Unity audio pass."
+    },
+    {
+      "handoff_id": "FF-CHERRY-20260310-02",
+      "date": "2026-03-10",
+      "scope": "Foster Farms Cherry Avenue portal recovery, site sync, deploy verification, and documentation capture",
+      "completed": [
+        "Cherry Avenue portal parser repaired in Customers/FosterFarms/index.html (updateCherryAveCard) to support year-split study groups and ignore pending placeholder links.",
+        "Cherry site index format confirmed and retained at Customers/FosterFarms/CherryAve_Site/index.html with Full Studies 2026/2025 structure and January 2026 active summaryboard.",
+        "Foster Farms top-level card wiring restored: combined efficiency, high/low band, and latest report now repopulate from Cherry site studies.",
+        "Full eWebmaster to uewebsite synchronization completed and website repo updated on origin/main with commit ce02ff605eebcf72da1a7025496bbb98a11d2737.",
+        "Live portal sanity checks completed and validated with Cherry card values present (86.5% combined efficiency, high 89.0%, low 83.7%, latest report January 2026).",
+        "Session summary documented in eMemory under entity 2026-03-10 Foster Farms Cherry Sync + Deploy."
+      ],
+      "template_changes": [
+        "eWebmaster/Customers/FosterFarms/index.html",
+        "eWebmaster/Customers/FosterFarms/CherryAve_Site/index.html",
+        "eWebmaster/UnityEnergy/maxwellian_library.json"
+      ],
+      "pending_focus": [
+        "Confirm Cherry February 2026 summaryboard activation when released and update card rollover order if needed.",
+        "Continue Livingston multi-group parity and audio standardization backlog as previously queued."
+      ],
+      "next_terminal_start": "Start with Foster Farms live spot-check, then proceed to Livingston Rendering/NCDC parity and February release readiness."
     }
   ]
 }
