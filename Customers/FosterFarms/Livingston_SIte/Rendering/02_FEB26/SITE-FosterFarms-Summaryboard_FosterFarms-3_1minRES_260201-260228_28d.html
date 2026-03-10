@@ -1334,24 +1334,27 @@
       top: -1px;
     }
     /* EFSI color classes applied via JavaScript */
-    .efsi-warning { color: #ef4444 !important; }
-    .efsi-low    { color: #f59e0b !important; }
-    .efsi-normal { color: var(--unity-ltgreen) !important; }
-    .efsi-good   { color: #3db0f0 !important; }
+    .efsi-critical { color: #ff3b30 !important; }
+    .efsi-warning { color: #ff8c00 !important; }
+    .efsi-poor { color: #fde047 !important; }
+    .efsi-good { color: var(--unity-ltgreen) !important; }
+    .efsi-clean { color: #3db0f0 !important; }
     .efsi-front-label {
       font-weight: 800;
       letter-spacing: 1px;
       text-transform: uppercase;
     }
-    .efsi-front-label.efsi-warning { color: #ef4444 !important; }
-    .efsi-front-label.efsi-low    { color: #f59e0b !important; }
-    .efsi-front-label.efsi-normal { color: var(--unity-ltgreen) !important; }
-    .efsi-front-label.efsi-good   { color: #3db0f0 !important; }
+    .efsi-front-label.efsi-critical { color: #ff3b30 !important; }
+    .efsi-front-label.efsi-warning { color: #ff8c00 !important; }
+    .efsi-front-label.efsi-poor { color: #fde047 !important; }
+    .efsi-front-label.efsi-good { color: var(--unity-ltgreen) !important; }
+    .efsi-front-label.efsi-clean { color: #3db0f0 !important; }
     /* EFSI status label colors for summary panel */
-    .efsi-status-good    { color: #3db0f0 !important; }
-    .efsi-status-normal  { color: #22c55e !important; }
-    .efsi-status-low     { color: #f59e0b !important; }
-    .efsi-status-warning { color: #ef4444 !important; }
+    .efsi-status-clean { color: #3db0f0 !important; }
+    .efsi-status-good { color: #22c55e !important; }
+    .efsi-status-poor { color: #fde047 !important; }
+    .efsi-status-warning { color: #ff8c00 !important; }
+    .efsi-status-critical { color: #ff3b30 !important; }
   </style>
 </head>
 <body data-summary-mode="energy">
@@ -1761,6 +1764,10 @@
     // Apply performance metrics
     transformerData.forEach(data => {
       // Bubbles now use fixed 3D blue gradient from template - no dynamic coloring
+
+      // Some facility templates do not include the target-performance helpers.
+      // If they're not present, skip this block so we don't abort the whole DOMContentLoaded init.
+      if (typeof calculateTargetPerformance !== 'function') return;
       
       // Calculate and display performance metrics using new Minimum Target formula
       const result = calculateTargetPerformance(data.targetKWh, data.actualKWh);
@@ -1917,17 +1924,18 @@
       const m = (pctEl.textContent || '').match(/(\d+)/);
       if (!m) continue;
       const pct = parseInt(m[1], 10);
-      let label = 'WARNING', arrow = '↓', cls = 'efsi-warning';
-      if (pct >= 70)      { label = 'GOOD';    arrow = '↑'; cls = 'efsi-good'; }
-      else if (pct >= 65) { label = 'NORMAL';  arrow = '→'; cls = 'efsi-normal'; }
-      else if (pct >= 60) { label = 'LOW';     arrow = '↓'; cls = 'efsi-low'; }
+      let label = 'CRITICAL', arrow = '↓', cls = 'efsi-critical';
+      if (pct > 72)      { label = 'CLEAN';   arrow = '↑'; cls = 'efsi-clean'; }
+      else if (pct >= 62) { label = 'GOOD';    arrow = '→'; cls = 'efsi-good'; }
+      else if (pct >= 57) { label = 'POOR';    arrow = '↓'; cls = 'efsi-poor'; }
+      else if (pct > 52) { label = 'WARNING'; arrow = '↓'; cls = 'efsi-warning'; }
       if (labelEl) {
         labelEl.textContent = label;
-        labelEl.classList.remove('efsi-warning','efsi-low','efsi-normal','efsi-good');
+        labelEl.classList.remove('efsi-critical', 'efsi-warning', 'efsi-poor', 'efsi-good', 'efsi-clean');
         labelEl.classList.add(cls);
       }
-      pctEl.classList.remove('efsi-warning','efsi-low','efsi-normal','efsi-good');
-      dirEl.classList.remove('efsi-warning','efsi-low','efsi-normal','efsi-good');
+      pctEl.classList.remove('efsi-critical', 'efsi-warning', 'efsi-poor', 'efsi-good', 'efsi-clean');
+      dirEl.classList.remove('efsi-critical', 'efsi-warning', 'efsi-poor', 'efsi-good', 'efsi-clean');
       pctEl.classList.add(cls);
       dirEl.classList.add(cls);
       dirEl.textContent = arrow;
@@ -2052,7 +2060,12 @@
       if (unityBriefBtn) unityBriefBtn.style.display = 'none';
       if (unityExplainsBtn) unityExplainsBtn.style.display = 'none';
       if (unityHowToBtn) {
-        unityHowToBtn.style.display = (type === 'baseline' || type === 'mpts') ? 'inline-block' : 'none';
+        const showHowTo = (type === 'baseline' || type === 'mpts');
+        const isSavingsMode = type === 'mpts';
+        unityHowToBtn.style.display = showHowTo ? 'inline-block' : 'none';
+        unityHowToBtn.dataset.chartMode = showHowTo ? (isSavingsMode ? 'savings' : 'waste') : '';
+        unityHowToBtn.textContent = isSavingsMode ? '🎧 How to Read the Savings Chart' : '🎧 How to Read the Waste Chart';
+        unityHowToBtn.title = unityHowToBtn.textContent;
       }
 
       modalTitle.textContent = `${transformerName} - ${patternLabel}`;
@@ -2392,8 +2405,10 @@
     });
   }
 
-  // Play per-site shared "How to Read Chart" overview audio.
-  // Expected location: Audio/how-to-read-the-chart.mp3
+  // Play per-site shared "How to Read" overview audio.
+  // Expected location:
+  // - Audio/how-to-read-waste-chart.mp3
+  // - Audio/how-to-read-savings-chart.mp3
   function playUnityHowToChart() {
     // If currently speaking/playing, stop
     if (isSpeaking) {
@@ -2426,10 +2441,15 @@
       company = (company || '').replace(/_/g, ' ').trim() || company;
     } catch (e) {}
 
-    const mp3File = 'Audio/how-to-read-the-chart.mp3';
+    const unityHowToBtn = document.getElementById('unityHowToBtn');
+    const howToMode = (unityHowToBtn && unityHowToBtn.dataset && unityHowToBtn.dataset.chartMode === 'savings') ? 'savings' : 'waste';
+    const isSavingsMode = howToMode === 'savings';
+    const mp3File = isSavingsMode ? 'Audio/how-to-read-savings-chart.mp3' : 'Audio/how-to-read-waste-chart.mp3';
 
     const startHowToTTS = () => {
-      const text = `Welcome. I'm Unity. This is a quick overview for ${company} on how to read the energy field chart. The rectangle represents the full time period from left to right. Height means load magnitude. Dark blue is supplied kVA, light blue is consumed kW, and green is reactive kVAR. The orange line is power factor. Baseline shows current behavior; MPTS shows the harmonized state after Unity optimization.`;
+      const text = isSavingsMode
+        ? `Welcome. I'm Unity. This quick guide for ${company} explains how to read the MPTS savings chart. The chart shows the harmonized state after Unity optimization. Read left to right across the full period. Height indicates load magnitude. Dark blue is supplied kVA, light blue is consumed kW, and green is reactive kVAR. The orange line is power factor. Compare this chart to baseline to understand recovered waste and projected monthly and annual savings.`
+        : `Welcome. I'm Unity. This quick guide for ${company} explains how to read the baseline waste chart. The chart shows current operation before optimization. Read left to right across the full period. Height indicates load magnitude. Dark blue is supplied kVA, light blue is consumed kW, and green is reactive kVAR. The orange line is power factor. Areas with elevated reactive energy indicate waste that Unity can reduce.`;
       currentSpeech = new SpeechSynthesisUtterance(text);
       const voices = window.speechSynthesis.getVoices();
       let preferredVoice = voices.find(v => v.name.toLowerCase().includes('unity faraday'));
@@ -3140,10 +3160,10 @@
     document.getElementById('siteSummaryMPTSModal').style.display = 'none';
   }
 
-  // Show Contact Details Modal
+  // Show Contact Details
   function showContactDetailsModal() {
-    const modal = document.getElementById('contactDetailsModal');
-    modal.style.display = 'block';
+    // Use shared eWebmaster contact page (consistent across Livingston groups).
+    window.location.href = '../../../../../contact-us.html';
   }
 
   // Close Contact Details Modal
@@ -3204,7 +3224,7 @@
                        transition: all 0.3s ease; text-align: center; text-shadow: 0 2px 4px rgba(0,0,0,0.3);"
                 onmouseover="this.style.transform='translateY(-3px)'; this.style.boxShadow='0 0 15px rgba(255, 255, 255, 0.6)'; this.style.background='linear-gradient(135deg, #6d8020 0%, #8fa832 100%)'"
                 onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none'; this.style.background='linear-gradient(135deg, #5D701A 0%, #7c942a 100%)'">
-          🎧 How to Read Chart
+          🎧 How to Read the Waste Chart
         </button>
         <button class="pattern-modal-close" onclick="closePatternModal()">&times;</button>
       </div>

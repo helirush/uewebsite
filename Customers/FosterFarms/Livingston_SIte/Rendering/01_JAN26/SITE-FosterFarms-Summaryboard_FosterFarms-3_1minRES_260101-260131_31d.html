@@ -409,22 +409,24 @@
     }
 
     /* EFSI color classes applied via JavaScript
-       New labeling: WARNING (50-59.9%) red, LOW (60-64.9%) orange-yellow, NORMAL (65-69.9%) green, GOOD (70%+) blue
+       CRITICAL (<=52%) red, WARNING (>52-<57%) orange, POOR (57-<62%) yellow, GOOD (62-72%) green, CLEAN (>72%) blue
     */
-    .efsi-warning { color: #ef4444 !important; }  /* Red for WARNING (50-59.9%) */
-    .efsi-low { color: #f59e0b !important; }      /* Orange-yellow for LOW (60-64.9%) */
-    .efsi-normal { color: var(--unity-ltgreen) !important; }   /* Unity bright green for NORMAL (65-69.9%) */
-    .efsi-good { color: #3db0f0 !important; }     /* Blue for GOOD (70%+) - like power factor */
+    .efsi-critical { color: #ff3b30 !important; }
+    .efsi-warning { color: #ff8c00 !important; }
+    .efsi-poor { color: #fde047 !important; }
+    .efsi-good { color: var(--unity-ltgreen) !important; }
+    .efsi-clean { color: #3db0f0 !important; }
 
     .efsi-front-label {
       font-weight: 800;
       letter-spacing: 1px;
       text-transform: uppercase;
     }
-    .efsi-front-label.efsi-warning { color: #ef4444 !important; }
-    .efsi-front-label.efsi-low { color: #f59e0b !important; }
-    .efsi-front-label.efsi-normal { color: var(--unity-ltgreen) !important; }
-    .efsi-front-label.efsi-good { color: #3db0f0 !important; }
+    .efsi-front-label.efsi-critical { color: #ff3b30 !important; }
+    .efsi-front-label.efsi-warning { color: #ff8c00 !important; }
+    .efsi-front-label.efsi-poor { color: #fde047 !important; }
+    .efsi-front-label.efsi-good { color: var(--unity-ltgreen) !important; }
+    .efsi-front-label.efsi-clean { color: #3db0f0 !important; }
 
     /* ElecOps percentage - blue for positive (↑), orange for negative (↓), white for neutral */
     .uptime-value span[id$="-uptime-pct"],
@@ -1433,10 +1435,11 @@
       transition: width 0.6s ease;
     }
     /* EFSI status label colors for summary panel */
-    .efsi-status-good { color: #3db0f0 !important; }
-    .efsi-status-normal { color: #22c55e !important; }
-    .efsi-status-low { color: #f59e0b !important; }
-    .efsi-status-warning { color: #ef4444 !important; }
+    .efsi-status-clean { color: #3db0f0 !important; }
+    .efsi-status-good { color: #22c55e !important; }
+    .efsi-status-poor { color: #fde047 !important; }
+    .efsi-status-warning { color: #ff8c00 !important; }
+    .efsi-status-critical { color: #ff3b30 !important; }
 
     @media (max-width: 760px) {
       .unity-field-summary {
@@ -1485,6 +1488,9 @@
 
 <!-- Header Info Buttons -->
 <div class="header-buttons">
+  <button class="header-info-btn unity-audio-btn" onclick="playSiteOverview()" title="Listen to Unity's site-wide energy overview">
+    🔊 LISTEN: SITE OVERVIEW
+  </button>
   <button class="header-info-btn" onclick="showSiteSummaryModal()" title="View baseline site-level aggregated metrics">
     📊 SITE SUMMARY - BASELINE
   </button>
@@ -1808,6 +1814,21 @@
 <!-- Unity Dashboard - Unified JavaScript System -->
 <!-- <script src="../static/unity-dashboard.js"></script> -->
 <script>
+
+  function shouldBlockJanuaryAudio() {
+    if (JANUARY_AUDIO_ENABLED) return false;
+    try { window.speechSynthesis.cancel(); } catch (e) {}
+    if (currentAudioElement) {
+      try {
+        currentAudioElement.pause();
+        currentAudioElement.currentTime = 0;
+      } catch (e) {}
+    }
+    isSpeaking = false;
+    currentExplainsPartIndex = 0;
+    return true;
+  }
+
   document.addEventListener('DOMContentLoaded', () => {
     // Set Unity date
     const today = new Date();
@@ -2028,26 +2049,25 @@
       if (!m) continue;
       const pct = parseInt(m[1], 10);
 
-      // New EFSI labeling algorithm:
-      // 70%+ = GOOD (blue), 65-69.9% = NORMAL (green), 60-64.9% = LOW (orange-yellow), 50-59.9% = WARNING (red)
-      let label = 'WARNING';
+      // Corrected EFSI labeling algorithm:
+      // <=52 = CRITICAL, >52-<57 = WARNING, 57-<62 = POOR, 62-72 = GOOD, >72 = CLEAN
+      let label = 'CRITICAL';
       let arrow = '↓';
-      let cls = 'efsi-warning';
+      let cls = 'efsi-critical';
 
-      if (pct >= 70) {
-        label = 'GOOD';
+      if (pct > 72) {
+        label = 'CLEAN';
         arrow = '↑';
-        cls = 'efsi-good';
-      } else if (pct >= 65) {
-        label = 'NORMAL';
+        cls = 'efsi-clean';
+      } else if (pct >= 62) {
+        label = 'GOOD';
         arrow = '→';
-        cls = 'efsi-normal';
-      } else if (pct >= 60) {
-        label = 'LOW';
+        cls = 'efsi-good';
+      } else if (pct >= 57) {
+        label = 'POOR';
         arrow = '↓';
-        cls = 'efsi-low';
-      } else {
-        // 50-59.9% or below
+        cls = 'efsi-poor';
+      } else if (pct > 52) {
         label = 'WARNING';
         arrow = '↓';
         cls = 'efsi-warning';
@@ -2055,12 +2075,12 @@
 
       if (labelEl) {
         labelEl.textContent = label;
-        labelEl.classList.remove('efsi-warning', 'efsi-low', 'efsi-normal', 'efsi-good');
+        labelEl.classList.remove('efsi-critical', 'efsi-warning', 'efsi-poor', 'efsi-good', 'efsi-clean');
         labelEl.classList.add(cls);
       }
 
-      pctEl.classList.remove('efsi-warning', 'efsi-low', 'efsi-normal', 'efsi-good');
-      dirEl.classList.remove('efsi-warning', 'efsi-low', 'efsi-normal', 'efsi-good');
+      pctEl.classList.remove('efsi-critical', 'efsi-warning', 'efsi-poor', 'efsi-good', 'efsi-clean');
+      dirEl.classList.remove('efsi-critical', 'efsi-warning', 'efsi-poor', 'efsi-good', 'efsi-clean');
       pctEl.classList.add(cls);
       dirEl.classList.add(cls);
 
@@ -2151,7 +2171,12 @@
       if (unityBriefBtn) unityBriefBtn.style.display = 'none';
       if (unityExplainsBtn) unityExplainsBtn.style.display = 'none';
       if (unityHowToBtn) {
-        unityHowToBtn.style.display = (type === 'baseline' || type === 'mpts') ? 'inline-block' : 'none';
+        const showHowTo = (type === 'baseline' || type === 'mpts');
+        const isSavingsMode = type === 'mpts';
+        unityHowToBtn.style.display = showHowTo ? 'inline-block' : 'none';
+        unityHowToBtn.dataset.chartMode = showHowTo ? (isSavingsMode ? 'savings' : 'waste') : '';
+        unityHowToBtn.textContent = isSavingsMode ? '🎧 How to Read the Savings Chart' : '🎧 How to Read the Waste Chart';
+        unityHowToBtn.title = unityHowToBtn.textContent;
       }
 
       modalTitle.textContent = `${transformerName} - ${patternLabel}`;
@@ -2320,6 +2345,37 @@
   let currentExplainsPartIndex = 0;
   const explainsParts = ['_explains_p1.mp3', '_explains_p2.mp3', '_explains_p3.mp3'];
 
+  const JANUARY_AUDIO_ENABLED = false;
+
+  function disableJanuaryAudioButtons() {
+    if (JANUARY_AUDIO_ENABLED) return;
+    const buttons = document.querySelectorAll('#unityBriefBtn, #unityExplainsBtn, #unityHowToBtn');
+    buttons.forEach((btn) => {
+      if (!(btn instanceof HTMLButtonElement)) return;
+      btn.disabled = true;
+      btn.hidden = true;
+      btn.setAttribute('aria-disabled', 'true');
+      btn.style.setProperty('display', 'none', 'important');
+      btn.style.setProperty('visibility', 'hidden', 'important');
+      btn.style.setProperty('opacity', '0', 'important');
+      btn.style.setProperty('pointer-events', 'none', 'important');
+    });
+  }
+
+  document.addEventListener('DOMContentLoaded', () => {
+    disableJanuaryAudioButtons();
+    if (typeof window.showPatternModal === 'function' && !window.__janAudioHideWrapped) {
+      const baseShowPatternModal = window.showPatternModal;
+      window.showPatternModal = function(...args) {
+        const result = baseShowPatternModal.apply(this, args);
+        disableJanuaryAudioButtons();
+        return result;
+      };
+      window.__janAudioHideWrapped = true;
+    }
+  });
+
+
   // Resolve shared assets in Installation/ regardless of whether we're viewing:
   // - a standalone study folder (StudyXXXX/...) via file://
   // - eWebmaster staging via http://127.0.0.1
@@ -2410,7 +2466,65 @@
     }
   }
 
+
+
+  function playSiteOverview() {
+    if (isSpeaking) {
+      window.speechSynthesis.cancel();
+      if (currentAudioElement) {
+        currentAudioElement.pause();
+        currentAudioElement.currentTime = 0;
+      }
+      isSpeaking = false;
+      currentExplainsPartIndex = 0;
+      return;
+    }
+
+    const startOverviewTTS = () => {
+      const siteName = (
+        document.getElementById('site-facility-name')?.textContent ||
+        document.querySelector('.siteboard-title-main')?.textContent ||
+        'this site'
+      ).replace(/\s*-\s*$/, '').trim();
+      const period = (document.getElementById('param-period')?.textContent || '').trim();
+      const days = (document.getElementById('param-days')?.textContent || '').trim();
+      const transformerCount = (document.getElementById('transformer-count')?.textContent || '').trim();
+      const text = `Welcome. I'm Unity. This is your site overview for ${siteName}. Analysis period ${period || 'current period'} over ${days || 'multiple'} days with ${transformerCount || 'active transformers'} monitored. Use Site Summary Baseline for current state and Site Summary Unity System for harmonized optimization potential.`;
+      currentSpeech = new SpeechSynthesisUtterance(text);
+      const voices = window.speechSynthesis.getVoices();
+      let preferredVoice = voices.find(v => v.name.toLowerCase().includes('unity faraday'));
+      if (!preferredVoice) {
+        preferredVoice = voices.find(v => v.name.includes('Samantha') || v.name.includes('Female') || v.lang === 'en-US');
+      }
+      if (preferredVoice) currentSpeech.voice = preferredVoice;
+      currentSpeech.rate = 0.95;
+      currentSpeech.pitch = 1.0;
+      currentSpeech.volume = 1.0;
+      currentSpeech.onend = function() { isSpeaking = false; };
+      currentSpeech.onerror = function() { isSpeaking = false; };
+      isSpeaking = true;
+      window.speechSynthesis.speak(currentSpeech);
+    };
+
+    const mp3File = 'Audio/site_overview.mp3';
+    currentAudioElement = new Audio(mp3File);
+    currentAudioElement.onended = function() { isSpeaking = false; };
+    currentAudioElement.onerror = function() {
+      console.warn('Site overview MP3 not available, using TTS fallback.');
+      isSpeaking = false;
+      startOverviewTTS();
+    };
+
+    isSpeaking = true;
+    currentAudioElement.play().catch(() => {
+      console.warn('Site overview playback failed, using TTS fallback.');
+      isSpeaking = false;
+      startOverviewTTS();
+    });
+  }
+
   function speakNarrative() {
+    if (shouldBlockJanuaryAudio()) return;
     // If currently speaking, stop
     if (isSpeaking) {
       if (currentAudioElement) {
@@ -2493,6 +2607,7 @@
 
   // Play Unity Brief (60-second overview audio)
   function playUnityBrief() {
+    if (shouldBlockJanuaryAudio()) return;
     if (!currentTransformerId) {
       console.error('No transformer selected for Unity Brief');
       return;
@@ -2552,9 +2667,12 @@
     });
   }
 
-  // Play per-site shared "How to Read Chart" overview audio.
-  // Expected location (relative to the site root): Audio/how-to-read-the-chart.mp3
+  // Play per-site shared "How to Read" overview audio.
+  // Expected location (relative to the site root):
+  // - Audio/how-to-read-waste-chart.mp3
+  // - Audio/how-to-read-savings-chart.mp3
   function playUnityHowToChart() {
+    if (shouldBlockJanuaryAudio()) return;
     // If currently speaking/playing, stop
     if (isSpeaking) {
       window.speechSynthesis.cancel();
@@ -2583,10 +2701,15 @@
       company = (company || '').replace(/_/g, ' ').trim() || company;
     } catch (e) {}
 
-    const mp3File = getSiteAssetPath('Audio/how-to-read-the-chart.mp3');
+    const unityHowToBtn = document.getElementById('unityHowToBtn');
+    const howToMode = (unityHowToBtn && unityHowToBtn.dataset && unityHowToBtn.dataset.chartMode === 'savings') ? 'savings' : 'waste';
+    const isSavingsMode = howToMode === 'savings';
+    const mp3File = getSiteAssetPath(isSavingsMode ? 'Audio/how-to-read-savings-chart.mp3' : 'Audio/how-to-read-waste-chart.mp3');
 
     const startHowToTTS = () => {
-      const text = `Welcome. I'm Unity. This is a quick overview for ${company} on how to read the energy field chart. The rectangle represents the full time period from left to right. Height means load magnitude. Dark blue is supplied kVA, light blue is consumed kW, and green is reactive kVAR. The orange line is power factor. Baseline shows current behavior; MPTS shows the harmonized state after Unity optimization.`;
+      const text = isSavingsMode
+        ? `Welcome. I'm Unity. This quick guide for ${company} explains how to read the MPTS savings chart. The chart shows the harmonized state after Unity optimization. Read left to right across the full period. Height indicates load magnitude. Dark blue is supplied kVA, light blue is consumed kW, and green is reactive kVAR. The orange line is power factor. Compare this chart to baseline to understand recovered waste and projected monthly and annual savings.`
+        : `Welcome. I'm Unity. This quick guide for ${company} explains how to read the baseline waste chart. The chart shows current operation before optimization. Read left to right across the full period. Height indicates load magnitude. Dark blue is supplied kVA, light blue is consumed kW, and green is reactive kVAR. The orange line is power factor. Areas with elevated reactive energy indicate waste that Unity can reduce.`;
       currentSpeech = new SpeechSynthesisUtterance(text);
       const voices = window.speechSynthesis.getVoices();
       let preferredVoice = voices.find(v => v.name.toLowerCase().includes('unity faraday'));
@@ -2730,19 +2853,19 @@
       const efsiVariant = efsiNum === null ? 'thermal' : (efsiNum >= 80 ? 'harmonic' : (efsiNum < 70 ? 'heat' : 'thermal'));
       
       // EFSI status label and color (matches front panel logic)
-      let efsiStatusLabel = 'WARNING';
-      let efsiStatusClass = 'efsi-status-warning';
+      let efsiStatusLabel = 'CRITICAL';
+      let efsiStatusClass = 'efsi-status-critical';
       if (efsiNum !== null) {
-        if (efsiNum >= 70) {
+        if (efsiNum > 72) {
+          efsiStatusLabel = 'CLEAN';
+          efsiStatusClass = 'efsi-status-clean';
+        } else if (efsiNum >= 62) {
           efsiStatusLabel = 'GOOD';
           efsiStatusClass = 'efsi-status-good';
-        } else if (efsiNum >= 65) {
-          efsiStatusLabel = 'NORMAL';
-          efsiStatusClass = 'efsi-status-normal';
-        } else if (efsiNum >= 60) {
-          efsiStatusLabel = 'LOW';
-          efsiStatusClass = 'efsi-status-low';
-        } else {
+        } else if (efsiNum >= 57) {
+          efsiStatusLabel = 'POOR';
+          efsiStatusClass = 'efsi-status-poor';
+        } else if (efsiNum > 52) {
           efsiStatusLabel = 'WARNING';
           efsiStatusClass = 'efsi-status-warning';
         }
@@ -3432,8 +3555,8 @@
 
   // Show Contact Details
   function showContactDetailsModal() {
-    // Keep all facility boards consistent with Deli: open the shared contact page
-    window.location.href = '../../../contact-us.html';
+    // Keep all facility boards consistent: open the shared contact page.
+    window.location.href = '../../../../../contact-us.html';
   }
 
   // Close Contact Details Modal
@@ -3494,7 +3617,7 @@
                        transition: all 0.3s ease; text-align: center; text-shadow: 0 2px 4px rgba(0,0,0,0.3);"
                 onmouseover="this.style.transform='translateY(-3px)'; this.style.boxShadow='0 0 15px rgba(255, 255, 255, 0.6)'; this.style.background='linear-gradient(135deg, #6d8020 0%, #8fa832 100%)'"
                 onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none'; this.style.background='linear-gradient(135deg, #5D701A 0%, #7c942a 100%)'">
-          🎧 How to Read Chart
+          🎧 How to Read the Waste Chart
         </button>
         <button class="pattern-modal-close" onclick="closePatternModal()">&times;</button>
       </div>

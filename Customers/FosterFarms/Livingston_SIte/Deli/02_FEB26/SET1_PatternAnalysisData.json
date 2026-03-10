@@ -1,0 +1,30 @@
+{
+  "transformers": {
+    "DELIF": {
+      "pattern_part1": "Welcome. I'm Unity. This is the current state for Deli F. Average power factor is 0.869. Average load is 896.01 kVA with peak load at 2,165.46 kVA. Measured energy for the period is 535,864.46 kWh with 65,672.54 kWh of reactive waste.",
+      "pattern_part2": "Unity MPTS strategy for Deli F targets the peak reactive demand of 1,660.0 kVAR to harmonize the field and reduce continuous reactive circulation.",
+      "pattern_part3": "Expected result is improved field efficiency, lower waste, and annual value potential of about $181098 for this transformer.",
+      "pattern_summary": [
+        "Power factor (avg): 0.869",
+        "Avg / Peak load: 896.01 kVA (35.8%) / 2,165.46 kVA (86.6%)",
+        "Energy / Waste: 535,864.46 kWh / 65,672.54 kWh",
+        "Reactive demand: 1,660.0 kVAR max (avg 407.1 kVAR/hr)",
+        "Unity value potential: ~$181098/year"
+      ],
+      "pattern_interpretation": "Welcome. I'm Unity. This is the current state for Deli F. Average power factor is 0.869. Average load is 896.01 kVA with peak load at 2,165.46 kVA. Measured energy for the period is 535,864.46 kWh with 65,672.54 kWh of reactive waste.\n\nUnity MPTS strategy for Deli F targets the peak reactive demand of 1,660.0 kVAR to harmonize the field and reduce continuous reactive circulation.\n\nExpected result is improved field efficiency, lower waste, and annual value potential of about $181098 for this transformer."
+    },
+    "DELIG": {
+      "pattern_part1": "Welcome. I'm Unity. This is the current state for Deli G. Average power factor is 0.866. Average load is 670.81 kVA with peak load at 1,954.84 kVA. Measured energy for the period is 403,388.39 kWh with 47,270.17 kWh of reactive waste.",
+      "pattern_part2": "Unity MPTS strategy for Deli G targets the peak reactive demand of 1,546.8 kVAR to harmonize the field and reduce continuous reactive circulation.",
+      "pattern_part3": "Expected result is improved field efficiency, lower waste, and annual value potential of about $130130 for this transformer.",
+      "pattern_summary": [
+        "Power factor (avg): 0.866",
+        "Avg / Peak load: 670.81 kVA (26.8%) / 1,954.84 kVA (78.2%)",
+        "Energy / Waste: 403,388.39 kWh / 47,270.17 kWh",
+        "Reactive demand: 1,546.8 kVAR max (avg 299.1 kVAR/hr)",
+        "Unity value potential: ~$130130/year"
+      ],
+      "pattern_interpretation": "Welcome. I'm Unity. This is the current state for Deli G. Average power factor is 0.866. Average load is 670.81 kVA with peak load at 1,954.84 kVA. Measured energy for the period is 403,388.39 kWh with 47,270.17 kWh of reactive waste.\n\nUnity MPTS strategy for Deli G targets the peak reactive demand of 1,546.8 kVAR to harmonize the field and reduce continuous reactive circulation.\n\nExpected result is improved field efficiency, lower waste, and annual value potential of about $130130 for this transformer."
+    }
+  }
+}

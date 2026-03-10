@@ -1,0 +1,15 @@
+Welcome. I'm Unity.
+
+This is your February 2026 electrical energy overview for the Foster Farms Livingston Deli Group.
+
+You're operating two transformers here, with five thousand kVA of installed capacity, analyzed at one-minute resolution over twenty-eight days.
+
+Deli F is running at about eighty-seven percent power factor. Average load is roughly eight hundred ninety-six kVA, with peak reactive demand reaching about sixteen hundred sixty kVAR. Current annual value recovery potential is approximately one hundred eighty-one thousand dollars.
+
+Deli G is also near eighty-seven percent power factor, with average load around six hundred seventy-one kVA and peak reactive demand near fifteen hundred forty-seven kVAR. Annual value recovery potential is approximately one hundred thirty thousand dollars.
+
+Across the full Deli Group, field efficiency is stable but still carrying continuous reactive waste. Your combined opportunity is about three hundred eleven thousand dollars per year, with clear upside from harmonization and targeted MPTS deployment.
+
+Use each transformer card below to open baseline patterns, MPTS simulations, and full Unity analysis detail.
+
+That's your Deli Group at a glance.

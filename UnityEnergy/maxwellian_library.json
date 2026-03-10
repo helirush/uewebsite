@@ -2,7 +2,7 @@
   "library": {
     "name": "Maxwellian Intelligence Brief Library",
     "description": "Strategic intelligence briefings published by Oliver.h1.mib and edited by Clerk Maxwell for Unity Energy leadership.",
-    "last_updated": "2026-03-09"
+    "last_updated": "2026-03-10"
   },
   "episodes": [
     {
@@ -94,6 +94,37 @@
       "brief_file": "maxwellian/briefs/EP05_MIB_Florida_Utilities_260308.html",
       "audio_file": "maxwellian/audio/EP05_Unity_Summary.mp3",
       "audio_summary": "Episode 5 is a complete Florida utility intelligence study covering all three utility types: investor-owned, municipal, and cooperative — published March 8th, 2026. Florida is a fully regulated state. The Florida Public Service Commission controls investor-owned utility rates, which means no retail competition but consistent, predictable rate structures that make Unity's ROI calculations clean and reliable. The study identifies the Florida cooperative territories as Priority 1 Unity targets — particularly those serving cold storage, citrus processing, and phosphate mining operations where motor loads run at high duty cycles year-round. Clerk Maxwell's editorial this week addresses why Florida's subtropical climate makes reactive energy a structural feature of the system, not a seasonal problem. When cooling runs ten months a year and motors never fully rest, the reactive energy demand is constant. Every month is a Unity opportunity. The brief also covers the municipal utilities — JEA, OUC, Lakeland Electric, and GRU — and maps industrial load concentrations by county across the state. The ranked candidate assessment at the close identifies the highest-value co-op and municipal territories for Unity's first Florida deployments."
+    }
+  ],
+  "ops_handoffs": [
+    {
+      "handoff_id": "LIV-STD-20260310-01",
+      "date": "2026-03-10",
+      "scope": "Livingston Site standardization across January/February 2026 with Deli as active implementation path",
+      "completed": [
+        "Deli February Study260309r0 deployed into eWebmaster at Customers/FosterFarms/Livingston_SIte/Deli/02_FEB26.",
+        "Livingston site index updated: Deli February entry moved from Study Pending to Study Ready.",
+        "Deli split-view parity completed: Energy/Heat/Volt triplet layout standardized and validated.",
+        "Return-to-summary split-view 404 fixed through summary query param wiring and back-navigation fallback logic.",
+        "January Deli title aligned to February naming: LIVINGSTON HQ, DELI GROUP - 480V ELECTRICAL ENERGY SUMMARY.",
+        "February Deli summaryboard top navigation links corrected for nested path depth (site and Unity home).",
+        "Summaryboard template persistence implemented via SITE_HOME_PATH placeholder and renderer path derivation."
+      ],
+      "template_changes": [
+        "dashboard/templates/eUnitySummaryboard.html",
+        "dashboard/templates/eUnitySummaryboard_energy.html",
+        "dashboard/templates/eUnitySplitView.html",
+        "dashboard/templates/eUnitySplitView_Energy.html",
+        "dashboard/templates/eUnitySplitView_Volt.html",
+        "dashboard/working_renderer.py",
+        "dashboard/generate_splitviews.py"
+      ],
+      "pending_focus": [
+        "Standardize Livingston Rendering and NCDC January/February parity to match Deli consistency level.",
+        "Prepare unified Livingston 3-group webmaster update package.",
+        "Generate and wire Unity MP3 assets (site overview + transformer brief/explains/howto) where missing."
+      ],
+      "next_terminal_start": "Continue from Livingston 3-group Jan/Feb standardization and webmaster prep, then complete Unity audio pass."
     }
   ]
 }

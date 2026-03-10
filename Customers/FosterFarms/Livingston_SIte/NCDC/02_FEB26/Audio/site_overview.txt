@@ -1,0 +1,19 @@
+Welcome. I'm Unity.
+
+This is your February 2026 electrical energy overview for the Foster Farms Livingston NCDC Group.
+
+You're operating three transformers in this group, with seven thousand five hundred kVA of installed capacity, analyzed at one-minute resolution over twenty-eight days.
+
+NCDC1 is running at approximately eighty-three point seven percent power factor, with reactive waste near seventy-eight kilowatts.
+
+NCDC2 is your strongest performer at approximately ninety-two point two percent power factor, with reactive waste around forty-six kilowatts.
+
+NCDC3 is running near eighty-six point six percent power factor, with reactive waste around sixty-three kilowatts.
+
+At group level, the NCDC field is stable overall, but still carrying measurable continuous reactive load. Combined reactive waste is about one hundred eighty-six kilowatts, representing roughly forty-one dollars per hour in avoidable loss.
+
+The next step is targeted harmonization to reduce waste flow, improve electrical headroom, and increase operating efficiency.
+
+Use the transformer cards below for each baseline profile, MPTS simulation, and full Unity analysis.
+
+That's your NCDC Group at a glance.

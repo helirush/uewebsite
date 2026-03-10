@@ -93,7 +93,7 @@
         .hero::before {
             content: '';
             position: absolute;
-            top: 0;
+            top: 50;
             left: 0;
             right: 0;
             bottom: 0;
@@ -121,7 +121,7 @@
             z-index: 1;
             text-align: center;
             max-width: 1500px;
-            padding: 60px 40px;
+            padding: 20px 40px;
         }
 
         .hero h1 {
@@ -215,13 +215,13 @@
         }
 
         section {
-            margin: 60px 0;
+            margin: 40px 0;
         }
 
         .section-title {
             font-size: 2.2em;
             color: rgba(204, 0, 0, 1);
-            margin-bottom: 30px;
+            margin-bottom: 10px;
             text-align: center;
             font-weight: 700;
         }
@@ -429,9 +429,81 @@
             list-style: none;
             display: flex;
             align-items: center;
+            justify-content: flex-start;
             gap: 10px;
             letter-spacing: 0.3px;
             box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+        }
+
+        .group-summary-name {
+            font-size: 1.05em;
+            font-weight: 800;
+            color: rgba(50, 50, 50, 1);
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            white-space: nowrap;
+        }
+
+        .group-summary-eff {
+            margin-left: 14px;
+            min-width: 148px;
+            text-align: center;
+            padding: 4px 14px;
+            border-radius: 16px;
+            border: 1px solid rgba(170, 120, 0, 0.8);
+            background: linear-gradient(135deg, rgba(204, 146, 0, 1) 0%, rgba(192, 132, 0, 1) 100%);
+            color: rgba(255, 255, 0, 1);
+            font-style: italic;
+            font-weight: 800;
+            font-size: 1.65em;
+            line-height: 1.1;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+        }
+
+        .group-summary-eff.state-critical {
+            border-color: rgba(137, 0, 0, 0.95);
+            background: linear-gradient(135deg, rgba(216, 48, 48, 1) 0%, rgba(167, 34, 34, 1) 100%);
+            color: rgba(255, 255, 255, 1);
+        }
+
+        .group-summary-eff.state-warning {
+            border-color: rgba(160, 97, 0, 0.95);
+            background: linear-gradient(135deg, rgba(245, 158, 11, 1) 0%, rgba(217, 119, 6, 1) 100%);
+            color: rgba(20, 20, 20, 1);
+        }
+
+        .group-summary-eff.state-poor {
+            border-color: rgba(165, 121, 0, 0.95);
+            background: linear-gradient(135deg, rgb(255, 250, 200) 0%, rgb(255, 230, 0) 100%);
+            color: rgba(25, 25, 25, 1);
+        }
+
+        .group-summary-eff.state-good {
+            border-color: rgba(20, 116, 70, 0.95);
+            background: linear-gradient(135deg, rgb(170, 221, 139) 0%, rgb(57, 136, 5) 100%);
+            color: rgba(255, 255, 255, 1);
+        }
+
+        .group-summary-eff.state-clean {
+            border-color: rgba(30, 64, 175, 0.95);
+            background: linear-gradient(135deg, rgba(59, 130, 246, 1) 0%, rgba(37, 99, 235, 1) 100%);
+            color: rgba(255, 255, 255, 1);
+        }
+
+        .group-summary-eff.state-unavailable {
+            border-color: rgba(90, 90, 90, 0.95);
+            background: linear-gradient(135deg, rgba(120, 120, 120, 1) 0%, rgba(90, 90, 90, 1) 100%);
+            color: rgba(245, 245, 245, 1);
+        }
+
+        .group-summary-meta {
+            margin-left: 5px;
+            color: rgba(0, 0, 0, 1);
+            font-style: italic;
+            font-weight: 500;
+            font-size: 1.40em;
+            line-height: 1.1;
+            white-space: nowrap;
         }
 
         details summary::-webkit-details-marker {
@@ -592,7 +664,7 @@
             font-size: 1.4em;
             font-weight: 600;
             font-style: italic;
-            margin-bottom: 15px;
+            margin-bottom: 0px;
             line-height: 1.3;
         }
 
@@ -615,6 +687,14 @@
             }
             .library-section {
                 padding: 30px 20px;
+            }
+            .group-summary-name,
+            .group-summary-meta {
+                white-space: normal;
+            }
+            .group-summary-eff {
+                min-width: 110px;
+                font-size: 1.3em;
             }
             .study-list {
                 grid-template-columns: 1fr;
@@ -692,14 +772,14 @@
 
             <div class="highlights">
                 <div class="highlight-card">
-                    <div class="number">34 Total</div>
+                    <div class="number">34 - Total</div>
                     <h3>Electrical Energy Fields</h3>
                     <div class="tech-detail">34x 480v3ph industrial transfomers</div>
                 </div>
                 <div class="highlight-card">
-                    <div class="number">8 Energy Fields</div>
+                    <div class="number">8 - Measured</div>
                     <h3>High-Resolution Monitoring</h3>
-                    <div class="tech-detail">8 of 34 Fields (24% of Site)</div>
+                    <div class="tech-detail">8 of 34 Energy Fields (24% of Site)</div>
                 </div>
             </div>
         </section>
@@ -711,10 +791,14 @@
                     <h2 class="library-title">📊 Livingston Site Transformer Groups</h2>
                     
                     <!-- DELI Plant Area -->
-                    <details>
-                        <summary>DELI (2x 2500kVA)</summary>
+                    <details class="group-section" data-group-code="deli">
+                        <summary data-group-name="DELI GROUP" data-transformer-spec="2x 2500kVA">
+                            <span class="group-summary-name">DELI GROUP (2x 2500kVA)</span>
+                            <span class="group-summary-eff">--.-%</span>
+                            <span class="group-summary-meta">Group Efficiency - loading...</span>
+                        </summary>
                         <div class="study-list">
-                            <div class="study-item placeholder">
+                            <div class="study-item">
                                 <div class="study-info">
                                     <div class="study-name">January 2026</div>
                                     <div class="study-period">31-day Full Analysis • 1minRES</div>
@@ -727,14 +811,18 @@
                                     <div class="study-name">February 2026</div>
                                     <div class="study-period">Monthly Full Analysis • 1minRES</div>
                                 </div>
-                                <span class="study-btn disabled">Study Pending</span>
+<a class="study-btn" href="Deli/02_FEB26/SITE-FosterFarms-Summaryboard_FosterFarms-2_1minRES_260201-260228_28d.html">Study Ready</a>
                             </div>
                         </div>
                     </details>
 
                     <!-- RENDERING Plant Area -->
-                    <details>
-                        <summary>RENDERING (3x 2500kVA)</summary>
+                    <details class="group-section" data-group-code="rendering">
+                        <summary data-group-name="RENDERING GROUP" data-transformer-spec="3x 2500kVA">
+                            <span class="group-summary-name">RENDERING GROUP (3x 2500kVA)</span>
+                            <span class="group-summary-eff">--.-%</span>
+                            <span class="group-summary-meta">Group Efficiency - loading...</span>
+                        </summary>
                         <div class="study-list">
                             <div class="study-item">
                                 <div class="study-info">
@@ -755,8 +843,12 @@
                     </details>
 
                     <!-- NCDC Plant Area -->
-                    <details>
-                        <summary>NCDC (1x 2500kVA + 2x 3000kVA)</summary>
+                    <details class="group-section" data-group-code="ncdc">
+                        <summary data-group-name="NCDC GROUP" data-transformer-spec="1x 2500kVA + 2x 3000kVA">
+                            <span class="group-summary-name">NCDC GROUP (1x 2500kVA + 2x 3000kVA)</span>
+                            <span class="group-summary-eff">--.-%</span>
+                            <span class="group-summary-meta">Group Efficiency - loading...</span>
+                        </summary>
                         <div class="study-list">
                             <div class="study-item">
                                 <div class="study-info">
@@ -771,7 +863,7 @@
                                     <div class="study-name">February 2026</div>
                                     <div class="study-period">Monthly Full Analysis • 1minRES</div>
                                 </div>
-                                <span class="study-btn disabled">Study Pending</span>
+<a class="study-btn" href="NCDC/02_FEB26/SITE-FosterFarms-Summaryboard_FosterFarms-3_1minRES_260201-260228_28d.html">Study Ready</a>
                             </div>
                         </div>
                     </details>
@@ -815,12 +907,227 @@
     </footer>
 
     <script>
+        const MONTH_INDEX = {
+            jan: 0,
+            feb: 1,
+            mar: 2,
+            apr: 3,
+            may: 4,
+            jun: 5,
+            jul: 6,
+            aug: 7,
+            sep: 8,
+            oct: 9,
+            nov: 10,
+            dec: 11
+        };
+
+        const GROUP_EFF_STATE_CLASSES = [
+            'state-critical',
+            'state-warning',
+            'state-poor',
+            'state-good',
+            'state-clean',
+            'state-unavailable'
+        ];
+
+        function normalizePfPercent(value) {
+            const numeric = Number(value);
+            if (!Number.isFinite(numeric) || numeric <= 0) return null;
+            const pct = numeric <= 1 ? numeric * 100 : numeric;
+            return Math.max(0, Math.min(100, pct));
+        }
+
+        function setGroupEfficiencyStateClass(effEl, stateKey) {
+            if (!effEl) return;
+            effEl.classList.remove(...GROUP_EFF_STATE_CLASSES);
+            if (stateKey) effEl.classList.add(`state-${stateKey}`);
+        }
+
+        function classifyGroupStateFromPfPercent(pfPercent) {
+            const normalizedPfPct = normalizePfPercent(pfPercent);
+            if (normalizedPfPct === null) {
+                return { key: 'unavailable', label: 'UNAVAILABLE', activePct: null };
+            }
+
+            const pf = normalizedPfPct / 100;
+            const reactiveComponent = Math.sqrt(Math.max(0, 1 - (pf * pf)));
+            const sum = pf + reactiveComponent;
+            const activePct = sum > 0 ? (pf / sum) * 100 : null;
+
+            if (activePct === null) return { key: 'unavailable', label: 'UNAVAILABLE', activePct: null };
+            if (activePct < 52) return { key: 'critical', label: 'CRITICAL', activePct };
+            if (activePct < 57) return { key: 'warning', label: 'WARNING', activePct };
+            if (activePct < 62) return { key: 'poor', label: 'POOR', activePct };
+            if (activePct <= 72) return { key: 'good', label: 'GOOD', activePct };
+            return { key: 'clean', label: 'CLEAN', activePct };
+        }
+
+        function parseStudyDate(studyName, href) {
+            const rawName = String(studyName || '').trim();
+            const monthYearMatch = rawName.match(/([A-Za-z]{3,9})\s+(\d{4})/);
+            if (monthYearMatch) {
+                const monthKey = monthYearMatch[1].slice(0, 3).toLowerCase();
+                const yearNum = parseInt(monthYearMatch[2], 10);
+                if (MONTH_INDEX[monthKey] != null && Number.isFinite(yearNum)) {
+                    return {
+                        sortValue: new Date(yearNum, MONTH_INDEX[monthKey], 1).getTime(),
+                        token: `${monthKey}${yearNum}`
+                    };
+                }
+            }
+
+            const hrefMatch = String(href || '').match(/\/(\d{2})_[A-Za-z]{3}(\d{2})\//);
+            if (hrefMatch) {
+                const monthNum = parseInt(hrefMatch[1], 10);
+                const yearNum = 2000 + parseInt(hrefMatch[2], 10);
+                if (monthNum >= 1 && monthNum <= 12) {
+                    const monthKey = Object.keys(MONTH_INDEX).find((key) => MONTH_INDEX[key] === (monthNum - 1)) || 'unk';
+                    return {
+                        sortValue: new Date(yearNum, monthNum - 1, 1).getTime(),
+                        token: `${monthKey}${yearNum}`
+                    };
+                }
+            }
+
+            return {
+                sortValue: Number.NEGATIVE_INFINITY,
+                token: 'unknown'
+            };
+        }
+
+        function findLatestStudy(groupSection) {
+            if (!groupSection) return null;
+
+            let latest = null;
+            const links = groupSection.querySelectorAll('.study-item .study-btn[href]');
+            links.forEach((link) => {
+                const href = link.getAttribute('href') || '';
+                if (!href || href === '#') return;
+
+                const studyItem = link.closest('.study-item');
+                const studyName = studyItem?.querySelector('.study-name')?.textContent || '';
+                const parsed = parseStudyDate(studyName, href);
+
+                if (!latest || parsed.sortValue > latest.sortValue) {
+                    latest = {
+                        href,
+                        sortValue: parsed.sortValue,
+                        token: parsed.token
+                    };
+                }
+            });
+
+            return latest;
+        }
+
+        function parsePfValuesFromHtml(htmlText) {
+            const pfValues = [];
+
+            try {
+                const doc = new DOMParser().parseFromString(String(htmlText || ''), 'text/html');
+                const pfNodes = doc.querySelectorAll('[id$="-metric-pf"]');
+                pfNodes.forEach((node) => {
+                    const match = String(node.textContent || '').match(/([0-9.]+)/);
+                    if (!match) return;
+                    const normalized = normalizePfPercent(parseFloat(match[1]));
+                    if (normalized !== null) pfValues.push(normalized);
+                });
+
+                if (pfValues.length > 0) return pfValues;
+            } catch (e) {}
+
+            const patternSummaryRegex = /Power\s*factor\s*\(avg\)\s*:\s*([0-9.]+)/ig;
+            let summaryMatch;
+            while ((summaryMatch = patternSummaryRegex.exec(String(htmlText || ''))) !== null) {
+                const normalized = normalizePfPercent(parseFloat(summaryMatch[1]));
+                if (normalized !== null) pfValues.push(normalized);
+            }
+
+            if (pfValues.length > 0) return pfValues;
+
+            const pfIdRegex = /id\s*=\s*["'][^"']*-metric-pf["'][^>]*>\s*([0-9.]+)\s*%?/ig;
+            let idMatch;
+            while ((idMatch = pfIdRegex.exec(String(htmlText || ''))) !== null) {
+                const normalized = normalizePfPercent(parseFloat(idMatch[1]));
+                if (normalized !== null) pfValues.push(normalized);
+            }
+
+            return pfValues;
+        }
+
+        async function fetchGroupEfficiencyPercent(studyHref) {
+            const resolvedUrl = new URL(studyHref, window.location.href).toString();
+            const response = await fetch(resolvedUrl, { cache: 'no-store' });
+            if (!response.ok) {
+                throw new Error(`Failed to read study (${response.status})`);
+            }
+
+            const htmlText = await response.text();
+            const pfValues = parsePfValuesFromHtml(htmlText);
+            if (!pfValues.length) {
+                throw new Error('No PF values found in study');
+            }
+
+            const avg = pfValues.reduce((sum, n) => sum + n, 0) / pfValues.length;
+            return avg;
+        }
+
+        async function updateGroupSummary(section) {
+            const summary = section?.querySelector('summary');
+            if (!summary) return;
+
+            const nameEl = summary.querySelector('.group-summary-name');
+            const effEl = summary.querySelector('.group-summary-eff');
+            const metaEl = summary.querySelector('.group-summary-meta');
+
+            const groupName = String(summary.dataset.groupName || '').trim();
+            const transformerSpec = String(summary.dataset.transformerSpec || '').trim();
+            if (nameEl && groupName) {
+                nameEl.textContent = transformerSpec ? `${groupName} (${transformerSpec})` : groupName;
+            }
+
+            setGroupEfficiencyStateClass(effEl, null);
+
+            const latestStudy = findLatestStudy(section);
+            if (!latestStudy) {
+                if (effEl) effEl.textContent = '--.-%';
+                setGroupEfficiencyStateClass(effEl, 'unavailable');
+                if (metaEl) metaEl.textContent = 'Group Efficiency - unavailable';
+                return;
+            }
+
+            if (metaEl) metaEl.textContent = `Group Efficiency - ${latestStudy.token}`;
+
+            try {
+                const efficiencyPct = await fetchGroupEfficiencyPercent(latestStudy.href);
+                const state = classifyGroupStateFromPfPercent(efficiencyPct);
+                if (effEl) {
+                    effEl.textContent = `${efficiencyPct.toFixed(1)}%`;
+                    setGroupEfficiencyStateClass(effEl, state.key);
+                    effEl.title = state.activePct == null
+                        ? state.label
+                        : `${state.label} (${state.activePct.toFixed(1)}% active)`;
+                }
+            } catch (e) {
+                if (effEl) effEl.textContent = '--.-%';
+                setGroupEfficiencyStateClass(effEl, 'unavailable');
+                if (metaEl) metaEl.textContent = `Group Efficiency - ${latestStudy.token}`;
+            }
+        }
+
+        async function updateAllGroupSummaries() {
+            const groupSections = document.querySelectorAll('.group-section');
+            await Promise.all(Array.from(groupSections).map(updateGroupSummary));
+        }
         // Offset the right chicken video so they're not synchronized
         document.addEventListener('DOMContentLoaded', function() {
             const chickenRight = document.getElementById('chickenRight');
             if (chickenRight) {
                 chickenRight.currentTime = 5; // offset by 5 seconds
             }
+
+            updateAllGroupSummaries().catch(() => {});
 
             // Persist scroll position when launching a study, so "Return" lands back at the same frame.
             // (This avoids having to scroll back down to the Energy Behavior Library each time.)

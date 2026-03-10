@@ -99,9 +99,9 @@
             bottom: 0;
             background-image: url('cherryave-site-hero.png');
             background-size: 100%;
-            background-position: center 20%;
+            background-position: center 10%;
             background-repeat: no-repeat;
-            opacity: 0.8;
+            opacity: 0.7;
             z-index: 0;
         }
         
@@ -120,8 +120,8 @@
             position: relative;
             z-index: 1;
             text-align: center;
-            max-width: 1200px;
-            padding: 60px 40px;
+            max-width: 1500px;
+            padding: 20px 40px;
         }
 
         .hero h1 {
@@ -252,13 +252,13 @@
         }
 
         section {
-            margin: 60px 0;
+            margin: 30px 0;
         }
 
         .section-title {
             font-size: 2.2em;
             color: rgba(204, 0, 0, 1);
-            margin-bottom: 30px;
+            margin-bottom: 10px;
             text-align: center;
             font-weight: 700;
         }
@@ -278,11 +278,21 @@
         }
 
         .welcome-text {
-            font-size: 1.4em;
+            font-size: 1.1em;
             color: rgba(85, 85, 85, 1);
             line-height: 1.8;
-            margin-bottom: 40px;
+            margin-bottom: 20px;
             text-align: justify;
+            max-width: 1100px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .welcome-text1 {
+            font-size: 1.1em;
+            color: rgba(85, 85, 85, 1);
+            line-height: 1.8;
+            margin-bottom: 20px;
+            text-align: center;
             max-width: 1100px;
             margin-left: auto;
             margin-right: auto;
@@ -457,7 +467,7 @@
 
         .libraries-container {
             display: grid;
-            grid-template-columns: 1fr 1fr;
+            grid-template-columns: 1fr;
             gap: 30px;
             margin: 40px 0;
         }
@@ -478,42 +488,112 @@
             text-align: center;
         }
 
-        .library-category {
-            margin: 20px 0;
-        }
-
-        .category-title {
-            font-size: 1.3em;
-            color: rgba(204, 0, 0, 1);
-            margin-bottom: 15px;
-            font-weight: 600;
-        }
-
-        /* Collapsible dropdown styling (match Livingston look/feel) */
+        /* Collapsible dropdown styling */
         details {
             margin: 18px 0;
             padding: 6px;
-            border: 1px solid rgba(0, 0, 0, 0.06); /* very light border around the primary category */
+            border: 2px solid rgba(200, 180, 100, 0.4);
             border-radius: 12px;
-            background: rgba(255, 255, 255, 0.55);
+            background: rgba(245, 243, 238, 1);
         }
 
         details summary {
             cursor: pointer;
             padding: 15px 20px;
-            background: rgba(248, 249, 250, 1);
+            background: linear-gradient(90deg, rgba(255, 230, 150, 0.5) 0%, rgba(248, 249, 250, 1) 25%, rgba(248, 249, 250, 1) 100%);
             border-radius: 10px;
-            border-left: 5px solid rgba(255, 215, 0, 1);
-            border: 1px solid rgba(0, 0, 0, 0.05);
+            border-left: 5px solid rgba(204, 170, 0, 1);
+            border-top: 1px solid rgba(200, 180, 100, 0.3);
+            border-right: 1px solid rgba(200, 180, 100, 0.3);
+            border-bottom: 1px solid rgba(200, 180, 100, 0.3);
             font-size: 1.15em;
             font-weight: 800;
-            color: rgba(75, 75, 75, 1); /* reads as a CATEGORY header */
+            color: rgba(60, 60, 60, 1);
             transition: all 0.3s;
             list-style: none;
             display: flex;
             align-items: center;
+            justify-content: flex-start;
             gap: 10px;
             letter-spacing: 0.3px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+        }
+
+        .site-summary-name {
+            font-size: 1.05em;
+            font-weight: 800;
+            color: rgba(50, 50, 50, 1);
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            white-space: nowrap;
+        }
+
+        .site-summary-eff {
+            margin-left: 14px;
+            min-width: 148px;
+            text-align: center;
+            padding: 4px 14px;
+            border-radius: 16px;
+            border: 1px solid rgba(170, 120, 0, 0.8);
+            background: linear-gradient(135deg, rgba(204, 146, 0, 1) 0%, rgba(192, 132, 0, 1) 100%);
+            color: rgba(255, 255, 0, 1);
+            font-style: italic;
+            font-weight: 800;
+            font-size: 1.65em;
+            line-height: 1.1;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+        }
+
+        .site-summary-eff.state-critical {
+            border-color: rgba(137, 0, 0, 0.95);
+            background: linear-gradient(135deg, rgba(216, 48, 48, 1) 0%, rgba(167, 34, 34, 1) 100%);
+            color: rgba(255, 255, 255, 1);
+        }
+
+        .site-summary-eff.state-warning {
+            border-color: rgba(160, 97, 0, 0.95);
+            background: linear-gradient(135deg, rgba(245, 158, 11, 1) 0%, rgba(217, 119, 6, 1) 100%);
+            color: rgba(20, 20, 20, 1);
+        }
+
+        .site-summary-eff.state-poor {
+            border-color: rgba(165, 121, 0, 0.95);
+            background: linear-gradient(135deg, rgb(255, 250, 200) 0%, rgb(255, 230, 0) 100%);
+            color: rgba(25, 25, 25, 1);
+        }
+
+        .site-summary-eff.state-good {
+            border-color: rgba(20, 116, 70, 0.95);
+            background: linear-gradient(135deg, rgb(170, 221, 139) 0%, rgb(57, 136, 5) 100%);
+            color: rgba(255, 255, 255, 1);
+        }
+
+        .site-summary-eff.state-clean {
+            border-color: rgba(30, 64, 175, 0.95);
+            background: linear-gradient(135deg, rgba(59, 130, 246, 1) 0%, rgba(37, 99, 235, 1) 100%);
+            color: rgba(255, 255, 255, 1);
+        }
+
+        .site-summary-eff.state-unavailable {
+            border-color: rgba(90, 90, 90, 0.95);
+            background: linear-gradient(135deg, rgba(120, 120, 120, 1) 0%, rgba(90, 90, 90, 1) 100%);
+            color: rgba(245, 245, 245, 1);
+        }
+
+        .site-summary-meta {
+            margin-left: 5px;
+            color: rgba(0, 0, 0, 1);
+            font-style: italic;
+            font-weight: 500;
+            font-size: 1.2em;
+            line-height: 1.1;
+            white-space: nowrap;
+        }
+
+        .site-month {
+            margin: 12px 0;
+            border-color: rgba(200, 180, 100, 0.3);
+            background: rgba(255, 255, 255, 0.7);
         }
 
         details summary::-webkit-details-marker {
@@ -543,8 +623,33 @@
 
         .study-list {
             display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
             gap: 15px;
-            padding-left: 18px; /* slight indent so MONTH rows read as children of the category */
+            padding-left: 18px;
+        }
+
+        .month-study-list {
+            grid-template-columns: 1fr;
+            padding-left: 10px;
+        }
+
+        .study-item.placeholder {
+            background: rgba(248, 249, 250, 1);
+            border-left-color: rgba(160, 160, 160, 0.55);
+        }
+
+        .study-item.placeholder .study-name {
+            color: rgba(120, 120, 120, 1);
+        }
+
+        .study-item.placeholder .study-period {
+            color: rgba(140, 140, 140, 1);
+        }
+
+        .study-item.placeholder:hover {
+            background: rgba(248, 249, 250, 1);
+            transform: none;
+            box-shadow: none;
         }
 
         .study-item {
@@ -595,10 +700,24 @@
             font-size: 0.9em;
         }
 
+        .study-btn.disabled {
+            background: rgba(153, 153, 153, 1);
+            border: 2px solid rgba(120, 120, 120, 1);
+            cursor: default;
+            pointer-events: none;
+            box-shadow: none;
+            transform: none;
+        }
+
         .study-btn:hover {
             background: rgba(139, 0, 0, 1);
             transform: translateY(-2px);
             box-shadow: 0 5px 15px rgba(204, 0, 0, 0.3);
+        }
+        .study-btn.disabled:hover {
+            background: rgba(153, 153, 153, 1);
+            transform: none;
+            box-shadow: none;
         }
 
         .placeholder-text {
@@ -640,8 +759,18 @@
             .library-section {
                 padding: 30px 20px;
             }
+            .site-summary-name,
+            .site-summary-meta {
+                white-space: normal;
+            }
+
+            .site-summary-eff {
+                min-width: 110px;
+                font-size: 1.3em;
+            }
 
             .study-list {
+                grid-template-columns: 1fr;
                 padding-left: 10px;
             }
 
@@ -672,10 +801,10 @@
     <div class="hero">
         <div class="hero-content">
             <p class="capacity-subtitle">480v Industrial Electricity Data</p>
-            <h1>ENERGY BEHAVIOR WASTE</h1>
-            <p class="capacity-subtitle2">System losses caused from the Poor Transfer of Electricity into Power</p>
-            <p class="capacity-subtitle1">SITE TOTAL CAPACITY : 10,500kVA (per hour)</p>
-            <p class="capacity-subtitle1">CONSUMED POWER : 3500kW (per hour)</p>
+            <h1>ELECTRICAL FIELD PERFORMANCE</h1>
+            <p class="capacity-subtitle2">Observed inefficiencies across Cherry Avenue’s 480V industrial field</p>
+            <p class="capacity-subtitle1">SITE CONNECTED CAPACITY : 10,500 kVA</p>
+            <p class="capacity-subtitle1">AVERAGE SITE CONSUMPTION : 3,500 kW</p>
         </div>
         <video class="hero-chicken-video hero-chicken-left" id="chickenLeft" muted loop autoplay playsinline>
             <source src="../ChickenFootball.mp4" type="video/mp4">
@@ -687,25 +816,22 @@
 
     <div class="container">
                 <section id="welcome">
-            <h2 class="section-title">Your Energy Field Journey Begins</h2>
+            <h2 class="section-title">Cherry Avenue Facility Overview</h2>
             
             <p class="welcome-text">
-                At Unity Energy, we specialize in analyzing the electrical systems that power your operations. 
-                We've been studying your Foster Farms site at Cherry Avenue, since May 2024, and we're excited to share what 
-                we've discovered about your industrial electricity patterns and what the value of harmonizing each 
-                of your four (4) 480v Electrical Energy Fields (T10, T12, T15 and T16)
+                The Cherry Avenue facility is one of Foster Farms’ monitored operating sites in California’s Central Valley. 
+                Unity Energy has been studying this site since May 2024 to observe electrical loading, field efficiency, 
+                thermal burden, and voltage behavior across its four primary 480V transformer fields. Refered to as : T10, T12, T15 and T16
             </p>
 
-            <p class="welcome-text">
-                This interactive analysis platform gives you unprecedented insight into how your transformers, 
-                chillers, compressors, and other equipment are operating. You'll see energy consumption patterns, 
-                thermal behavior, and electrical characteristics in real-time, with actionable insights for optimization.
+            <p class="welcome-text1">
+                This page serves as the entry point to Cherry Avenue’s measured energy architecture.
             </p>
 
 
             <div class="highlights">
                 <div class="highlight-card">
-                    <div class="number">Eight (8) Total</div>
+                    <div class="number">8 - Total</div>
                     <h3>Electrical Energy Fields</h3>
                     <div class="tech-detail">4x 480v : 2x 4160v : 2x 208v</div>
                 </div>
@@ -715,18 +841,105 @@
                     <div class="tech-detail">4x 480v approx.80% site</div>
                 </div>
             </div>
+        </section>
 
-        <!-- Two-Column Libraries Layout -->
+        <!-- Livingston-Style Horizontal Library Flow -->
         <section id="libraries">
             <div class="libraries-container">
-                <!-- Left Column: Presentations Library -->
+                <div class="library-section">
+                    <h2 class="library-title">📊 Cherry Avenue Site Studies</h2>
+
+                    <details>
+                        <summary>Full Studies 2026</summary>
+                        <div class="study-list month-study-list">
+                            <details class="site-month">
+                                <summary>
+                                    <span class="site-summary-name">February 2026</span>
+                                    <span class="site-summary-eff state-unavailable">--.-%</span>
+                                    <span class="site-summary-meta">Site Efficiency - pending</span>
+                                </summary>
+                                <div class="study-list month-study-list">
+                                    <div class="study-item placeholder">
+                                        <div class="study-info">
+                                            <div class="study-name">February 2026 Site Summaryboard</div>
+                                            <div class="study-period">Monthly Full Site Analysis • pending release</div>
+                                        </div>
+                                        <a href="#" class="study-btn disabled">Pending</a>
+                                    </div>
+                                </div>
+                            </details>
+
+                            <details class="site-month">
+                                <summary>
+                                    <span class="site-summary-name">January 2026</span>
+                                    <span class="site-summary-eff state-good">84.7%</span>
+                                    <span class="site-summary-meta">Site Efficiency</span>
+                                </summary>
+                                <div class="study-list month-study-list">
+                                    <div class="study-item">
+                                        <div class="study-info">
+                                            <div class="study-name">January 2026 Site Summaryboard</div>
+                                            <div class="study-period">31-day Full Site Analysis • 1minRES</div>
+                                        </div>
+                                        <a href="./January_2026/SITE-FosterFarms-Summaryboard_FosterFarms-4_1minRES_260101-260131_31d.html" class="study-btn">Study Ready</a>
+                                    </div>
+                                </div>
+                            </details>
+                        </div>
+                    </details>
+
+                    <details>
+                        <summary>Full Studies 2025</summary>
+                        <div class="study-list month-study-list">
+                            <details class="site-month">
+                                <summary>
+                                    <span class="site-summary-name">November 2025</span>
+                                    <span class="site-summary-eff state-good">85.9%</span>
+                                    <span class="site-summary-meta">Site Efficiency</span>
+                                </summary>
+                                <div class="study-list month-study-list">
+                                    <div class="study-item">
+                                        <div class="study-info">
+                                            <div class="study-name">November 2025 Site Summaryboard</div>
+                                            <div class="study-period">30-day Full Site Analysis • 1minRES</div>
+                                        </div>
+                                        <a href="./November_2025/SITE-FosterFarms-Summaryboard_FosterFarms-4_1minRES_251101-251130_30d.html" class="study-btn">Study Ready</a>
+                                    </div>
+                                </div>
+                            </details>
+
+                            <details class="site-month">
+                                <summary>
+                                    <span class="site-summary-name">October 2025</span>
+                                    <span class="site-summary-eff state-good">86.9%</span>
+                                    <span class="site-summary-meta">Site Efficiency</span>
+                                </summary>
+                                <div class="study-list month-study-list">
+                                    <div class="study-item">
+                                        <div class="study-info">
+                                            <div class="study-name">October 2025 Site Summaryboard</div>
+                                            <div class="study-period">31-day Full Site Analysis • 1minRES</div>
+                                        </div>
+                                        <a href="./SITE-FosterFarms-Summaryboard_CherryAve-4_1minRES_251001-251031_31d.html" class="study-btn">Study Ready</a>
+                                    </div>
+                                </div>
+                            </details>
+                        </div>
+                    </details>
+
+                    <details>
+                        <summary>Partial Studies (Individual Transformers)</summary>
+                        <div class="placeholder-text">
+                            Partial transformer studies will appear here as monthly transformer-specific views are released.
+                        </div>
+                    </details>
+                </div>
+
                 <div class="library-section">
                     <h2 class="library-title">📑 Reference Library</h2>
-                    
-                    <!-- Collapsible Reference Documents -->
-                    <details open>
+                    <details>
                         <summary>Reference Documents</summary>
-                        <div class="study-list">
+                        <div class="study-list month-study-list">
                             <div class="study-item">
                                 <div class="study-info">
                                     <div class="study-name">eBRIEF - Saturation Study</div>
@@ -751,67 +964,23 @@
                         </div>
                     </details>
                 </div>
-
-                <!-- Right Column: Studies Library -->
-                <div class="library-section">
-                    <h2 class="library-title">📊 Energy Behavior Library</h2>
-                    
-                    <!-- Collapsible Full Site Studies -->
-                    <details open>
-                        <summary>Full Site Studies (All Transformers)</summary>
-                        <div class="study-list">
-                            <div class="study-item">
-                                <div class="study-info">
-                                    <div class="study-name">January 2026</div>
-                                    <div class="study-period">31-day Full Site Analysis</div>
-                                </div>
-                                <a href="./January_2026/SITE-FosterFarms-Summaryboard_FosterFarms-4_1minRES_260101-260131_31d.html" class="study-btn">View Study →</a>
-                            </div>
-                            <div class="study-item">
-                                <div class="study-info">
-                                    <div class="study-name">November 2025</div>
-                                    <div class="study-period">30-day Full Site Analysis</div>
-                                </div>
-                                <a href="./November_2025/SITE-FosterFarms-Summaryboard_FosterFarms-4_1minRES_251101-251130_30d.html" class="study-btn">View Study →</a>
-                            </div>
-                            <div class="study-item">
-                                <div class="study-info">
-                                    <div class="study-name">October 2025</div>
-                                    <div class="study-period">31-day Full Site Analysis</div>
-                                </div>
-                                <a href="./SITE-FosterFarms-Summaryboard_CherryAve-4_1minRES_251001-251031_31d.html" class="study-btn">View Study →</a>
-                            </div>
-                            <!-- Future full site studies will be added here -->
-                        </div>
-                    </details>
-
-                    <!-- Collapsible Partial Studies -->
-                    <details>
-                        <summary>Partial Studies (Individual Transformers)</summary>
-                        <div class="placeholder-text">
-                            Partial transformer studies coming soon...
-                        </div>
-                    </details>
-                </div>
             </div>
         </section>
 
-        </section>
-
         <section id="analysis">
-            <h2 class="section-title">What You'll Discover</h2>
+            <h2 class="section-title">What You'll Learn and Discover</h2>
             <div class="highlights">
                 <div class="highlight-card">
-                    <h3>⚡ Energy Consumption</h3>
-                    <p>Detailed patterns showing when and where your facility uses power</p>
+                    <h3>⚡ Energy Transfer</h3>
+                    <p>Measured patterns showing how effectively the site converts electrical input into usable work</p>
                 </div>
                 <div class="highlight-card">
-                    <h3>🔥 Thermal Analysis</h3>
-                    <p>Heat burden across transformers and cooling systems</p>
+                    <h3>🔥 Thermal Burden</h3>
+                    <p>Heat loading across transformers, conductors, and cooling-linked systems</p>
                 </div>
                 <div class="highlight-card">
-                    <h3>⚙️ Voltage Stability</h3>
-                    <p>Power quality metrics and electrical stability indicators</p>
+                    <h3>⚙️ Reactive Burden</h3>
+                    <p>Indicators of reactive loading, power quality stress, and field instability</p>
                 </div>
             </div>
         </section>
@@ -875,6 +1044,32 @@
         });
 
         // Offset the right chicken video so they're not synchronized
+        const CHERRY_RETURN_MODE_KEY = 'cherry_return_mode';
+        const CHERRY_RETURN_MODE_SECONDARY_HOME = 'secondary-home';
+        const SECONDARY_HOME_OFFSET_PX = 220;
+
+        function closeAllLibraryDetails() {
+            document.querySelectorAll('#libraries details[open]').forEach((detail) => {
+                detail.open = false;
+            });
+        }
+
+        function scrollToSecondaryHomePosition() {
+            const librariesSection = document.getElementById('libraries');
+            if (!librariesSection) return;
+
+            const sectionTop = librariesSection.getBoundingClientRect().top + window.scrollY;
+            const targetY = Math.max(0, sectionTop - SECONDARY_HOME_OFFSET_PX);
+
+            const doRestore = () => {
+                window.scrollTo({ top: targetY, left: 0, behavior: 'auto' });
+            };
+
+            requestAnimationFrame(doRestore);
+            setTimeout(doRestore, 0);
+            setTimeout(doRestore, 50);
+            setTimeout(doRestore, 250);
+        }
         document.addEventListener('DOMContentLoaded', function() {
             const chickenRight = document.getElementById('chickenRight');
             if (chickenRight) {
@@ -884,48 +1079,34 @@
                 });
             }
 
-            // Persist scroll position when launching a study so returning lands back at the same frame
-            // (Energy Behavior Library view), without re-scrolling every time.
-            document.querySelectorAll('a.study-btn[href]').forEach((link) => {
+            // Full-study links return to Cherry's secondary home position.
+            document.querySelectorAll('#libraries .library-section:first-child a.study-btn[href]:not(.disabled)').forEach((link) => {
                 link.addEventListener('click', () => {
                     try {
-                        sessionStorage.setItem('cherry_index_scrollY', String(window.scrollY || 0));
+                        sessionStorage.setItem(CHERRY_RETURN_MODE_KEY, CHERRY_RETURN_MODE_SECONDARY_HOME);
                     } catch (e) {
                         // ignore storage failures
                     }
                 });
             });
         });
-
-        // Restore scroll position when returning to this index page (works with bfcache).
-        const RETURN_OFFSET_PX = 80; // ~1 inch visual offset
+        // Restore to the secondary home position when returning from full studies.
         window.addEventListener('pageshow', () => {
-            let saved;
+            let returnMode;
             try {
-                saved = sessionStorage.getItem('cherry_index_scrollY');
+                returnMode = sessionStorage.getItem(CHERRY_RETURN_MODE_KEY);
             } catch (e) {
-                saved = null;
+                returnMode = null;
             }
+            if (returnMode !== CHERRY_RETURN_MODE_SECONDARY_HOME) return;
 
-            if (saved == null) return;
-            const y = Number(saved);
-            if (!Number.isFinite(y)) return;
+            try {
+                sessionStorage.removeItem(CHERRY_RETURN_MODE_KEY);
+                sessionStorage.removeItem('cherry_index_scrollY');
+            } catch (e) {}
 
-            // Clear immediately so stale values don't interfere with later browsing.
-            try { sessionStorage.removeItem('cherry_index_scrollY'); } catch (e) {}
-
-            const targetY = Math.max(0, y + RETURN_OFFSET_PX);
-
-            // Some browsers apply the native #hash anchor scroll after pageshow.
-            // Retry a few times to ensure we land back at the exact prior frame.
-            const doRestore = () => {
-                window.scrollTo({ top: targetY, left: 0, behavior: 'auto' });
-            };
-
-            requestAnimationFrame(doRestore);
-            setTimeout(doRestore, 0);
-            setTimeout(doRestore, 50);
-            setTimeout(doRestore, 250);
+            closeAllLibraryDetails();
+            scrollToSecondaryHomePosition();
         });
     </script>
 </body>

@@ -561,6 +561,10 @@
             <div class="sites-grid">
 
                 <!-- Livingston Site -->
+                <!-- MAINTENANCE RULE (Livingston):
+                     Whenever any Livingston group study links are updated (Deli/Rendering/NCDC),
+                     verify this front card’s combined/high/low efficiency is refreshed from the latest
+                     group Summaryboards via updateLivingstonCard(). -->
                 <a href="./Livingston_SIte/index.html" class="site-card">
                     <div class="site-header">
                         <div class="site-name">Livingston HQ</div>
@@ -685,6 +689,9 @@
             // Dynamically compute Livingston combined efficiency from each unit group's
             // latest available Summaryboard. Only named transformer slots are counted
             // (empty xfmr-name = unused template slot, excluded).
+            // PROCESS NOTE: when Livingston group studies are advanced to a new month,
+            // keep Livingston_SIte/index.html study links current so this front-door card
+            // recalculates combined/high/low from the newest active studies.
             const pfEl   = document.getElementById('livingston-card-pf');
             const highEl = document.getElementById('livingston-card-high');
             const lowEl  = document.getElementById('livingston-card-low');
@@ -743,7 +750,7 @@
         async function updateCherryAveCard() {
             // Keep the Foster Farms portal card in-sync with the Cherry Ave site index.
             // Source of truth: `Customers/FosterFarms/CherryAve_Site/index.html`
-            // - Latest month = first entry in "Full Site Studies"
+            // - Latest month = first active full-study entry (supports year-split blocks)
             // - PF = average of transformer PFs pulled from that month’s Summaryboard
             const pfEl = document.getElementById('cherry-card-pf');
             const reportNameEl = document.getElementById('cherry-card-report-name');
@@ -758,16 +765,32 @@
                 const indexHtml = await indexRes.text();
                 const indexDoc = new DOMParser().parseFromString(indexHtml, 'text/html');
 
-                // Find the "Full Site Studies" block
-                const fullSiteDetails = Array.from(indexDoc.querySelectorAll('details')).find((d) => {
+                // Collect full-study containers from both legacy and current structures.
+                const fullStudyBlocks = Array.from(indexDoc.querySelectorAll('details')).filter((d) => {
                     const s = (d.querySelector('summary')?.textContent || '').toLowerCase();
-                    return s.includes('full site studies');
+                    return s.includes('full site studies') || s.includes('full studies');
                 });
 
-                const firstItem = fullSiteDetails?.querySelector('.study-item');
-                const monthText = firstItem?.querySelector('.study-name')?.textContent?.trim();
-                const periodTextRaw = firstItem?.querySelector('.study-period')?.textContent?.trim();
-                const hrefRaw = firstItem?.querySelector('a.study-btn[href]')?.getAttribute('href') || '';
+                // Select first active item in display order; skip pending placeholders.
+                const activeItem = fullStudyBlocks
+                    .flatMap((block) => Array.from(block.querySelectorAll('.study-item')))
+                    .find((item) => {
+                        const btn = item.querySelector('a.study-btn[href]');
+                        if (!btn) return false;
+                        const href = (btn.getAttribute('href') || '').trim();
+                        const isDisabled =
+                            btn.classList.contains('disabled') ||
+                            btn.hasAttribute('disabled') ||
+                            href === '#' ||
+                            href.toLowerCase().startsWith('javascript:');
+                        return !isDisabled;
+                    });
+
+                // Fallback allows name/description updates even if all studies are pending.
+                const selectedItem = activeItem || fullStudyBlocks[0]?.querySelector('.study-item');
+                const monthText = selectedItem?.querySelector('.study-name')?.textContent?.trim();
+                const periodTextRaw = selectedItem?.querySelector('.study-period')?.textContent?.trim();
+                const hrefRaw = selectedItem?.querySelector('a.study-btn[href]')?.getAttribute('href') || '';
 
                 if (monthText) reportNameEl.textContent = monthText;
 
@@ -778,7 +801,7 @@
 
                 // Attempt to compute the card PF from the linked Summaryboard
                 const href = hrefRaw.replace(/^\.[\/]/, '');
-                if (!href) return;
+                if (!href || href === '#') return;
 
                 const summaryRes = await fetch(`./CherryAve_Site/${href}?cb=${cb}`);
                 if (!summaryRes.ok) return;
